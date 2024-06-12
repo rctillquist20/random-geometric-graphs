@@ -268,14 +268,21 @@ def bruteForceK(M, k, chunkSize=1000, procs=1):
     if num % 10 == 0: print('  k: '+str(k)+', chunk '+str(num)+', fraction complete: '+str(num*chunkSize/tot))
     num += 1
 
-    pool = mp.Pool(processes=procs)
-    results = pool.map_async(checkRes, zip(chunk, repeat(M)))
-    results = results.get()
-    pool.close()
-    pool.join()
+    if procs > 1:
+      pool = mp.Pool(processes=procs)
+      results = pool.map_async(checkRes, zip(chunk, repeat(M)))
+      results = results.get()
+      pool.close()
+      pool.join()
 
-    for (resolved, resSet) in results:
-      if resolved: return list(resSet)
+      for (resolved, resSet) in results:
+        if resolved: return list(resSet)
+          
+    else:
+      for args in zip(chunk, repeat(M)):
+        (resolved, resSet) = checkRes(args)
+        if resolved: return list(resSet)
+          
     chunk = list(islice(combos, chunkSize))
   return []
 
