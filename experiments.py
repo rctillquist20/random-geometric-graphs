@@ -47,11 +47,11 @@ if __name__ == '__main__':
     data = readList(dataFile) if glob.glob(dataFile) else []
 
     # Node Sizes
-    nList = [4]
+    nList = [4, 500]
 
     # Radius Amounts
     rList = [1]
-    repeats = 2
+    repeats = 10
 
     # loop over all pairs of n and r (this can be done with nested loops or the product function in itertools)
     # look through data to see how many more repeats we need of this n,r pair (repeats-(the number in data))
@@ -69,12 +69,18 @@ if __name__ == '__main__':
     ''')
     for n in nList:
         for r in rList:
-            for seed in np.random.randint(1, 1000000, size=repeats):
-                print(type(seed))
-                # TODO: Fix seed=seed error
-                # G = nx.random_geometric_graph(n, r, seed=seed)
-                # resSet = geo.ich(G)
-                # data.append((n, r, seed, resSet))
+            for seed in np.random.randint(1, 1000000, size= countComplete(data, [(n, r)], repeats)[(n, r)]):
+                print("\nNodes Size: ", n, "\nRadius: ", r, "\nSeed: ", seed)
+                G = nx.random_geometric_graph(n, r, seed=int(seed))
+                resSet = geo.ich(G)
+                data.append((n, r, seed, resSet))
+            writeFile(data, dataFile)
 
     print('Experiments Complete!\n')
-    # print(resSet)
+
+    # Could move it in the seed file as well. Save more frequently.
+    # new file
+    # readList(), Call that function, read the data in. A list of all the data
+    # you collected. Start asking questions. Exploratory Data Analysis with
+    # MatplotLib.
+
