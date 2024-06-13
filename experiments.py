@@ -69,7 +69,7 @@ if __name__ == '__main__':
     ''')
     for n in nList:
         for r in rList:
-            for seed in np.random.randint(1, 1000000, size= countComplete(data, [(n, r)], repeats)[(n, r)]):
+            for seed in np.random.randint(1, 1000000, size=countComplete(data, [(n, r)], repeats)[(n, r)]):
                 print("\nNodes Size: ", n, "\nRadius: ", r, "\nSeed: ", seed)
                 G = nx.random_geometric_graph(n, r, seed=int(seed))
                 resSet = geo.ich(G)
@@ -84,11 +84,26 @@ if __name__ == '__main__':
     # you collected. Start asking questions. Exploratory Data Analysis with
     # MatplotLib.
 
-    # Possible Feature: Add timer.
+    # Possible Features:
+    # Import time
+    # Start = time.time()
+    # End = time.time()
+    # data.append((n, r, seed, resSet, end-start))
+
+    # Add timer.
+    # Keep Timing in file for specific graph.
+
     # Ideas:
     # Compare ICU with our own created algorithms
+    # Research Tip: Running these experiment, it is good save and run it once so we can 
+    # easily look in the graph
 
 #   nList =  list(range(100, 1001, 100)) + [2000, 5000] # to start consider smaller values
 #   rList = list(np.arange(0.02, 0.14, 0.01)) + list(np.arange(0.2, np.sqrt(2)+0.1, 0.1))
 # repeats = 10
 
+# Infinite graph, how do it irl?
+# Increase N but slowly to infinitely.
+# Infinite graphs exists in real world, universe?
+# In a nutshell kurgesgart
+# Veritasium
