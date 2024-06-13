@@ -84,3 +84,11 @@ if __name__ == '__main__':
     # you collected. Start asking questions. Exploratory Data Analysis with
     # MatplotLib.
 
+    # Possible Feature: Add timer.
+    # Ideas:
+    # Compare ICU with our own created algorithms
+
+#   nList =  list(range(100, 1001, 100)) + [2000, 5000] # to start consider smaller values
+#   rList = list(np.arange(0.02, 0.14, 0.01)) + list(np.arange(0.2, np.sqrt(2)+0.1, 0.1))
+# repeats = 10
+
