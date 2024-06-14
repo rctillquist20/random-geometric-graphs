@@ -34,4 +34,4 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
             print('Error: Can not decode and read file.')
 
 
-get_data(nodes=4)
+# get_data(nodes=4)

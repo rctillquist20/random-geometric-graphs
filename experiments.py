@@ -49,7 +49,7 @@ if __name__ == '__main__':
     data = readList(dataFile) if glob.glob(dataFile) else []
 
     # Node Sizes
-    nList = [4, 50, 12]
+    nList = [2]
 
     # Radius Amounts
     rList = [1]
