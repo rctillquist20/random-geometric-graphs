@@ -1,5 +1,5 @@
-# Calculates in the special case threshold of a two-dimensional space and 
-# the euclidean norm (d = 2 and p = 2) this yields r ~ sqrt( ln(n) / (pi * n) ) 
+# Calculates in the special case get_threshold of a two-dimensional space and
+# the euclidean norm (d = 2 and p = 2) this yields r ~ sqrt( ln(n) / (pi * n) )
 # for random geometric graphs.
 # Note: Specifically for below that threshold.
 
@@ -7,15 +7,35 @@ import math
 
 n = 1
 radius = 0.3
-repeat = 5
 
 n_sizes = {}
 
-while repeat != 0:
-    threshold = math.sqrt((math.log(n) / (math.pi * n)))
-    if (radius > threshold):
-        n_sizes.update({n : threshold})
-        repeat -= 1
-    n += 1
+# Returns the connectivity value that yields r ~ sqrt( ln(n) / (pi * n) ) to
+# help us compare if we are ubove or below the connectivity threshold.
 
-print(n_sizes)
+
+def get_threshold(n):
+    return math.sqrt(math.log(n) / (math.pi * n))
+
+# Returns all the n values that have a threshold BELOW some given radius.
+
+
+def get_n_below_radius(starting_n, radius, repeat=1):
+    while repeat != 0:
+        threshold = get_threshold(starting_n)
+        if (radius > threshold):
+            n_sizes.update({starting_n: threshold})
+            repeat -= 1
+        starting_n += 1
+    return n_sizes
+
+
+radius_list = []
+
+# Returns the what Radii given in a list is in order to distinguish what
+# below the connectivity threshold for random geometric graphs.
+
+
+def get_radius_based_on_n(n, radius_list):
+    below_threshold = [r for r in radius_list if r < get_threshold(n)]
+    return below_threshold
