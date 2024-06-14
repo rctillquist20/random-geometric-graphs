@@ -24,6 +24,7 @@ def writeFile(data, outFile):
 #############
 ### UTILS ###
 #############
+
 #determines the number of additional repeats necessary for each n,r pair in pairs
 #input: data - a list of tuples (n, r, seed, resSet)
 #       pairs - a list of tuples (n, r) to consider
