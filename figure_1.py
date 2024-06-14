@@ -33,5 +33,5 @@ print(geo.ich(G))
 print('\nBrute Force:\n')
 print(geo.bruteForce(G))
 
-# nx.draw(G, with_labels=True, font_weight='bold', node_color='red', edge_color='black')
-# plt.show()
+nx.draw(G, with_labels=True, font_weight='bold', node_color='red', edge_color='black')
+plt.show()

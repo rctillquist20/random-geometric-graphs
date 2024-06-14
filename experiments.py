@@ -7,6 +7,7 @@ from itertools import product
 import multiprocessing as mp
 import pickle
 import glob
+import time
 
 ##################
 ### READ/WRITE ###
@@ -36,7 +37,7 @@ def writeFile(data, outFile):
 
 def countComplete(data, pairs, repeats):
     counts = {pair: repeats for pair in pairs}
-    for (n, r, _, _) in data:
+    for (n, r, _, _, _) in data:
         if (n, r) in counts:
             counts[(n, r)] -= 1
     return counts
@@ -47,11 +48,11 @@ if __name__ == '__main__':
     data = readList(dataFile) if glob.glob(dataFile) else []
 
     # Node Sizes
-    nList = [4, 500]
+    nList = [4, 50, 12]
 
     # Radius Amounts
     rList = [1]
-    repeats = 10
+    repeats = 2
 
     # loop over all pairs of n and r (this can be done with nested loops or the product function in itertools)
     # look through data to see how many more repeats we need of this n,r pair (repeats-(the number in data))
@@ -70,40 +71,25 @@ if __name__ == '__main__':
     for n in nList:
         for r in rList:
             for seed in np.random.randint(1, 1000000, size=countComplete(data, [(n, r)], repeats)[(n, r)]):
-                print("\nNodes Size: ", n, "\nRadius: ", r, "\nSeed: ", seed)
+                print("\nNodes: ", n, "\nRadius: ", r, "\nSeed: ", seed)
                 G = nx.random_geometric_graph(n, r, seed=int(seed))
+                start = time.perf_counter()
                 resSet = geo.ich(G)
-                data.append((n, r, seed, resSet))
+                end = time.perf_counter()
+                execution_time = (end - start)
+                print('Time:', execution_time)
+                data.append((n, r, seed, resSet, execution_time))
+            
+            # Write to File after sharing N and R with some seed(s) based on repeats.
             writeFile(data, dataFile)
 
-    print('Experiments Complete!\n')
+    print('\nExperiments Complete!\n')
 
-    # Could move it in the seed file as well. Save more frequently.
-    # new file
-    # readList(), Call that function, read the data in. A list of all the data
-    # you collected. Start asking questions. Exploratory Data Analysis with
-    # MatplotLib.
 
-    # Possible Features:
-    # Import time
-    # Start = time.time()
-    # End = time.time()
-    # data.append((n, r, seed, resSet, end-start))
+# Ideas:
+# Compare ICU with our own created algorithms
+# Exploratory Data Analysis with MatplotLib.
 
-    # Add timer.
-    # Keep Timing in file for specific graph.
-
-    # Ideas:
-    # Compare ICU with our own created algorithms
-    # Research Tip: Running these experiment, it is good save and run it once so we can 
-    # easily look in the graph
-
-#   nList =  list(range(100, 1001, 100)) + [2000, 5000] # to start consider smaller values
-#   rList = list(np.arange(0.02, 0.14, 0.01)) + list(np.arange(0.2, np.sqrt(2)+0.1, 0.1))
+# nList =  list(range(100, 1001, 100)) + [2000, 5000] # to start consider smaller values
+# rList = list(np.arange(0.02, 0.14, 0.01)) + list(np.arange(0.2, np.sqrt(2)+0.1, 0.1))
 # repeats = 10
-
-# Infinite graph, how do it irl?
-# Increase N but slowly to infinitely.
-# Infinite graphs exists in real world, universe?
-# In a nutshell kurgesgart
-# Veritasium
