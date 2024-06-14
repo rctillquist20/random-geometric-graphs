@@ -1,3 +1,5 @@
 # Random geometric graphs
 
+![]( =250x400)
+
 Given a graph G, a subset of vertices R is called a resolving set when, for all distinct pairs of vertices u and v, there is at least one r ∈ R such that d(r,u) ≠ d(r,v) where d(x,y) is the shortest path distance between vertices x and y. The metric dimension of G is the size of smallest resolving sets on the graph. This concept is closely related to ideas underlying GPS or the Global Positioning System and has applications in robot navigation, source localization, and representing genetic sequences among others. Determining the exact metric dimension of an arbitrary graph is an NP-hard problem. While significant work has been done regarding the metric dimension of specific families of graphs, relatively little is known about the behavior of metric dimension in the context of random graph models. In this work we will investigate a characterization of the metric dimension of certain classes of random geometric graphs. We hope to identify patterns relating metric dimension to parameters of these models which may serve as the basis of asymptotic bounds and fast heuristic algorithms.
