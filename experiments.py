@@ -1,4 +1,5 @@
-# Python code to collect data related to the metric dimension of random geometric graphs
+# Python code to collect data related to the metric dimension of random 
+# geometric graphs
 
 import numpy as np
 import networkx as nx
@@ -54,14 +55,6 @@ if __name__ == '__main__':
     rList = [1]
     repeats = 2
 
-    # loop over all pairs of n and r (this can be done with nested loops or the product function in itertools)
-    # look through data to see how many more repeats we need of this n,r pair (repeats-(the number in data))
-    # ..the countComplete function might help here
-    # use np.random.randint(1, 1000000, size=(the number of additional repeats required)) to generate seeds
-    # use these seeds to generate random graphs, nx.random_geometric_graph(n, r, seed=seed)
-    # use the ich function to find a small resolving set
-    # append (n, r, seed, resolving set) to data
-    # save data
     print('''
     You know the greatest danger facing us is ourselves, and irrational fear 
     of the unknown. There is no such thing as the unknown. Only things 
