@@ -18,7 +18,7 @@ file_name = 'rgg_data.list'
 
 
 def get_data(nodes=None, radius=None, seed=None, r_set=None,
-             execution_time=None, sort_by=None, ascending=True):
+             execution_time=None, sort_by=None, ascending=True, output=True):
 
     if not os.path.isfile(file_name):
         print('Error: File does not exist.')
@@ -39,18 +39,17 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
                 return item[sort_by]
             filtered_data.sort(key=sort_by_item, reverse=not ascending)
 
-        # if output == False:
-        #     return filtered_data
-        # else:
         for item in filtered_data:
-            print('\n')
-            print('Nodes: ', item[0])
-            print('Radius: ', item[1])
-            print('Seed: ', item[2])
-            print('Resolving Set: ', item[3])
-            print('Execution Time: ', item[4])
-            print('\nPositions: ', item[5])
-        print('\n')
+            if output == True:
+                print('\nNodes: ', item[0])
+                print('Radius: ', item[1])
+                print('Seed: ', item[2])
+                print('Resolving Set: ', item[3])
+                print('Execution Time: ', item[4])
+                print('\nPositions: ', item[5], '\n')
+            else:
+                return item
+        # print('\n')
         return item
     except:
         print('Error: Can not decode and read file.')
@@ -61,4 +60,4 @@ nodes = 3
 radius = 1
 seed = 7637
 
-# get_data(nodes=nodes, radius=radius, seed=seed, output=False)
+# get_data(nodes=nodes, radius=radius, output=True)

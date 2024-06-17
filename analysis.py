@@ -61,16 +61,19 @@ G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
 #     print(pos)
 
 # Example of collected Static Position drawn on graph.
-# draw_graph(G, static_pos=decode.get_data(nodes=nodes, radius=radius, seed=seed)
-#            [5], r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed)[3])
+# Note: Have one parameter of output=False so you so do not get double output 
+# from decode.get_data()
+#
+# draw_graph(G,
+#            static_pos=decode.get_data(
+#                nodes=nodes, radius=radius, seed=seed, output=True)[5],
+#            r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed, output=False)[3])
 
 # Example of collected Random Position drawn on graph.
 # draw_graph(G, r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed)[3])
 
-# decode.get_data(
-#                nodes=nodes, radius=radius, seed=seed, output=True)
 
 draw_graph(G,
            static_pos=decode.get_data(
-               nodes=nodes, radius=radius, seed=seed)[5],
-           r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed)[3])
+               nodes=nodes, radius=radius, seed=seed, output=True)[5],
+           r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed, output=False)[3])
