@@ -44,8 +44,16 @@ def countComplete(data, pairs, repeats):
     return counts
 
 
+# Thoughts:
+# - rgg_data_10.list == 10 repeats of N and R :)
+
 if __name__ == '__main__':
+
+    ### IMPORTANT ###
     dataFile = 'rgg_data.list'
+    #################
+
+
     data = readList(dataFile) if glob.glob(dataFile) else []
 
     # Node Sizes
