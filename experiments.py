@@ -49,7 +49,7 @@ if __name__ == '__main__':
     data = readList(dataFile) if glob.glob(dataFile) else []
 
     # Node Sizes
-    nList = [2]
+    nList = [5, 2, 3]
 
     # Radius Amounts
     rList = [1]
@@ -85,4 +85,16 @@ if __name__ == '__main__':
 
 # nList =  list(range(100, 1001, 100)) + [2000, 5000] # to start consider smaller values
 # rList = list(np.arange(0.02, 0.14, 0.01)) + list(np.arange(0.2, np.sqrt(2)+0.1, 0.1))
-# repeats = 10
+# repeats = 2 or 10 <-- seeds for r?
+
+
+##### MY THOUGHTS #####
+# Repeats = 3, 5, 6, 7, 9, 10 (Pick the n number based on repeats and radius
+# below threshold.)
+# Starting_n = 1
+
+# nList considered REMEMBER BELOW THRESHOLD ONLY based on radius repeat 
+# item value found in threshold.py list based on get n below radius?
+# thoughts on this?????
+
+# rList considered based on Tillquist recommendations.
