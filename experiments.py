@@ -84,8 +84,10 @@ if __name__ == '__main__':
 # Exploratory Data Analysis with MatplotLib.
 
 # nList =  list(range(100, 1001, 100)) + [2000, 5000] # to start consider smaller values
+# NOTE: Forgot 5000 for the time being!!!!
+
 # rList = list(np.arange(0.02, 0.14, 0.01)) + list(np.arange(0.2, np.sqrt(2)+0.1, 0.1))
-# repeats = 2 or 10 <-- seeds for r?
+# repeats = 2 or 10 <-- seeds for r? 10 is ok for now.
 
 
 ##### MY THOUGHTS #####

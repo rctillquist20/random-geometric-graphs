@@ -17,6 +17,8 @@ def get_threshold(n):
 # Returns all the n values that have a threshold BELOW some given radius.
 # r = 0.3
 # [1, 10, 40, 10, 20]
+
+
 def get_n_below_radius(starting_n, radius, repeat=1):
     n_sizes = {}
     while repeat != 0:
@@ -30,25 +32,54 @@ def get_n_below_radius(starting_n, radius, repeat=1):
 
 # Returns the what Radii given in a list is in order to distinguish what
 # below the connectivity threshold for random geometric graphs.
-
-# Future Thought: Provide an n list below threshold in respect to r???
 def get_radius_below_on_n(n, radius_list=[]):
     below_threshold = [r for r in radius_list if r < get_threshold(n)]
     return below_threshold
+
+
+# Since the threshold function is monotonic (it only decreases) when n > 3,
+# we can use a modified binary search. I'll include it here just because I
+# think it's interesting to see binary search used to optimize a function
+# like this:
+
+
+def invert_threshold(radius):
+    n = 2
+    # find an upper bound by doubling n
+    while get_threshold(n) > radius:
+        n = 2*n
+    # now that we have upper and lower bounds, we can do a modified binary search!
+    low = n//2
+    high = n
+    while low < high:
+        mid = (low+high)//2
+        val = get_threshold(mid)
+        if val >= radius:
+            low = mid+1
+        else:
+            high = mid
+    return high
+
+# If nList is a list of sizes, we can filter them to find only those associated 
+# with a threshold similar to what we did before.
+def get_n_based_on_radius(radius, nList=[]):
+    return [n for n in nList if n >= invert_threshold(radius)]
+
 
 # print(get_radius_based_on_n(100, [0.1, 0.2, 0.3]))
 
 
 # print(get_n_below_radius(starting_n=1, radius=0.14, repeat=10))
+# rList = list(np.arange(0.02, 0.14, 0.01)) + \
+#     list(np.arange(0.2, np.sqrt(2)+0.1, 0.1))
 
-rList = list(np.arange(0.02, 0.14, 0.01)) + \
-    list(np.arange(0.2, np.sqrt(2)+0.1, 0.1))
+# # Show repeat 10 (pick item 10 in list) works!
+# for x in rList:
+#     print(x)
+#     print('\n')
+#     print(get_n_below_radius(starting_n=1, radius=x, repeat=10))
+#     print('\n')
 
-# Show repeat 10 (pick item 10 in list) works!
-for x in rList:
-    print(x)
-    print('\n')
-    print(get_n_below_radius(starting_n=1, radius=x, repeat=10))
-    print('\n')
+# print('Total unique radii:', len(rList))
 
-print('Total unique radii:', len(rList))
+# print(get_n_based_on_radius(0.3, nList=list(range(100, 1001, 100)) + [2000, 5000]))
