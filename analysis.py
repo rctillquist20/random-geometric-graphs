@@ -47,9 +47,9 @@ def get_distance_matrix(G):
 
 
 # Modify the values here as need to analyze deeply a specific graph.
-nodes = 2
+nodes = 3
 radius = 1
-seed = 854900
+seed = 824506
 
 G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
 
