@@ -30,8 +30,12 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
                 print('Resolving Set: ', item[3])
                 print('Execution Time: ', item[4])
             print('\n')
+
+            # Note: Returns R Set always to it be used in combination
+            # with analysis.py to draw R set on Matplotlib Graph.
+            return item[3]
         except:
             print('Error: Can not decode and read file.')
 
 
-# get_data(nodes=4)
+# get_data(nodes=2,seed=854900)

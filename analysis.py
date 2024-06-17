@@ -1,18 +1,29 @@
-# import decode
+import decode
 import matplotlib.pyplot as plt
 import multilateration as geo
 import networkx as nx
 
-nodes = 5
-radius = 1
-seed = 123
+# Returns us a drawn graph that can be show the resolving set
+# in order to find the metric dimension.
 
-# TODO: Make it where the resolving set can show based on a color
-# in the MatPlotLib Graph
-def draw_graph(G, show_resolving=True):
-    nx.draw(G, with_labels=True, font_weight='bold',
-            node_color='cyan', edge_color='black')
+
+def draw_graph(G, show_resolving=True, r_set=[]):
+    if show_resolving == True:
+        color_map = []
+        for node in G:
+            if node in r_set:
+                color_map.append('red')
+            else:
+                color_map.append('cyan')
+        nx.draw(G, with_labels=True, font_weight='bold',
+                node_color=color_map, edge_color='black')
+    else:
+        nx.draw(G, with_labels=True, font_weight='bold',
+                node_color='cyan', edge_color='black')
     plt.show()
+
+# Returns us a displayed distance matrix in order to find the metric
+# dimension based on unique different ordered vectors.
 
 
 def get_distance_matrix(G):
@@ -35,5 +46,12 @@ def get_distance_matrix(G):
         print(row)
 
 
+# Modify the values here as need to analyze deeply a specific graph.
+nodes = 2
+radius = 1
+seed = 854900
+
 G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
-draw_graph(G)
+
+
+draw_graph(G, r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed))
