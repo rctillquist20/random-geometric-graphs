@@ -6,6 +6,17 @@ file_name = 'rgg_data.list'
 
 # Returns data that can be filter based on what what we collected so can
 # analyze it.
+# Parameters:
+# - nodes
+# - radius
+# - seed
+# - r_set (Resolving Set)
+# - execution time (Time in seconds)
+# - sort_by
+# - ascending (data) Default: True
+# - output (Displays information about data on file.) Default: True
+
+
 def get_data(nodes=None, radius=None, seed=None, r_set=None,
              execution_time=None, sort_by=None, ascending=True):
 
@@ -28,6 +39,9 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
                 return item[sort_by]
             filtered_data.sort(key=sort_by_item, reverse=not ascending)
 
+        # if output == False:
+        #     return filtered_data
+        # else:
         for item in filtered_data:
             print('\n')
             print('Nodes: ', item[0])
@@ -35,13 +49,16 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
             print('Seed: ', item[2])
             print('Resolving Set: ', item[3])
             print('Execution Time: ', item[4])
+            print('\nPositions: ', item[5])
         print('\n')
-
-        # Note: Returns R Set always to it be used in combination
-        # with analysis.py to draw R set on Matplotlib Graph.
-        return item[3]
+        return item
     except:
         print('Error: Can not decode and read file.')
         return None
 
-# get_data()
+
+nodes = 3
+radius = 1
+seed = 7637
+
+# get_data(nodes=nodes, radius=radius, seed=seed, output=False)

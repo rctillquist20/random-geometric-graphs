@@ -38,7 +38,7 @@ def writeFile(data, outFile):
 
 def countComplete(data, pairs, repeats):
     counts = {pair: repeats for pair in pairs}
-    for (n, r, _, _, _) in data:
+    for (n, r, _, _, _, _) in data:
         if (n, r) in counts:
             counts[(n, r)] -= 1
     return counts
@@ -71,7 +71,7 @@ if __name__ == '__main__':
                 end = time.perf_counter()
                 execution_time = (end - start)
                 print('Time:', execution_time)
-                data.append((n, r, seed, resSet, execution_time))
+                data.append((n, r, seed, resSet, execution_time,  G.nodes(data='pos')))
             
             # Write to File after sharing N and R with some seed(s) based on repeats.
             writeFile(data, dataFile)

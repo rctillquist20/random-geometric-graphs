@@ -7,20 +7,23 @@ import networkx as nx
 # in order to find the metric dimension.
 
 
-def draw_graph(G, show_resolving=True, r_set=[]):
-    if show_resolving == True:
-        color_map = []
-        for node in G:
-            if node in r_set:
-                color_map.append('red')
-            else:
-                color_map.append('cyan')
-        nx.draw(G, with_labels=True, font_weight='bold',
-                node_color=color_map, edge_color='black')
-    else:
-        nx.draw(G, with_labels=True, font_weight='bold',
-                node_color='cyan', edge_color='black')
-    plt.show()
+def draw_graph(G, static_pos=None, show_resolving=True, r_set=[]):
+    try:
+        if show_resolving == True:
+            color_map = []
+            for node in G:
+                if node in r_set:
+                    color_map.append('red')
+                else:
+                    color_map.append('cyan')
+            nx.draw(G, pos=static_pos, with_labels=True, font_weight='bold',
+                    node_color=color_map, edge_color='black')
+        else:
+            nx.draw(G, with_labels=True, font_weight='bold',
+                    node_color='cyan', edge_color='black')
+        plt.show()
+    except:
+        print('Error: Specific graph cannot be drawn.')
 
 # Returns us a displayed distance matrix in order to find the metric
 # dimension based on unique different ordered vectors.
@@ -49,9 +52,25 @@ def get_distance_matrix(G):
 # Modify the values here as need to analyze deeply a specific graph.
 nodes = 3
 radius = 1
-seed = 824506
+seed = 7637
 
 G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
 
+# Graph Position Access Snippet!
+# for node, pos in G.nodes(data='pos'):
+#     print(pos)
 
-draw_graph(G, r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed))
+# Example of collected Static Position drawn on graph.
+# draw_graph(G, static_pos=decode.get_data(nodes=nodes, radius=radius, seed=seed)
+#            [5], r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed)[3])
+
+# Example of collected Random Position drawn on graph.
+# draw_graph(G, r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed)[3])
+
+# decode.get_data(
+#                nodes=nodes, radius=radius, seed=seed, output=True)
+
+draw_graph(G,
+           static_pos=decode.get_data(
+               nodes=nodes, radius=radius, seed=seed)[5],
+           r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed)[3])

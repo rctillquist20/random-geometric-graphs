@@ -31,8 +31,8 @@ def get_n_below_radius(starting_n, radius, repeat=1):
 # Returns the what Radii given in a list is in order to distinguish what
 # below the connectivity threshold for random geometric graphs.
 
-# Provide an n list below threshold in respect to r.
-def get_radius_based_on_n(n, radius_list=[]):
+# Future Thought: Provide an n list below threshold in respect to r???
+def get_radius_below_on_n(n, radius_list=[]):
     below_threshold = [r for r in radius_list if r < get_threshold(n)]
     return below_threshold
 
