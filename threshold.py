@@ -74,10 +74,11 @@ def get_n_based_on_radius(radius, nList=[]):
 #     list(np.arange(0.2, np.sqrt(2)+0.1, 0.1))
 
 # # Show repeat 10 (pick item 10 in list) works!
+# # [9][0]
 # for x in rList:
 #     print(x)
 #     print('\n')
-#     print(get_n_below_radius(starting_n=1, radius=x, repeat=10)[9][0])
+#     print(get_n_below_radius(starting_n=1, radius=x, repeat=10))
 #     print('\n')
 
 # print('Total unique radii:', len(rList))

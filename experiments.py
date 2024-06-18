@@ -62,6 +62,7 @@ if __name__ == '__main__':
     # Radius Amounts
     rList = list(np.arange(0.02, 0.14, 0.01)) + \
         list(np.arange(0.2, np.sqrt(2)+0.1, 0.1))
+    # rList = []
 
     repeats = 10
     for r in rList:
@@ -75,23 +76,54 @@ if __name__ == '__main__':
     temporarily hidden, temporarily not understood.
     -- Captain Kirk
     ''')
-    for n in nList:
-        for r in rList:
-            for seed in np.random.randint(1, 1000000, size=countComplete(data, [(n, r)], repeats)[(n, r)]):
-                print("\nNodes: ", n, "\nRadius: ", r, "\nSeed: ", seed)
-                G = nx.random_geometric_graph(n, r, seed=int(seed))
-                start = time.perf_counter()
-                resSet = geo.ich(G)
-                end = time.perf_counter()
-                execution_time = (end - start)
-                print('Time:', execution_time)
-                data.append(
-                    (n, r, seed, resSet, execution_time,  G.nodes(data='pos')))
 
-            # Write to File after sharing N and R with some seed(s) based on repeats.
-            writeFile(data, dataFile)
+    print('\nnList:', nList)
+    print('\nrList:', rList)
+    nList_sliced = nList[2:]
+    rList_sliced = rList[2:]
+    print('\nnList Sliced:', nList_sliced)
+    print('\nrList Sliced:', rList_sliced)
+    print('\n\n')
+
+    for n, r in zip(nList_sliced, rList_sliced):
+        for seed in np.random.randint(1, 1000000, size=countComplete(data, [(n, r)], repeats)[(n, r)]):
+            print("\nNodes: ", n, "\nRadius: ", r, "\nSeed: ", seed)
+            G = nx.random_geometric_graph(n, r, seed=int(seed))
+            start = time.perf_counter()
+            resSet = geo.ich(G)
+            end = time.perf_counter()
+            execution_time = (end - start)
+            print('Time:', execution_time)
+            data.append(
+                (n, r, seed, resSet, execution_time,  G.nodes(data='pos')))
+
+        # Write to File after sharing N and R with some seed(s) based on repeats.
+        writeFile(data, dataFile)
 
     print('\nExperiments Complete!\n')
+
+    ### OLD METHOD ###
+    # for n in nList:
+    #     if n == -1:
+    #         continue
+    #     for r in rList:
+    #         if r == 0.02 or r == 0.03:
+    #             continue
+    #         for seed in np.random.randint(1, 1000000, size=countComplete(data, [(n, r)], repeats)[(n, r)]):
+    #             print("\nNodes: ", n, "\nRadius: ", r, "\nSeed: ", seed)
+    #             G = nx.random_geometric_graph(n, r, seed=int(seed))
+    #             start = time.perf_counter()
+    #             resSet = geo.ich(G)
+    #             end = time.perf_counter()
+    #             execution_time = (end - start)
+    #             print('Time:', execution_time)
+    #             data.append(
+    #                 (n, r, seed, resSet, execution_time,  G.nodes(data='pos')))
+
+    #         # Write to File after sharing N and R with some seed(s) based on repeats.
+    #         writeFile(data, dataFile)
+
+    # print('\nExperiments Complete!\n')
 
 
 # Ideas:
@@ -115,3 +147,8 @@ if __name__ == '__main__':
 # thoughts on this?????
 
 # rList considered based on Tillquist recommendations.
+
+# Notes:
+# Excluded for now:
+# - 0.2 (over 7000 min for whole list)
+# - 0.3 (over 2000 min for whole list)
