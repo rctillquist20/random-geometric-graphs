@@ -1,4 +1,4 @@
-# Python code to collect data related to the metric dimension of random 
+# Python code to collect data related to the metric dimension of random
 # geometric graphs
 
 import numpy as np
@@ -9,6 +9,7 @@ import multiprocessing as mp
 import pickle
 import glob
 import time
+import threshold
 
 ##################
 ### READ/WRITE ###
@@ -50,18 +51,23 @@ def countComplete(data, pairs, repeats):
 if __name__ == '__main__':
 
     ### IMPORTANT ###
-    dataFile = 'rgg_data.list'
+    dataFile = 'rgg_data_10.list'
     #################
-
 
     data = readList(dataFile) if glob.glob(dataFile) else []
 
     # Node Sizes
-    nList = [5, 2, 3]
+    nList = []
 
     # Radius Amounts
-    rList = [1]
-    repeats = 2
+    rList = list(np.arange(0.02, 0.14, 0.01)) + \
+        list(np.arange(0.2, np.sqrt(2)+0.1, 0.1))
+
+    repeats = 10
+    for r in rList:
+        # (Node, Threshold)
+        nList.append(threshold.get_n_below_radius(
+            starting_n=1, radius=r, repeat=repeats)[repeats-1][0])
 
     print('''
     You know the greatest danger facing us is ourselves, and irrational fear 
@@ -79,8 +85,9 @@ if __name__ == '__main__':
                 end = time.perf_counter()
                 execution_time = (end - start)
                 print('Time:', execution_time)
-                data.append((n, r, seed, resSet, execution_time,  G.nodes(data='pos')))
-            
+                data.append(
+                    (n, r, seed, resSet, execution_time,  G.nodes(data='pos')))
+
             # Write to File after sharing N and R with some seed(s) based on repeats.
             writeFile(data, dataFile)
 
@@ -103,7 +110,7 @@ if __name__ == '__main__':
 # below threshold.)
 # Starting_n = 1
 
-# nList considered REMEMBER BELOW THRESHOLD ONLY based on radius repeat 
+# nList considered REMEMBER BELOW THRESHOLD ONLY based on radius repeat
 # item value found in threshold.py list based on get n below radius?
 # thoughts on this?????
 

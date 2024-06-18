@@ -20,11 +20,11 @@ def get_threshold(n):
 
 
 def get_n_below_radius(starting_n, radius, repeat=1):
-    n_sizes = {}
+    n_sizes = []
     while repeat != 0:
         threshold = get_threshold(starting_n)
         if (radius > threshold):
-            n_sizes.update({starting_n: threshold})
+            n_sizes.append((starting_n, threshold))
             repeat -= 1
         starting_n += 1
     return n_sizes
@@ -77,7 +77,7 @@ def get_n_based_on_radius(radius, nList=[]):
 # for x in rList:
 #     print(x)
 #     print('\n')
-#     print(get_n_below_radius(starting_n=1, radius=x, repeat=10))
+#     print(get_n_below_radius(starting_n=1, radius=x, repeat=10)[9][0])
 #     print('\n')
 
 # print('Total unique radii:', len(rList))
