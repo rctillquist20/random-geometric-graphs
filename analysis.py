@@ -50,9 +50,9 @@ def get_distance_matrix(G):
 
 
 # Modify the values here as need to analyze deeply a specific graph.
-nodes = 3
-radius = 1
-seed = 7637
+nodes = 10
+radius = 1.5000000000000004
+seed = 278880
 
 G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
 
@@ -72,7 +72,7 @@ G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
 # Example of collected Random Position drawn on graph.
 # draw_graph(G, r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed)[3])
 
-
+# print('Edges: ', nx.number_of_edges(G))
 draw_graph(G,
            static_pos=decode.get_data(
                nodes=nodes, radius=radius, seed=seed, output=True)[5],
