@@ -405,6 +405,26 @@ def genTag(args):
   (seq, R) = args
   return ';'.join(map(str, [hammingDist(list(seq), r) for r in R]))
 
+#################################
+### METRIC DIMENSION OF TREES ###
+#################################
+#Given a tree in networkx, find a minimal resolving set
+#This function works by partitioning leaves with respect to nearest exterior major vertices and selecting all but one node from each partition for the resolving set
+#Input: T - a networkx graph object representing a tree
+#return: a list of nodes in the tree representing a minimal resolving set
+def treeResSet(T):
+  partition = {}
+  for v in T.nodes():
+    if T.degree(v) == 1:
+      prev = v
+      u = list(T.neighbors(v))[0]
+      while T.degree(u) == 2:
+        prev, u = u, [w for w in T.neighbors(u) if w != prev][0]
+        if T.degree(u) == 1: #we have a path
+          return [v]
+      partition[u] = partition.get(u, []) + [v]
+  return [v for k,p in partition.items() for v in np.random.permutation(p)[:-1]]
+  
 ###########################
 ### CHECK RESOLVABILITY ###
 ###########################
