@@ -54,7 +54,7 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
                 print('\nPositions: ', item[5], '\n')
                 if image == True:
                     plt.figure(figsize=(7, 7))
-                    plt.title(f"Nodes: {item[0]}, Radius: {item[1]}, Seed: {item[2]}")
+                    plt.title(f"Nodes: {item[0]}, Radius: {item[1]}, Seed: {item[2]}, Edges: {nx.number_of_edges(G)}")
                     color_map = []
                     for node in G:
                         if node in item[3]:
@@ -78,9 +78,9 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
         return None
 
 
-nodes = 10
-radius = 1.5000000000000004
-seed = 278880
+# nodes = 10
+# radius = 1.5000000000000004
+# seed = 278880
 
-get_data(sort_by=True, ascending=True, image=True)
-# get_data(nodes=nodes, radius=radius, seed=seed, image=True)
+# get_data(nodes=15, sort_by=item[4], ascending=False)
+# get_data( image=True)

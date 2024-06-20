@@ -2,6 +2,7 @@ import decode
 import matplotlib.pyplot as plt
 import multilateration as geo
 import networkx as nx
+import os
 
 # Returns us a drawn graph that can be show the resolving set
 # in order to find the metric dimension.
@@ -48,11 +49,39 @@ def get_distance_matrix(G):
     for row in distance_matrix:
         print(row)
 
+# Trying to find unique Resolving Sets for a given graph using the brute force
+# method.
+#
+# get_brute_force_runs(15, nodes=nodes, radius=radius, seed=seed, G=G)
+
+
+def get_unique_resolve_runs(filename, nodes, radius, seed, G, repeat=100):
+    # if not os.path.exists(f'metric_d/d_10/{filename}.txt'):
+        with open(f'metric_d/d_10/{filename}.txt', 'w') as f:
+            f.write(f'Nodes: {nodes}, Radius: {radius}, Seed: {seed}, Edges: {nx.number_of_edges(G)}\n\n')
+            f.close()
+   
+        # Get Resolve Set and check if it in file, if not, append.
+        for _ in range(repeat):
+            resolve_set = str(geo.bruteForce(G))
+            resolve_set_in_file = False
+            with open(f'metric_d/d_10/{filename}.txt', 'r') as f:
+                for line in f:
+                    if resolve_set in line:
+                        resolve_set_in_file = True
+                f.close()
+            if resolve_set_in_file == False:
+                with open(f'metric_d/d_10/{filename}.txt', 'a') as f:
+                    f.write(f'{resolve_set}\n\n')
+                    f.close()
+
 
 # Modify the values here as need to analyze deeply a specific graph.
-nodes = 10
-radius = 1.5000000000000004
-seed = 278880
+nodes = 15
+radius = 0.30000000000000004
+seed = 161285
+
+# graph_15_0.30000000000000004_161285
 
 G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
 
@@ -61,7 +90,7 @@ G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
 #     print(pos)
 
 # Example of collected Static Position drawn on graph.
-# Note: Have one parameter of output=False so you so do not get double output 
+# Note: Have one parameter of output=False so you so do not get double output
 # from decode.get_data()
 #
 # draw_graph(G,
@@ -73,7 +102,12 @@ G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
 # draw_graph(G, r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed)[3])
 
 # print('Edges: ', nx.number_of_edges(G))
-draw_graph(G,
-           static_pos=decode.get_data(
-               nodes=nodes, radius=radius, seed=seed, output=True)[5],
-           r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed, output=False)[3])
+
+get_unique_resolve_runs(15, nodes=nodes, radius=radius, seed=seed, G=G)
+# print(geo.bruteForce(G))
+
+
+# draw_graph(G,
+#            static_pos=decode.get_data(
+#                nodes=nodes, radius=radius, seed=seed, output=False)[5],
+#            r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed, output=False)[3])
