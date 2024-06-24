@@ -82,5 +82,5 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
 # radius = 1.5000000000000004
 # seed = 278880
 
-# get_data(nodes=15, sort_by=item[4], ascending=False)
+# get_data( sort_by=True, ascending=False)
 # get_data( image=True)

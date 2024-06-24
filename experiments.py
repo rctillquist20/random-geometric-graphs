@@ -141,14 +141,9 @@ if __name__ == '__main__':
 # Repeats = 3, 5, 6, 7, 9, 10 (Pick the n number based on repeats and radius
 # below threshold.)
 # Starting_n = 1
-
-# nList considered REMEMBER BELOW THRESHOLD ONLY based on radius repeat
-# item value found in threshold.py list based on get n below radius?
-# thoughts on this?????
-
 # rList considered based on Tillquist recommendations.
 
 # Notes:
 # Excluded for now:
-# - 0.2 (over 7000 min for whole list)
-# - 0.3 (over 2000 min for whole list)
+# - 0.02 (over 7000 min for whole list)
+# - 0.03 (over 2000 min for whole list)

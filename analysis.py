@@ -33,6 +33,7 @@ def draw_graph(G, static_pos=None, show_resolving=True, r_set=[]):
 def get_distance_matrix(G):
 
     distances = dict(nx.all_pairs_shortest_path_length(G))
+    # print(distances)
 
     distance_matrix = [[0 for _ in range(len(G.nodes()))]
                        for _ in range(len(G.nodes()))]
@@ -40,12 +41,12 @@ def get_distance_matrix(G):
     for i, node_i in enumerate(G.nodes()):
         for j, node_j in enumerate(G.nodes()):
             if node_i != node_j:
-                distance_matrix[i][j] = distances[node_i][node_j]
+                distance_matrix[i][j] = distances.get(node_i, {}).get(node_j, float('inf'))
 
             else:
                 distance_matrix[i][j] = 0
 
-    print("Shortest Distance Matrix:")
+    print("Shortest Distance Matrix:\n")
     for row in distance_matrix:
         print(row)
 
@@ -80,8 +81,7 @@ def get_unique_resolve_runs(filename, nodes, radius, seed, G, repeat=100):
 nodes = 15
 radius = 0.30000000000000004
 seed = 161285
-
-# graph_15_0.30000000000000004_161285
+# analysis/graph_15_0.30000000000000004_161285.png
 
 G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
 
@@ -103,7 +103,8 @@ G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
 
 # print('Edges: ', nx.number_of_edges(G))
 
-get_unique_resolve_runs(15, nodes=nodes, radius=radius, seed=seed, G=G)
+get_distance_matrix(G)
+# get_unique_resolve_runs(nodes, nodes=nodes, radius=radius, seed=seed, G=G)
 # print(geo.bruteForce(G))
 
 
