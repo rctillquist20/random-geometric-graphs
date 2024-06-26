@@ -1,6 +1,7 @@
 # Evan Alba Branch
 data_images/
 .DS_Store
+.swp
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

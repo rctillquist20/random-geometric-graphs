@@ -1,0 +1,2 @@
+Nodes: 34, Radius: 0.2, Seed: 657341, Edges: 52
+

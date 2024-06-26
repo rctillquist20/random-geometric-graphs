@@ -3,6 +3,7 @@ import os.path
 import networkx as nx
 import matplotlib.pyplot as plt
 
+# _10 for 10 repeats based on experiments.py
 
 file_name = 'rgg_data_10.list'
 
@@ -54,7 +55,8 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
                 print('\nPositions: ', item[5], '\n')
                 if image == True:
                     plt.figure(figsize=(7, 7))
-                    plt.title(f"Nodes: {item[0]}, Radius: {item[1]}, Seed: {item[2]}, Edges: {nx.number_of_edges(G)}")
+                    plt.title(f"Nodes: {item[0]}, Radius: {item[1]}, Seed: {
+                              item[2]}, Edges: {nx.number_of_edges(G)}")
                     color_map = []
                     for node in G:
                         if node in item[3]:
@@ -63,11 +65,12 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
                             color_map.append('cyan')
                     nx.draw(G, pos=item[5], with_labels=True, font_weight='bold',
                             node_color=color_map, edge_color='black')
-                    
+
                     # CHANGE HERE FOR DIFFERENT REPEATS FOLDER!!!
                     data_num = 10
                     os.makedirs(f'data_images/data_{data_num}', exist_ok=True)
-                    plt.savefig(f"data_images/data_{data_num}/graph_{item[0]}_{item[1]}_{item[2]}.png")
+                    plt.savefig(
+                        f"data_images/data_{data_num}/graph_{item[0]}_{item[1]}_{item[2]}.png")
 
             else:
                 return item
@@ -77,10 +80,10 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
         print('Error: Can not decode and read file.')
         return None
 
-
-# nodes = 10
-# radius = 1.5000000000000004
-# seed = 278880
+# nodes = 34
+# radius = 0.2
+# seed = 628768
 
 # get_data( sort_by=True, ascending=False)
 # get_data( image=True)
+# get_data(nodes=nodes, radius=radius, seed=seed)
