@@ -60,3 +60,8 @@ import os
 # least_common_elements = get_least_common_elements(distance_matrix)
 
 # print("Least common elements:", least_common_elements)
+
+data = [(0, 2, 3), (0, 4, 9), (0, 5), (2, 3), (3, 4), (3, 5)]
+for i in data:
+    print(i)
+

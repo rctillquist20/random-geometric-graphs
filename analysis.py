@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import multilateration as geo
 import networkx as nx
 import os
+import textwrap
 
 # Returns us a drawn graph that can be show the resolving set
 # in order to find the metric dimension.
@@ -72,33 +73,41 @@ def get_distance_matrix(G, submatrix=False, r_set=[], display=False):
 # get_brute_force_runs(15, nodes=nodes, radius=radius, seed=seed, G=G)
 
 
+
+
 def get_unique_resolve_runs(filename, nodes, radius, seed, G, repeat=100):
     relative_path = 'metric_d/d_10/34/'
     if not os.path.exists(f'{relative_path}{filename}.txt'):
         file_type = '.txt'
         with open(f'{relative_path}{filename}{file_type}', 'w') as f:
-            f.write(f'Nodes: {nodes}, Radius: {radius}, Seed: {seed}, Edges: {nx.number_of_edges(G)}\n\n')
+            wrapped_header = textwrap.wrap(f'Nodes: {nodes}, Radius: {radius}, Seed: {seed}, Edges: {nx.number_of_edges(G)}', width=80)
+            f.writelines(wrapped_header)
             f.close()
    
         start_repeat_num = 1
-        # Get Resolve Set and check if it in file, if not, append.
         for _ in range(repeat):
             print('REPEAT: ', start_repeat_num)
-            resolve_set = str(geo.bruteForce(G))
-            print('\n',resolve_set,'\n')
+            resolve_set = geo.bruteForce(G, numSets=-1)
+            print('\n', str(resolve_set),'\n')
             resolve_set_in_file = False
             with open(f'{relative_path}{filename}{file_type}', 'r') as f:
                 for line in f:
-                    if resolve_set in line:
-                        resolve_set_in_file = True
+                    for i in resolve_set:
+                        if str(i) in line:
+                            resolve_set_in_file = True
+                            break
                 f.close()
             if resolve_set_in_file == False:
                 with open(f'{relative_path}{filename}{file_type}', 'a') as f:
-                    f.write(f'{resolve_set}\n\n')
+                    f.write('\n\n')
+                    for i in resolve_set:
+                        wrapped_element = textwrap.wrap(str(i), width=80)
+                        f.writelines(wrapped_element + ['\n'])
                     f.close()
             start_repeat_num += 1
             
     print('\nExperiments Completed!\n')
+
 
 
 # Modify the values here as need to analyze deeply a specific graph.

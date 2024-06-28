@@ -230,39 +230,44 @@ def numCollisions(args):
 ###################
 #Find the metric dimension of a graph via brute force
 #Consider all subsets of nodes of size startK
-#The multiprocessing is accomplished by focusing on groups column combinations so that 
+#The multiprocessing is accomplished by focusing on groups column combinations so that
 #the process can stop early if a resolving set is discovered. Taking advantage of other
 #facilities in the multiprocessing library, like Queues, may be a more appropriate approach
 #input: M - the object on which to perform multilateration
 #       startK - optional argument specifying the size of column subsets to consider first, defaults to 1
+#       numSets - the number of resolving sets of minimum size to return (if there are at least this many distinct sets),
+#                 defaults to 1, -1 searches for all resolving sets of minimum size
 #       chunkSize - optional argument specifying the number of subsets of columns to consider at a time
 #                   before a check is done to verify that no resolving set has been discovered before
 #                   continuing, defaults to 1000
 #       procs - optional argument specifying the number of processes to use, defaults to 1
 #return: a resolving set if one is found and 'NO SOLUTION EXISTS' otherwise
-def bruteForce(M, startK=1, chunkSize=1000, procs=1):
+def bruteForce(M, startK=1, numSets=1, chunkSize=1000, procs=1):
   if isinstance(M, nx.classes.graph.Graph):
     nodes = sorted(M.nodes())
     M = nx.floyd_warshall(M)
     M = [[int(M[u][v]) if (v in M and M[u][v]!=np.inf) else -1 for v in nodes] for u in nodes]
   resSet = []
   while len(resSet)==0 and startK<=len(M):
-    resSet = bruteForceK(M, startK, chunkSize=chunkSize, procs=procs)
+    resSet = bruteForceK(M, startK, numSets=numSets, chunkSize=chunkSize, procs=procs)
     startK += 1
   return resSet if startK<=len(M) else 'NO SOLUTION EXISTS'
 
 #A helper function for bruteForce that checks a chunk of column subsets for resolvability
 #input: M - the object on which to perform multilateration
 #       k - the size of column subsets to consider as potential resolving sets
+#       numSets - the number of resolving sets of minimum size to return (if there are at least this many distinct sets),
+#                 defaults to 1, -1 searches for all resolving sets of minimum size
 #       chunkSize - optional argument specifying the number of subsets of columns to consider at a time
 #                   before a check is done to verify that no resolving set has been discovered before
 #                   continuing, defaults to 1000
 #       procs - optional argument specifying the number of processes to use, defaults to 1
 #return: a resolving set if one is discovered and an empty list otherwise
-def bruteForceK(M, k, chunkSize=1000, procs=1):
+def bruteForceK(M, k, numSets=1, chunkSize=1000, procs=1):
   tot = float(comb(len(M), k))
   combos = combinations(range(len(M)), k)
   chunk = list(islice(combos, chunkSize))
+  resSets = []
   num = 0
   while len(chunk) > 0:
     if num % 10 == 0: print('  k: '+str(k)+', chunk '+str(num)+', fraction complete: '+str(num*chunkSize/tot))
@@ -276,15 +281,18 @@ def bruteForceK(M, k, chunkSize=1000, procs=1):
       pool.join()
 
       for (resolved, resSet) in results:
-        if resolved: return list(resSet)
-          
+        if resolved: #return list(resSet)
+          resSets.append(resSet)
+          if len(resSets) == numSets: return resSets if numSets > 1 else resSets[0]
     else:
       for args in zip(chunk, repeat(M)):
         (resolved, resSet) = checkRes(args)
-        if resolved: return list(resSet)
+        if resolved: #return list(resSet)
+          resSets.append(resSet)
+          if len(resSets) == numSets: return resSets if numSets > 1 else resSets[0]
           
     chunk = list(islice(combos, chunkSize))
-  return []
+  return resSets
 
 #A wrapper function to call checkResolving for a brute force search
 #input: args - a tuple containing the set of columns to consider and the matrix
@@ -405,6 +413,26 @@ def genTag(args):
   (seq, R) = args
   return ';'.join(map(str, [hammingDist(list(seq), r) for r in R]))
 
+#################################
+### METRIC DIMENSION OF TREES ###
+#################################
+#Given a tree in networkx, find a minimal resolving set
+#This function works by partitioning leaves with respect to nearest exterior major vertices and selecting all but one node from each partition for the resolving set
+#Input: T - a networkx graph object representing a tree
+#return: a list of nodes in the tree representing a minimal resolving set
+def treeResSet(T):
+  partition = {}
+  for v in T.nodes():
+    if T.degree(v) == 1:
+      prev = v
+      u = list(T.neighbors(v))[0]
+      while T.degree(u) == 2:
+        prev, u = u, [w for w in T.neighbors(u) if w != prev][0]
+        if T.degree(u) == 1: #we have a path
+          return [v]
+      partition[u] = partition.get(u, []) + [v]
+  return [v for k,p in partition.items() for v in np.random.permutation(p)[:-1]]
+  
 ###########################
 ### CHECK RESOLVABILITY ###
 ###########################
