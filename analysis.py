@@ -30,7 +30,7 @@ def draw_graph(G, static_pos=None, show_resolving=True, r_set=[]):
 # dimension based on unique different ordered vectors.
 
 
-def get_distance_matrix(G, submatrix=False, r_set=[]):
+def get_distance_matrix(G, submatrix=False, r_set=[], display=False):
 
     distances = dict(nx.all_pairs_shortest_path_length(G))
 
@@ -45,20 +45,26 @@ def get_distance_matrix(G, submatrix=False, r_set=[]):
             else:
                 distance_matrix[i][j] = 0
 
-    print("Shortest Distance Matrix:\n")
+    
     if submatrix == True: 
         node_list = list(G.nodes())
         node_indices = [node_list.index(node) for node in r_set]
         sub_matrix = [[distance_matrix[i][j] for j in node_indices] for i in node_indices]
         max_width = max(len(str(node)) for node in r_set)
-        for row in sub_matrix:
-            max_width = max(max_width, len([str(val) for val in row]))
-        print(' '.join([f"{node:{max_width}}" for node in r_set]), '\n')
-        for row in sub_matrix:
-            print(' '.join([f"{val:{max_width}}" for val in row]))
+        if display == True:
+            print("Shortest Distance Sub Matrix:\n")
+            for row in sub_matrix:
+                max_width = max(max_width, len([str(val) for val in row]))
+            print(' '.join([f"{node:{max_width}}" for node in r_set]), '\n')
+            for row in sub_matrix:
+                print(' '.join([f"{val:{max_width}}" for val in row]))
+        return sub_matrix
     else:
-        for row in distance_matrix:
-            print(row)
+        if display == True:
+            print("Shortest Distance Matrix:\n")
+            for row in distance_matrix:
+                print(row)
+        return distance_matrix
 
 # Trying to find unique Resolving Sets for a given graph using the brute force
 # method.
@@ -74,9 +80,10 @@ def get_unique_resolve_runs(filename, nodes, radius, seed, G, repeat=100):
             f.write(f'Nodes: {nodes}, Radius: {radius}, Seed: {seed}, Edges: {nx.number_of_edges(G)}\n\n')
             f.close()
    
+        start_repeat_num = 0
         # Get Resolve Set and check if it in file, if not, append.
         for _ in range(repeat):
-            print('REPEAT: ', repeat)
+            print('REPEAT: ', start_repeat_num)
             resolve_set = str(geo.bruteForce(G))
             resolve_set_in_file = False
             with open(f'{relative_path}{filename}{file_type}', 'r') as f:
@@ -88,6 +95,7 @@ def get_unique_resolve_runs(filename, nodes, radius, seed, G, repeat=100):
                 with open(f'{relative_path}{filename}{file_type}', 'a') as f:
                     f.write(f'{resolve_set}\n\n')
                     f.close()
+            start_repeat_num += 1
             
     print('\nExperiments Completed!\n')
 
