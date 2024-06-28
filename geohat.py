@@ -1,10 +1,6 @@
 import analysis
 import itertools
 
-# 1. Check for unique column
-# 
-# 3.
-
 # nodes = 92
 # radius = 0.12999999999999998
 # seed = 267868
@@ -138,6 +134,9 @@ def get_r_isolated_and_close_to_unique(distance_matrix, third_matrix):
     return False
 
 
+def get_least_common_elements(distance_matrix):
+    print('')
+
 def geohat(distance_matrix):
     # Size 1 Metric Dimension
     if get_unique_column(distance_matrix) != False:
@@ -159,5 +158,6 @@ def geohat(distance_matrix):
     
     # 2nd Approach: Use the matrix to pick columns based on the least common 
     # elements gathered in the whole matrix.
+    least_common = get_least_common_elements(distance_matrix)
 
 print(geohat(matrix))

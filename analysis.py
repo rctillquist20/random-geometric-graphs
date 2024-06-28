@@ -80,11 +80,12 @@ def get_unique_resolve_runs(filename, nodes, radius, seed, G, repeat=100):
             f.write(f'Nodes: {nodes}, Radius: {radius}, Seed: {seed}, Edges: {nx.number_of_edges(G)}\n\n')
             f.close()
    
-        start_repeat_num = 0
+        start_repeat_num = 1
         # Get Resolve Set and check if it in file, if not, append.
         for _ in range(repeat):
             print('REPEAT: ', start_repeat_num)
             resolve_set = str(geo.bruteForce(G))
+            print('\n',resolve_set,'\n')
             resolve_set_in_file = False
             with open(f'{relative_path}{filename}{file_type}', 'r') as f:
                 for line in f:

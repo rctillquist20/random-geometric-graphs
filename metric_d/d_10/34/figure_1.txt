@@ -1,0 +1,4 @@
+Nodes: 6, Radius: 0, Seed: 0, Edges: 6
+
+[0, 2]
+

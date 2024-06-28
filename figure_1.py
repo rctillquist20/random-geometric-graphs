@@ -28,10 +28,24 @@ print("Shortest Distance Matrix:")
 for row in distance_matrix:
   print(row)
 
-print('\nICH Algorithm:')
-print(geo.ich(G))
-print('\nBrute Force:\n')
-print(geo.bruteForce(G))
+import analysis
 
-nx.draw(G, with_labels=True, font_weight='bold', node_color='red', edge_color='black')
-plt.show()
+# TODO: Fix because for some reason possible R not showing.
+# ONLY [0, 2] shows when I do repeat = 100 for Brute Force???
+
+nodes = 6
+# radius = 0.2
+# seed_list = [852397, 763785, 726260, 657341, 628768, 614008, 439468, 437162, 289604, 267652]
+
+# [0, 5]
+# [0, 2] 
+analysis.get_unique_resolve_runs(filename='figure_1', nodes=nodes, radius=0, seed=0, G=G, repeat=100)
+
+
+# print('\nICH Algorithm:')
+# print(geo.ich(G))
+# print('\nBrute Force:\n')
+# print(geo.bruteForce(G))
+
+# nx.draw(G, with_labels=True, font_weight='bold', node_color='red', edge_color='black')
+# plt.show()
