@@ -8,11 +8,19 @@ import itertools
 # G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
 # analysis.get_distance_matrix(G, submatrix=False, display=False)
 
+## Metric Dimension EXISTS
 matrix = [
     [1, 2, -1, 0],
     [1, 0, 0, -1],
-    [7, 8, -1, -1]
+    [2, 8, -1, -1]
 ]
+
+## Metric Dimension NOT
+# matrix = [
+#     [1, -1],
+#     [1, -1],
+#     [7, 0]
+# ]
 
 # Tests for unique column so we can find a easily a size 1 metric dimension.
 
@@ -109,7 +117,7 @@ def is_resolving_set(distance_matrix, test_set):
     seen_rows = set()
 
     for row in distance_matrix:
-        row_tuple = tuple(row)
+        row_tuple = tuple([row[i] for i in test_set])
         if row_tuple in seen_rows:
             return False
         seen_rows.add(row_tuple)
@@ -129,56 +137,120 @@ def get_r_isolated_and_close_to_unique(distance_matrix, third_matrix):
             # Maybe make an array to check if in array prevent duplicates
             # being runned agained in the is_resolving_set function???
             # Will that make a time difference?
+            # print(test_set)
 
             result = is_resolving_set(distance_matrix, test_set)
             if result == True:
                 return test_set
     return False
 
+
 # Generate occurences least common elements sorted in order for the 2nd
 # approach.
+# Dictionary Format: 
+# { Count of Occurence : [ [ Elements ], [Column(s) of 0th index Element], [Column(s) of 1th index Element] }
+# 0th index of list item is always the elements.s
 def get_least_common_elements(distance_matrix):
     element_counts = Counter(sum(distance_matrix, []))
     least_common_elements = {}
+    # print(element_counts,'\n')
     for element, count in element_counts.items():
         if count not in least_common_elements:
-            least_common_elements[count] = []
-        least_common_elements[count].append(element)
+            # New Count of Occurence
+            least_common_elements[count] = [[]]
+        # [ Element ]
+        least_common_elements[count][0].append(element)
+
+        # [Column(s) of Element], [Column(s) of Element]
+        # Find All Columns for each element
+        element_column_indices = set()
+        for i in range(len(distance_matrix)):
+            for j in range(len(distance_matrix[i])):
+                if distance_matrix[i][j] == element:
+                    element_column_indices.add(j)
+        least_common_elements[count].append(list(element_column_indices))
+  
     return dict(sorted(least_common_elements.items()))
 
+# Helper function to primarily FIND and get more least columns as I go, 
+# increases R size.
+# Combined with is_resolving_set() to find R.
+def get_columns_with_unique_elements(matrix, least_common):
+    unique_column_set = set()
 
+    for key, value in least_common.items():
+        # value[0] <-- First List of Elements
+        for inner_list in value[1:]:
+            for column in inner_list:
+                unique_column_set.add(column)
+    if len(unique_column_set) == 0:
+        return False
+    return unique_column_set
+
+                
+def iterate_increasing_slice(data_list, start_index=0):
+    slice_size = 2
+    while slice_size <= len(data_list):
+        yield data_list[start_index: slice_size]
+        slice_size += 1
+
+# 2nd Approach
 def get_r_based_on_least_occurences(distance_matrix, least_common):
-    print('')
+    unique_column_set = list(get_columns_with_unique_elements(distance_matrix, least_common))
+    # unique_column_set = [1, 2, 3, 4, 5, 6]
+    test_sets = iterate_increasing_slice(data_list=unique_column_set)
+    for columns in test_sets:
+        is_r_set = is_resolving_set(distance_matrix, columns)
+        if is_r_set == True:
+            return columns
+    return False
 
-def geohat(distance_matrix):
-    # Size 1 Metric Dimension
-    # if get_unique_column(distance_matrix) != False:
-    #     return get_unique_column(distance_matrix)
 
-    ### 2 Approaches for Metric Dimension ###
-    # Maybe 1 approach is faster and more accurate???
+def geohat(distance_matrix, option=[1]):
+    if 1 in option:
+        # Size 1 Metric Dimension
+        if get_unique_column(distance_matrix) != False:
+            return get_unique_column(distance_matrix)
 
-    # 1st Approach: Check for close to unique row column and use if possible
-    # isolated vertices.
-    # isolated_vertices = get_isolated_vertices(distance_matrix)
-    # close_to_unique = get_close_to_unique_columns(distance_matrix)
+        ### Approaches for Metric Dimension ###
+        # Maybe 1 approach is faster and more accurate???
 
-    # # Loop through all of close_to_unique a good idea in terms of time???
-    # for key in close_to_unique:
-    #     combinations = get_combinations(
-    #         isolated_vertices, close_to_unique[key])
-    #     is_r_set = get_r_isolated_and_close_to_unique(
-    #         distance_matrix, combinations)
-    #     if is_r_set != False:
-    #         return is_r_set
+    if 2 in option:
+        # 1st Approach: Check for close to unique row column and use if possible
+        # isolated vertices.
+        isolated_vertices = get_isolated_vertices(distance_matrix)
+        close_to_unique = get_close_to_unique_columns(distance_matrix)
 
-    # 2nd Approach: Use the matrix to pick columns based on the least common
-    # elements gathered in the whole matrix.
-    least_common = get_least_common_elements(distance_matrix)
-    is_r_set = get_r_based_on_least_occurences(distance_matrix, least_common)
-    print(least_common)
+        # Loop through all of close_to_unique a good idea in terms of time???
+        for key in close_to_unique:
+            combinations = get_combinations(
+                isolated_vertices, close_to_unique[key])
+            is_r_set = get_r_isolated_and_close_to_unique(
+                distance_matrix, combinations)
+            if is_r_set != False:
+                return is_r_set
+
+    if 3 in option:
+        # 2nd Approach: Use the matrix to pick columns based on the least common
+        # elements gathered in the whole matrix.
+        least_common = get_least_common_elements(distance_matrix)
+        is_r_set = get_r_based_on_least_occurences(distance_matrix, least_common)
+        if is_r_set != False:
+            return is_r_set
+
+    if 4 in option:
+        # Approaches 1st + 2nd = 3rd
+        print('')
+    
+    if 5 in option:
+        # Approaches 1st (Uses ISOLATED VERTICES ONLY) + 3rd
+        print('')
+    
+    if 6 in option:
+        # Approaches 1st (Uses CLOSE ROW COLUMNS ONLY) + 3rd
+        print('')
 
     return False
 
 
-print(geohat(matrix))
+print(geohat(matrix, option=[3]))

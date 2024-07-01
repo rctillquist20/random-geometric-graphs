@@ -14,54 +14,157 @@ import os
 #     G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
 #     analysis.get_unique_resolve_runs(filename=seed, nodes=nodes, radius=radius, seed=seed, G=G)
 
-# from collections import Counter
-
-# def get_least_common_elements(distance_matrix):
-#   """
-#   This function takes a 2D distance matrix and returns a dictionary where the key is the count of the occurrence of an element 
-#   and the value is a list of elements with that count.
-
-#   Args:
-#       distance_matrix: A 2D list representing the distance matrix.
-
-#   Returns:
-#       A dictionary where the key is the count of the occurrence of an element and the value is a list of elements with that count.
-#   """
-#   element_counts = Counter(sum(distance_matrix, []))
-#   least_common_elements = {}
-#   for element, count in element_counts.items():
-#     if count not in least_common_elements:
-#       least_common_elements[count] = []
-#     least_common_elements[count].append(element)
-#   return dict(sorted(least_common_elements.items()))
-
-# # Example usage
-# distance_matrix = [[1, 2, 3], [2, 1, 4], [3, 4, 1]]
-# result = get_least_common_elements(distance_matrix)
-# print(result)
-
-
+# create a dictionary with keys and values
 # from collections import defaultdict
 
+# countries = {1: [3, 4], [[0,1], [9, 10]], 22: 9, 5: 3}
+# Dictionary Format:
+# { Count of Occurence : [ [ column], [ [Column(s) of Element], [Column(s) of Element] ] }
+# countries = {1: [[8], [1]], 2: [[1, 2], [0], [0, 1]], 3: [[0], [1, 2, 3]], 4: [[-1], [2, 3]]}
 
-# def get_least_common_elements(distance_matrix):
-#     # Count occurrences of each element in the matrix
-#     element_counts = defaultdict(int)
-#     for row in distance_matrix:
-#         for element in row:
-#             element_counts[element] += 1
+# Add Element
+# countries[1][0].append(9)
+# Add Column List Item
+# countries[1][1][0].append(7)
+# Add Column List
+# countries[1][1].append([])
+# print(countries)
+# Add Key
+# countries[2] = [[], [[]]]
+# print(countries)
 
-#     # Find the minimum count (least common)
-#     print(element_counts.get(2))
+# countries[5] = 69
+# for index, item in enumerate(countries):
+#     print(index)
+# i = 0
+# for key, item in countries.items():
+#     print(i)
+#     i += 1
+# my_list = {1: [[8], [1]], 2: [[1, 2], [0], [0, 1]], 3: [[0], [1, 2, 3]], 4: [[-1], [2, 3]]}
+
+# for key, value in my_list.items():
+#   # value[0] <-- First List of Elements
+#   for inner_list in value[1:]:
+#     for column in inner_list:
+#       print(f"Key: {key}, Column: {column}")
+def iterate_increasing_slice(data_list, start_index=0):
+    slice_size = 1
+    while slice_size <= len(data_list):
+        yield data_list[start_index: slice_size]
+        slice_size += 1
+
+# Example usage
+data_list = [1, 2, 3, 4, 5, 6]
+
+for slice in iterate_increasing_slice(data_list):
+  print(slice)
 
 
-# # Example usage (assuming distance_matrix is a list of lists)
-# distance_matrix = [[1, 2, 2], [3, 1, 4], [2, 2, 5]]
-# least_common_elements = get_least_common_elements(distance_matrix)
 
-# print("Least common elements:", least_common_elements)
 
-data = [(0, 2, 3), (0, 4, 9), (0, 5), (2, 3), (3, 4), (3, 5)]
-for i in data:
-    print(i)
+def draw_graph(G, static_pos=None, show_resolving=True, r_set=[]):
+    try:
+        if show_resolving == True:
+            color_map = []
+            for node in G:
+                if node in r_set:
+                    color_map.append('red')
+                else:
+                    color_map.append('cyan')
+            nx.draw(G, pos=static_pos, with_labels=True, font_weight='bold',
+                    node_color=color_map, edge_color='black')
+        else:
+            nx.draw(G, with_labels=True, font_weight='bold',
+                    node_color='cyan', edge_color='black')
+        plt.show()
+    except:
+        print('Error: Specific graph cannot be drawn.')
 
+# nodes = 32
+# radius = 0.2
+# seed = 852397
+# G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
+
+# draw_graph(G,
+#            static_pos=decode.get_data(
+#                nodes=nodes, radius=radius, seed=seed, output=False)[5],
+#            r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed, output=False)[3])
+
+# draw_graph(G, static_pos=decode.get_data(nodes=nodes, radius=radius, seed=seed, output=False))
+
+# def find_unique_numbers(filename):
+#     """
+#     Finds and prints all unique numbers from a text file line by line.
+
+#     Args:
+#         filename: The path to the text file.
+#     """
+
+#     unique_numbers = set()
+#     try:
+#         with open(filename, 'r') as file:
+#             for line in file:
+#                 # Remove leading/trailing whitespace and split into words
+#                 words = line.strip().split()
+#                 for word in words:
+#                     # Try converting to integer
+#                     try:
+#                         number = int(word)
+#                         unique_numbers.add(number)
+#                     except ValueError:
+#                         # Ignore non-numeric elements
+#                         pass
+#     except FileNotFoundError:
+#         print(f"Error: File '{filename}' not found.")
+
+#     if unique_numbers:
+#         print("Unique numbers found:")
+#         for number in unique_numbers:
+#             print(number)
+#     else:
+#         print("No unique numbers found in the file.")
+
+# def find_unique_numbers(filename):
+#   """
+#   Finds and prints all unique numbers from a text file, handling lines containing
+#   number tuples and skipping the first line.
+
+#   Args:
+#       filename: The path to the text file.
+#   """
+
+#   unique_numbers = set()
+#   try:
+#     with open(filename, 'r') as file:
+#       # Skip the first line
+#       next(file)
+
+#       for line in file:
+#         # Remove leading/trailing whitespace
+#         line = line.strip()
+
+#         # Check if line is empty (skip empty lines)
+#         if not line:
+#             continue
+
+#         try:
+#           # Assuming tuples are enclosed in parentheses
+#           numbers = eval(line)  # Evaluate the line as a Python expression
+#           # Extract individual numbers from the tuple
+#           unique_numbers.update(numbers)
+#         except (SyntaxError, ValueError) as e:
+#           print(f"Error: Line in file '{filename}' is invalid: {e}")
+
+#   except FileNotFoundError:
+#     print(f"Error: File '{filename}' not found.")
+
+#   if unique_numbers:
+#     print("Unique numbers found:\n")
+#     print(sorted(unique_numbers))
+#   else:
+#     print("No unique numbers found in the file.")
+
+
+# # Example Usage
+# filename = "metric_d/d_10/34/852397.txt"
+# find_unique_numbers(filename)
