@@ -18,6 +18,7 @@ import analysis
 nodes = 34
 radius = 0.2
 seed_list = [852397, 763785, 726260, 657341, 628768, 614008, 439468, 437162, 289604, 267652]
+# seed_list = [161285]
 
 for seed in seed_list:
     G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)

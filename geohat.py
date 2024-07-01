@@ -1,6 +1,7 @@
 from collections import Counter
 import analysis
 import itertools
+import time
 
 # nodes = 92
 # radius = 0.12999999999999998
@@ -228,7 +229,8 @@ def geohat(distance_matrix, option=[1]):
             is_r_set = get_r_isolated_and_close_to_unique(
                 distance_matrix, combinations)
             if is_r_set != False:
-                return is_r_set
+                return list(is_r_set)
+        # Converting to list affects time significantly??
 
     if 3 in option:
         # 2nd Approach: Use the matrix to pick columns based on the least common
@@ -253,4 +255,28 @@ def geohat(distance_matrix, option=[1]):
     return False
 
 
-print(geohat(matrix, option=[3]))
+
+# start = time.perf_counter()
+#             resSet = geo.ich(G)
+#             end = time.perf_counter()
+#             execution_time = (end - start)
+
+# Returns Time and Resolving Set
+def get_stats_geohat(matrix, repeat = 100, option=[]):
+    start = time.perf_counter()
+    r_set = geohat(matrix, option=option)
+    end = time.perf_counter()
+    execution_time = (end - start)
+    return r_set, execution_time
+
+r_set, execution_time = get_stats_geohat(matrix, repeat=1, option=[1])
+print(f'R Set: {r_set} \nExecution Time: {execution_time} \n')
+
+
+
+# repeat = 100
+
+# start = time.perf_counter()
+# print(geohat(matrix, option=[2]))
+# end = time.perf_counter()
+# execution_time = (end - start)

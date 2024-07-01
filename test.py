@@ -57,7 +57,7 @@ def iterate_increasing_slice(data_list, start_index=0):
 data_list = [1, 2, 3, 4, 5, 6]
 
 for slice in iterate_increasing_slice(data_list):
-  print(slice)
+    print(slice)
 
 
 

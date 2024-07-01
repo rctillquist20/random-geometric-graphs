@@ -84,10 +84,11 @@ def get_unique_resolve_runs(filename, nodes, radius, seed, G, repeat=100):
             f.writelines(wrapped_header)
             f.close()
    
+        k_column = 1
         start_repeat_num = 1
         for _ in range(repeat):
             print('REPEAT: ', start_repeat_num)
-            resolve_set = geo.bruteForce(G, numSets=-1)
+            resolve_set = geo.bruteForce(G,startK=k_column, numSets=-1)
             print('\n', str(resolve_set),'\n')
             resolve_set_in_file = False
             with open(f'{relative_path}{filename}{file_type}', 'r') as f:
@@ -103,6 +104,7 @@ def get_unique_resolve_runs(filename, nodes, radius, seed, G, repeat=100):
                     for i in resolve_set:
                         wrapped_element = textwrap.wrap(str(i), width=80)
                         f.writelines(wrapped_element + ['\n'])
+                        k_column = len(i)
                     f.close()
             start_repeat_num += 1
             
