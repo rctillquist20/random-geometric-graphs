@@ -1,4 +1,4 @@
-#Python code to collect data related to the metric dimension of random geometric graphs
+#Python code to collect data related to the metric dimension of random geometric graphs.
 
 import numpy as np
 import networkx as nx
@@ -25,7 +25,7 @@ def writeFile(data, outFile):
 ### UTILS ###
 #############
 
-#determines the number of additional repeats necessary for each n,r pair in pairs
+#Determines the number of additional repeats necessary for each n, r pair in pairs
 #input: data - a list of tuples (n, r, seed, resSet)
 #       pairs - a list of tuples (n, r) to consider
 #       repeats - the target number of repeats for each (n,r) pair
