@@ -1,15 +1,16 @@
-#This is what I have so far, not sure how effective it is.
+#Author: Matthew J. Hernandez
+#Updated: 2024-07-03
+#This is
+
 import networkx as nx
 import numpy as np
 from itertools import combinations
 
-def find_minimum_cuts(G):
+def findMinCuts(G):
     return nx.algorithms.connectivity.stoer_wagner(G)
 
-def form_clusters(G, min_cuts):
-    """
-    Form clusters in the graph based on the minimum cuts.
-    """
+def formClusters(G, min_cuts):
+    #Form clusters in the graph based on the minimum cuts.
     clusters = []
     while cut_value < threshold in min_cuts:
         clusters.append(list(partition))
