@@ -1,6 +1,6 @@
 #Author: Matthew J. Hernandez
 #Updated: 2024-07-03
-#This is
+#This is 
 
 import networkx as nx
 import numpy as np
@@ -9,8 +9,8 @@ from itertools import combinations
 def findMinCuts(G):
     return nx.algorithms.connectivity.stoer_wagner(G)
 
+#This function forms clusters in the given graph based off of the minimum number of cuts
 def formClusters(G, min_cuts):
-    #Form clusters in the graph based on the minimum cuts.
     clusters = []
     while cut_value < threshold in min_cuts:
         clusters.append(list(partition))
