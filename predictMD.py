@@ -11,8 +11,16 @@ def estimatedMD(n, r):
         metricDimension = 0
     print("The estimated Metric Dimension for your graph with " + n + " nodes and a radius of " + r + " is: " )
     
+#2d array or matrix
+#nodes on top
+#radii
 
+#look at Evan's getDistanceMatrix file in his branch
+#can filter columns
 
+#Carter suggests dictionary of dictionary instead of lists of lists, refer to Python documentation
+#dicts are like hash tables
+#lists don't quite match up
 
 n = input("What is the number of nodes for your graph?\n")
 r = input("What is the given radius?\n")
