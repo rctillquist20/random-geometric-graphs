@@ -5,13 +5,16 @@
 n = 0 #number of nodes
 r = 0.0 #size of radius
 
-x = {"name" : "John", "age" : 36} #Sample dict in Python
+print(type(n))
+print(type(r))
+
+metricDimensionData = {"Radius" : 0.0, "Nodes" :0 } #Sample dict in Python
 
 #This function estimates and prints the Metric Dimension of a graph given the number of nodes and the desired radius
-def estimateMD(n, r):
-    if (n >= 0 & n <= 1):
-        metricDimension = 0
-    print("The estimated Metric Dimension for your graph with " + n + " nodes and a radius of " + r + " is: " )
+#def estimateMD(n, r):
+#    if (n >= 0 and n <= 1):
+#        metricDimension = 0
+#    return metricDimension
     
 #2d array or matrix
 #nodes on top
@@ -26,6 +29,4 @@ def estimateMD(n, r):
 
 n = input("What is the number of nodes for your graph?\n")
 r = input("What is the given radius?\n")
-print("The estimated Metric Dimension for your graph with " + n + " nodes and a radius of " + r + " is: " + estimateMD(n, r) )
-
-
+#print("The estimated Metric Dimension for your graph with ", n, " nodes and a radius of ", r, " is: ", estimateMD(n, r) )
