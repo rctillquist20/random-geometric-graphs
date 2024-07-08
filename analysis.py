@@ -9,7 +9,7 @@ import textwrap
 # in order to find the metric dimension.
 
 
-def draw_graph(G, static_pos=None, show_resolving=True, r_set=[]):
+def draw_graph(G, static_pos=None, show_resolving=True, r_set=[], seed = None):
     try:
         if show_resolving == True:
             color_map = []
@@ -169,7 +169,8 @@ def get_unique_numbers(filename):
 
   if unique_numbers:
     print("Unique numbers found:\n")
-    print(sorted(unique_numbers))
+    #print(sorted(unique_numbers))
+    return unique_numbers
   else:
     print("No unique numbers found in the file.")
 

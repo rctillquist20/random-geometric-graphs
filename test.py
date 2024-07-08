@@ -141,12 +141,12 @@ ich_runtime = []
 # resSet = geo.ich(G)
 # print(resolve_set)
 
-nodes = 34
-radius = 0.2
-seed = 437162
-r_set=[1, 18, 19, 21, 24, 27, 30]
+# nodes = 34
+# radius = 0.2
+# seed = 437162
+# r_set=[1, 18, 19, 21, 24, 27, 30]
 
-decode.get_data(nodes=nodes, radius=radius, seed=seed)
+# decode.get_data(nodes=nodes, radius=radius, seed=seed)
 # G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
 # test = analysis.get_distance_matrix(G, submatrix=True, r_set=r_set)
 # for x in test:
@@ -173,8 +173,20 @@ decode.get_data(nodes=nodes, radius=radius, seed=seed)
 
 # # Example Usage
 # 65, 61, 439, 20s
+            # data_num = 10
+            # os.makedirs(f'images/d_{data_num}/figures', exist_ok=True)
+            # plt.savefig(
+            #     f"images/d_{data_num}/figures/{seed}.png")
+# def get_graph
 # seed_list = [852397, 763785, 726260, 628768, 437162]
 # for seed in seed_list:
+#     nodes = 32
+#     radius = 0.2
+#     G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
+#     filename = f"metric_d/d_10/34/{seed}.txt"
+#     analysis.draw_graph(G, r_set=analysis.get_unique_numbers(filename), seed=seed)
+    # images/d_10/34/figures
+
 #     print(f'{seed}:')
 #     filename = f"metric_d/d_10/34/{seed}.txt"
 #     analysis.get_unique_numbers(filename)
