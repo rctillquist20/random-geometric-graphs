@@ -112,6 +112,67 @@ def get_unique_resolve_runs(filename, nodes, radius, seed, G, repeat=100):
 
 
 
+def get_r_set_difference_figures(r_set):
+    print('')
+
+
+def get_total_unique_numbers(filename):
+    unique_numbers = set()
+    try:
+        with open(filename, 'r') as file:
+            for line in file:
+                # Remove leading/trailing whitespace and split into words
+                words = line.strip().split()
+                for word in words:
+                    # Try converting to integer
+                    try:
+                        number = int(word)
+                        unique_numbers.add(number)
+                    except ValueError:
+                        # Ignore non-numeric elements
+                        pass
+    except FileNotFoundError:
+        print(f"Error: File '{filename}' not found.")
+
+    if unique_numbers:
+        print("Unique numbers found:")
+        for number in unique_numbers:
+            print(number)
+    else:
+        print("No unique numbers found in the file.")
+
+def get_unique_numbers(filename):
+  unique_numbers = set()
+  try:
+    with open(filename, 'r') as file:
+      # Skip the first line
+      next(file)
+
+      for line in file:
+        # Remove leading/trailing whitespace
+        line = line.strip()
+
+        # Check if line is empty (skip empty lines)
+        if not line:
+            continue
+
+        try:
+          # Assuming tuples are enclosed in parentheses
+          numbers = eval(line)  # Evaluate the line as a Python expression
+          # Extract individual numbers from the tuple
+          unique_numbers.update(numbers)
+        except (SyntaxError, ValueError) as e:
+          print(f"Error: Line in file '{filename}' is invalid: {e}")
+
+  except FileNotFoundError:
+    print(f"Error: File '{filename}' not found.")
+
+  if unique_numbers:
+    print("Unique numbers found:\n")
+    print(sorted(unique_numbers))
+  else:
+    print("No unique numbers found in the file.")
+
 # Modify the values here as need to analyze deeply a specific graph.
 # analysis/34
 # analysis/34/graph_34_0.2_852397.png check

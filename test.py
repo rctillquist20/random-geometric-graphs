@@ -4,11 +4,13 @@ import matplotlib.pyplot as plt
 import multilateration as geo
 import networkx as nx
 import os
+import geohat
 
 # Find the unique R
 # nodes = 34
 # radius = 0.2
-# seed_list = [852397, 763785, 726260, 657341, 628768, 614008, 439468, 437162, 289604, 267652]
+# # seed_list = [852397, 763785, 726260, 657341, 628768, 614008, 439468, 437162, 289604, 267652]
+# seed_list = [437162]
 
 # for seed in seed_list:
 #     G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
@@ -47,38 +49,112 @@ import os
 #   for inner_list in value[1:]:
 #     for column in inner_list:
 #       print(f"Key: {key}, Column: {column}")
-def iterate_increasing_slice(data_list, start_index=0):
-    slice_size = 1
-    while slice_size <= len(data_list):
-        yield data_list[start_index: slice_size]
-        slice_size += 1
+# def iterate_increasing_slice(data_list, start_index=0):
+#     slice_size = 1
+#     while slice_size <= len(data_list):
+#         yield data_list[start_index: slice_size]
+#         slice_size += 1
 
-# Example usage
-data_list = [1, 2, 3, 4, 5, 6]
+# # Example usage
+# data_list = [1, 2, 3, 4, 5, 6]
 
-for slice in iterate_increasing_slice(data_list):
-    print(slice)
+# for slice in iterate_increasing_slice(data_list):
+#     print(slice)
+
+# import matplotlib.pyplot as plt
+
+# # Define your data
+# fruits = ["Apples", "Oranges", "Bananas", "Mangoes"]
+# sales = [1000, 850, 1500, 1200]  # Sales of each fruit
+
+# # Create the bar chart
+# plt.bar(fruits, sales)
+
+# # Add labels and title
+# plt.xlabel("Difference (ICH - Geohat)")
+# # Frequency???? Meaning??
+# plt.ylabel("Frequency")
+# plt.title("Resolving Set Size Differences")
+
+# plt.show()
+
+import time
+
+nodes = 34
+radius = 0.2
+# seed = 726260
+# seed_list = [852397, 763785, 726260, 657341, 628768, 614008, 439468, 437162, 289604, 267652]
+geo_r_set = []
+ich_r_set = []
+geo_runtime = []
+ich_runtime = []
+# # 34.txt --> 628768
 
 
 
+## Metric Dimension size ##
+# Note: First NON SEED NUMBER is from ICH algorithm. Could share number with 
+# Bruteforce.
 
-def draw_graph(G, static_pos=None, show_resolving=True, r_set=[]):
-    try:
-        if show_resolving == True:
-            color_map = []
-            for node in G:
-                if node in r_set:
-                    color_map.append('red')
-                else:
-                    color_map.append('cyan')
-            nx.draw(G, pos=static_pos, with_labels=True, font_weight='bold',
-                    node_color=color_map, edge_color='black')
-        else:
-            nx.draw(G, with_labels=True, font_weight='bold',
-                    node_color='cyan', edge_color='black')
-        plt.show()
-    except:
-        print('Error: Specific graph cannot be drawn.')
+# 852397 --> 8
+
+# 763785 --> 8 (7 From Bruteforce) Confirm?
+# 726260 --> 12 (11 From Bruteforce) Confirm?
+
+# 657341 --> 10 # IN PROGRESS
+# 628768 --> 5
+# 614008 --> 13 # TODO
+
+# 439468 --> 13 # IN PROGRESS
+# 437162 --> 5 (4 from Bruteforce) Confirm?
+
+# TODO
+# 289604 --> 11
+# 267652 --> 9
+
+
+# repeat = 1
+# seed_list = [763785]
+
+# for seed in seed_list:
+#     G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
+#     matrix = analysis.get_distance_matrix(G, submatrix=False, display=False)
+#     for _ in range(repeat):
+#         geo_r, geo_execution_time = geohat.get_stats_geohat(matrix, repeat=1, option=[1,2,3])
+#         geo_r_set.append(geo_r)
+#         geo_runtime.append(geo_execution_time)
+#         print(geo_r_set)
+#         print(f'\nGEO RUNTIME:\n{geo_runtime}')
+#         start = time.perf_counter()
+#         resSet = geo.ich(G)
+#         end = time.perf_counter()
+#         execution_time = (end - start)
+
+# plt.hist(data, density=True)
+# Freq = True
+# Count = False
+
+
+
+# G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
+# resolve_set = geo.bruteForce(G)
+# resSet = geo.ich(G)
+# print(resolve_set)
+
+nodes = 34
+radius = 0.2
+seed = 437162
+r_set=[1, 18, 19, 21, 24, 27, 30]
+
+decode.get_data(nodes=nodes, radius=radius, seed=seed)
+# G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
+# test = analysis.get_distance_matrix(G, submatrix=True, r_set=r_set)
+# for x in test:
+#     print(x, '\n')
+# print(geohat.is_resolving_set(analysis.get_distance_matrix(G, r_set=r_set), test_set=r_set))
+
+# analysis.get_unique_resolve_runs(filename=seed, nodes=nodes, radius=radius, seed=seed, G=G)
+
 
 # nodes = 32
 # radius = 0.2
@@ -92,79 +168,14 @@ def draw_graph(G, static_pos=None, show_resolving=True, r_set=[]):
 
 # draw_graph(G, static_pos=decode.get_data(nodes=nodes, radius=radius, seed=seed, output=False))
 
-# def find_unique_numbers(filename):
-#     """
-#     Finds and prints all unique numbers from a text file line by line.
 
-#     Args:
-#         filename: The path to the text file.
-#     """
-
-#     unique_numbers = set()
-#     try:
-#         with open(filename, 'r') as file:
-#             for line in file:
-#                 # Remove leading/trailing whitespace and split into words
-#                 words = line.strip().split()
-#                 for word in words:
-#                     # Try converting to integer
-#                     try:
-#                         number = int(word)
-#                         unique_numbers.add(number)
-#                     except ValueError:
-#                         # Ignore non-numeric elements
-#                         pass
-#     except FileNotFoundError:
-#         print(f"Error: File '{filename}' not found.")
-
-#     if unique_numbers:
-#         print("Unique numbers found:")
-#         for number in unique_numbers:
-#             print(number)
-#     else:
-#         print("No unique numbers found in the file.")
-
-# def find_unique_numbers(filename):
-#   """
-#   Finds and prints all unique numbers from a text file, handling lines containing
-#   number tuples and skipping the first line.
-
-#   Args:
-#       filename: The path to the text file.
-#   """
-
-#   unique_numbers = set()
-#   try:
-#     with open(filename, 'r') as file:
-#       # Skip the first line
-#       next(file)
-
-#       for line in file:
-#         # Remove leading/trailing whitespace
-#         line = line.strip()
-
-#         # Check if line is empty (skip empty lines)
-#         if not line:
-#             continue
-
-#         try:
-#           # Assuming tuples are enclosed in parentheses
-#           numbers = eval(line)  # Evaluate the line as a Python expression
-#           # Extract individual numbers from the tuple
-#           unique_numbers.update(numbers)
-#         except (SyntaxError, ValueError) as e:
-#           print(f"Error: Line in file '{filename}' is invalid: {e}")
-
-#   except FileNotFoundError:
-#     print(f"Error: File '{filename}' not found.")
-
-#   if unique_numbers:
-#     print("Unique numbers found:\n")
-#     print(sorted(unique_numbers))
-#   else:
-#     print("No unique numbers found in the file.")
 
 
 # # Example Usage
-# filename = "metric_d/d_10/34/852397.txt"
-# find_unique_numbers(filename)
+# 65, 61, 439, 20s
+# seed_list = [852397, 763785, 726260, 628768, 437162]
+# for seed in seed_list:
+#     print(f'{seed}:')
+#     filename = f"metric_d/d_10/34/{seed}.txt"
+#     analysis.get_unique_numbers(filename)
+#     print('\n')

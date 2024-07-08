@@ -263,14 +263,15 @@ def geohat(distance_matrix, option=[1]):
 
 # Returns Time and Resolving Set
 def get_stats_geohat(matrix, repeat = 100, option=[]):
+
     start = time.perf_counter()
     r_set = geohat(matrix, option=option)
     end = time.perf_counter()
     execution_time = (end - start)
     return r_set, execution_time
 
-r_set, execution_time = get_stats_geohat(matrix, repeat=1, option=[1])
-print(f'R Set: {r_set} \nExecution Time: {execution_time} \n')
+# r_set, execution_time = get_stats_geohat(matrix, repeat=1, option=[1])
+# print(f'R Set: {r_set} \nExecution Time: {execution_time} \n')
 
 
 
