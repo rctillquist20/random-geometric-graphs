@@ -116,31 +116,6 @@ def get_r_set_difference_figures(r_set):
     print('')
 
 
-def get_total_unique_numbers(filename):
-    unique_numbers = set()
-    try:
-        with open(filename, 'r') as file:
-            for line in file:
-                # Remove leading/trailing whitespace and split into words
-                words = line.strip().split()
-                for word in words:
-                    # Try converting to integer
-                    try:
-                        number = int(word)
-                        unique_numbers.add(number)
-                    except ValueError:
-                        # Ignore non-numeric elements
-                        pass
-    except FileNotFoundError:
-        print(f"Error: File '{filename}' not found.")
-
-    if unique_numbers:
-        print("Unique numbers found:")
-        for number in unique_numbers:
-            print(number)
-    else:
-        print("No unique numbers found in the file.")
-
 def get_unique_numbers(filename):
   unique_numbers = set()
   try:
@@ -168,8 +143,8 @@ def get_unique_numbers(filename):
     print(f"Error: File '{filename}' not found.")
 
   if unique_numbers:
-    print("Unique numbers found:\n")
-    #print(sorted(unique_numbers))
+    # print("Unique numbers found:\n")
+    # print(sorted(unique_numbers))
     return unique_numbers
   else:
     print("No unique numbers found in the file.")

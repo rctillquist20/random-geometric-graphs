@@ -91,28 +91,6 @@ ich_runtime = []
 # # 34.txt --> 628768
 
 
-
-## Metric Dimension size ##
-# Note: First NON SEED NUMBER is from ICH algorithm. Could share number with 
-# Bruteforce.
-
-# 852397 --> 8
-
-# 763785 --> 8 (7 From Bruteforce) Confirm?
-# 726260 --> 12 (11 From Bruteforce) Confirm?
-
-# 657341 --> 10 # IN PROGRESS
-# 628768 --> 5
-# 614008 --> 13 # TODO
-
-# 439468 --> 13 # IN PROGRESS
-# 437162 --> 5 (4 from Bruteforce) Confirm?
-
-# TODO
-# 289604 --> 11
-# 267652 --> 9
-
-
 # repeat = 1
 # seed_list = [763785]
 
@@ -191,3 +169,9 @@ ich_runtime = []
 #     filename = f"metric_d/d_10/34/{seed}.txt"
 #     analysis.get_unique_numbers(filename)
 #     print('\n')
+nodes = 32
+radius = 0.2
+seed = 763785
+G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
+filename = f"metric_d/d_10/34/{seed}.txt"
+analysis.draw_graph(G, r_set=analysis.get_unique_numbers(filename), seed=seed)
