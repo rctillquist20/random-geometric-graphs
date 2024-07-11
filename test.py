@@ -24,25 +24,34 @@ repeat = 1
 # seed_list = [763785]
 
 metric_count = []
+false_count = []
 metric_time = []
 for seed in seed_list:
     G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
     matrix = analysis.get_distance_matrix(G, submatrix=False, display=False)
     for _ in range(repeat):
-        # geo_r, geo_execution_time = geohat.get_stats_geohat(matrix, repeat=1, option=[1,2,3])
-        # geo_r_set.append(geo_r)
-        # geo_runtime.append(geo_execution_time)
+        geo_r, geo_execution_time = geohat.get_stats_geohat(matrix, option=[1,2,3])
+        metric_count.append(len(geo_r))
+        metric_time.append(geo_execution_time)
+        print('Metric Count:\n', metric_count, '\n')
+        print('Metric Time:\n', metric_time, '\n')
+
+
         # print(geo_r_set)
         # print(f'\nGEO RUNTIME:\n{geo_runtime}')
-        start = time.perf_counter()
-        resSet = geo.ich(G)
-        end = time.perf_counter()
-        execution_time = (end - start)
-        metric_count.append(len(resSet))
-        metric_time.append(execution_time)
+        # start = time.perf_counter()
+        # resSet = geo.ich(G)
+        # end = time.perf_counter()
+        # execution_time = (end - start)
+        # metric_count.append(len(resSet))
+        if geo_r == False:
+            false_count.append(1)
+        else:
+            false_count.append(0)
+        # metric_time.append(execution_time)
 
 ### STATE YOUR METHOD ###
-method = 'ICH'
+method = 'Geohat'
 
 ### ICH METRIC DIMENSION ###
 
@@ -51,8 +60,9 @@ x_axis_data = ('(267652 | 50)', '(657341 | 52)', '(439468 | 52)',
            '(726260 | 57)', '(614008 | 60)', '(763785 | 65)',
            '(628768 | 84)')
 
+# Note: 0 == False
 bar_groups = {'Metric Dimension': metric_count,
-               'False': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}
+               'False': false_count}
 
 x = np.arange(len(x_axis_data))
 width = 0.25
