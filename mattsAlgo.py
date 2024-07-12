@@ -1,5 +1,5 @@
 #Author: Matthew J. Hernandez
-#Updated: 2024-07-03
+#Updated: 2024-07-11
 #This is 
 
 import networkx as nx
@@ -23,5 +23,10 @@ def formClusters(G, min_cuts):
         #this is called an "induced subgraph"
         #cut_value is number of edges to be removed
         #smaller threshold the better, about 3-5
+
+        #we have to know how much less accurate we get if graph is connected:
+        #if above threshold, we can cut into smaller pieces and run ICH to get estimate
+        #problem is we are removing the shortest paths, meaning our estimate will be larger than it should be
+        #how much larger is our estimation compared to just running ICH on entire graph?
 
     return clusters
