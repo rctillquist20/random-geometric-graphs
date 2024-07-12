@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
-import multilateration as geo
+# import multilateration as geo
+import improved_ich as im
 import networkx as nx
 import os
 
@@ -17,10 +18,12 @@ import analysis
 
 nodes = 34
 radius = 0.2
-seed_list = [852397, 763785, 726260, 657341, 628768, 614008, 439468, 437162, 289604, 267652]
-# seed_list = [161285]
+# seed_list = [852397, 763785, 726260, 657341, 628768, 614008, 439468, 437162, 289604, 267652]
+seed_list = [437162] # 4 is resolve
 
 for seed in seed_list:
     G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
-    analysis.get_unique_resolve_runs(filename=seed, nodes=nodes, radius=radius, seed=seed, G=G)
+    r_set = im.ich(G)
+    print(f'Resolving Set:\n{r_set}\n{len(r_set)}')
+#     analysis.get_unique_resolve_runs(filename=seed, nodes=nodes, radius=radius, seed=seed, G=G)
 
