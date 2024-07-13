@@ -1,5 +1,5 @@
 #Author: Matthew J. Hernandez
-#Updated: 2024-07-11
+#Updated: 2024-07-12
 #This is based off of the data collected by Dr. Richard Carter Tillquist
 
 #Update this file to include number of components/iso given n and r for below the threshold
@@ -10,7 +10,7 @@ r = 0.0 #size of radius
 #dict in Python
 #radii on y-axis
 #nodes on x-axis
-metricDimensionData = { 'Nodes': {'n': 500, 'r': 19}, 'Radii': {'name': 'Bob', 'age': 25}} #nested dictionary
+metricDimensionData = { 'Nodes': {'500': 500, 'r': 19}, 'Radii': {'sample': 0.0, 'age': 25}} #nested dictionary
 #key is name of bucket
 #value is what we are storing
 
@@ -26,10 +26,26 @@ metricDimensionData = { 'Nodes': {'n': 500, 'r': 19}, 'Radii': {'name': 'Bob', '
 #or find cubic fit, but we will need to generalize the curve
 
 #This function estimates and prints the Metric Dimension of a graph given the number of nodes and the desired radius
-def estimateMD(n, r):
-    if (n==0):
-       metricDimension = 0
-    return metricDimension
+def predictMD(n, r):
+    #below threshold estimate function
+    #above threshold estimate function
+    #below threshold for actual data
+    #above threshold for actual data
+    if (data):
+        return metricDimensionPrediction
+    elif(noData and belowThreshold):
+        return linearRegression
+    else:
+        return neuralNetwork
+
+
+def numComponents(n, r):
+    return components
+
+def numIso(n, r):
+    return iso
+
+
 
 n = int(input("What is the number of nodes for your graph?\n"))
 

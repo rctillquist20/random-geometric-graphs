@@ -1,5 +1,5 @@
 #Author: Matthew J. Hernandez
-#Updated: 2024-07-11
+#Updated: 2024-07-12
 #This is 
 
 import networkx as nx
@@ -30,3 +30,5 @@ def formClusters(G, min_cuts):
         #how much larger is our estimation compared to just running ICH on entire graph?
 
     return clusters
+
+print("Testing my algorithm")
