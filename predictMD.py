@@ -26,6 +26,11 @@ def predictMD(n, r):
     #above threshold estimate function
     #below threshold for actual data
     #above threshold for actual data
+    info = {}
+    for (n,r,seed,resSet,t) in data:
+        if r <= np.sqrt(np.log(n)/(np.pi*n)):
+            info[(n,r)] = info.get((n,r), []) + [len(resSet)]
+    
     if (data):
         return metricDimensionPrediction
     elif(noData and belowThreshold):
@@ -33,6 +38,11 @@ def predictMD(n, r):
     else:
         return neuralNetwork
 
+for n in [n for (n,_) in info.keys()]:
+  X, Y = zip(*[(r, val) for (m,r) in info for val in info[(m,r)] if m==n])
+  X = [[x] for x in X]
+  model = LinearRegression().fit(X, Y)
+  print(n, 'model info', model.coef_, model.intercept_, model.score(X, Y)) 
 
 def numComponents(G):
   return len(list(nx.connected_components(G)))
