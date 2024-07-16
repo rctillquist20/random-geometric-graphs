@@ -1,15 +1,10 @@
-#Author: Matthew J. Hernandez
-#Updated: 2024-07-12
+#Author: Matthew J. Hernandez and Dr. Richard Carter Tillquist
+#Updated: 2024-07-16
 #This is based off of the data collected by Dr. Richard Carter Tillquist
-
-#Update this file to include number of components/iso given n and r for below the threshold
 
 n = 0 #number of nodes
 r = 0.0 #size of radius
 
-#dict in Python
-#radii on y-axis
-#nodes on x-axis
 metricDimensionData = { 'Nodes': {'500': 500, 'r': 19}, 'Radii': {'sample': 0.0, 'age': 25}} #nested dictionary
 #key is name of bucket
 #value is what we are storing
@@ -25,7 +20,7 @@ metricDimensionData = { 'Nodes': {'500': 500, 'r': 19}, 'Radii': {'sample': 0.0,
 #Find logistic curve
 #or find cubic fit, but we will need to generalize the curve
 
-#This function estimates and prints the Metric Dimension of a graph given the number of nodes and the desired radius
+#This function predicts the Metric Dimension of a graph given the number of nodes and the desired radius
 def predictMD(n, r):
     #below threshold estimate function
     #above threshold estimate function
@@ -39,16 +34,14 @@ def predictMD(n, r):
         return neuralNetwork
 
 
-def numComponents(n, r):
-    return components
+def numComponents(G):
+  return len(list(nx.connected_components(G)))
 
-def numIso(n, r):
-    return iso
-
-
+def numIso(G):
+  return len([c for c in nx.connected_components(G) if len(c)==1])
 
 n = int(input("What is the number of nodes for your graph?\n"))
 
 r = float(input("What is the given radius?\n"))
 
-print("The estimated Metric Dimension for your graph with ", n, " nodes and a radius of ", r, " is: ", estimateMD(n, r) )
+print("The estimated Metric Dimension for your graph with ", n, " nodes and a radius of ", r, " is: ", predictMD(n, r))
