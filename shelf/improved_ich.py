@@ -4,6 +4,11 @@
 # [1] Hauptmann, M., Schmied, R., and Viehmann, C. Approximation complexity of metric dimension problem, Journal of Discrete Algorithms 14(2012), 214-222.
 # [2] Tillquist, R. C., and Lladser, M. E. Low-dimensional representation of genomic sequences. Journal of Mathematical Biology (Mar 2019).
 
+### PUT ON THE SHELF FOR REFRENCE, BUILDING UPON ICH DOES NOT IMPROVE ASYMPTOTIC NOTATION ###
+
+# One Graph for each of the components!
+# S = [G.subgraph(c).copy() for c in nx.connected_components(G)]
+
 import numpy as np
 import networkx as nx
 from scipy.stats import entropy
@@ -172,6 +177,7 @@ def pickColumn(M, tags, check, minFunc="entropy", chosen=[], dictDefault=-1, pro
             (val, col, condDistr) = func((col, M, tags, dictDefault))
             # equivSizes((col, M, tags, dictDefault)) if minEquiv else colEntropy((col, M, tags, dictDefault))
             # print(val, valOpt, (minFunc=='entropy' and val > valOpt))
+            # Ideas different from Entropy, but close to Entropy.
             if ((minFunc in ['equivalence class size', 'total variation distance', 'number of collisions']) and val < valOpt) \
                     or (minFunc == 'entropy' and val > valOpt):
                 (valOpt, colOpt, distr) = (val, col, condDistr)  # more elegant?

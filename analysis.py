@@ -9,7 +9,7 @@ import textwrap
 # in order to find the metric dimension.
 
 
-def draw_graph(G, static_pos=None, show_resolving=True, r_set=[], seed = None):
+def draw_graph(G, static_pos=None, show_resolving=True, r_set=[], seed=None):
     try:
         if show_resolving == True:
             color_map = []
@@ -20,10 +20,12 @@ def draw_graph(G, static_pos=None, show_resolving=True, r_set=[], seed = None):
                     color_map.append('cyan')
             nx.draw(G, pos=static_pos, with_labels=True, font_weight='bold',
                     node_color=color_map, edge_color='black')
+            
+            plt.savefig(f"images/d_10/34/bruteforce/{seed}.png")
         else:
             nx.draw(G, with_labels=True, font_weight='bold',
                     node_color='cyan', edge_color='black')
-        plt.show()
+        # plt.show()
     except:
         print('Error: Specific graph cannot be drawn.')
 
@@ -41,16 +43,17 @@ def get_distance_matrix(G, submatrix=False, r_set=[], display=False):
     for i, node_i in enumerate(G.nodes()):
         for j, node_j in enumerate(G.nodes()):
             if node_i != node_j:
-                distance_matrix[i][j] = distances.get(node_i, {}).get(node_j, int('-1'))
+                distance_matrix[i][j] = distances.get(
+                    node_i, {}).get(node_j, int('-1'))
 
             else:
                 distance_matrix[i][j] = 0
 
-    
-    if submatrix == True: 
+    if submatrix == True:
         node_list = list(G.nodes())
         node_indices = [node_list.index(node) for node in r_set]
-        sub_matrix = [[distance_matrix[i][j] for j in node_indices] for i in node_indices]
+        sub_matrix = [[distance_matrix[i][j]
+                       for j in node_indices] for i in node_indices]
         max_width = max(len(str(node)) for node in r_set)
         if display == True:
             print("Shortest Distance Sub Matrix:\n")
@@ -73,23 +76,22 @@ def get_distance_matrix(G, submatrix=False, r_set=[], display=False):
 # get_brute_force_runs(15, nodes=nodes, radius=radius, seed=seed, G=G)
 
 
-
-
 def get_unique_resolve_runs(filename, nodes, radius, seed, G, repeat=100):
     relative_path = 'metric_d/d_10/34/'
     if not os.path.exists(f'{relative_path}{filename}.txt'):
         file_type = '.txt'
         with open(f'{relative_path}{filename}{file_type}', 'w') as f:
-            wrapped_header = textwrap.wrap(f'Nodes: {nodes}, Radius: {radius}, Seed: {seed}, Edges: {nx.number_of_edges(G)}', width=80)
+            wrapped_header = textwrap.wrap(f'Nodes: {nodes}, Radius: {radius}, Seed: {
+                                           seed}, Edges: {nx.number_of_edges(G)}', width=80)
             f.writelines(wrapped_header)
             f.close()
-   
+
         k_column = 1
         start_repeat_num = 1
         for _ in range(repeat):
             print('REPEAT: ', start_repeat_num)
-            resolve_set = geo.bruteForce(G,startK=k_column, numSets=-1)
-            print('\n', str(resolve_set),'\n')
+            resolve_set = geo.bruteForce(G, startK=k_column, numSets=-1)
+            print('\n', str(resolve_set), '\n')
             resolve_set_in_file = False
             with open(f'{relative_path}{filename}{file_type}', 'r') as f:
                 for line in f:
@@ -107,9 +109,8 @@ def get_unique_resolve_runs(filename, nodes, radius, seed, G, repeat=100):
                         k_column = len(i)
                     f.close()
             start_repeat_num += 1
-            
-    print('\nExperiments Completed!\n')
 
+    print('\nExperiments Completed!\n')
 
 
 def get_r_set_difference_figures(r_set):
@@ -117,37 +118,38 @@ def get_r_set_difference_figures(r_set):
 
 
 def get_unique_numbers(filename):
-  unique_numbers = set()
-  try:
-    with open(filename, 'r') as file:
-      # Skip the first line
-      next(file)
+    unique_numbers = set()
+    try:
+        with open(filename, 'r') as file:
+            # Skip the first line
+            next(file)
 
-      for line in file:
-        # Remove leading/trailing whitespace
-        line = line.strip()
+            for line in file:
+                # Remove leading/trailing whitespace
+                line = line.strip()
 
-        # Check if line is empty (skip empty lines)
-        if not line:
-            continue
+                # Check if line is empty (skip empty lines)
+                if not line:
+                    continue
 
-        try:
-          # Assuming tuples are enclosed in parentheses
-          numbers = eval(line)  # Evaluate the line as a Python expression
-          # Extract individual numbers from the tuple
-          unique_numbers.update(numbers)
-        except (SyntaxError, ValueError) as e:
-          print(f"Error: Line in file '{filename}' is invalid: {e}")
+                try:
+                    # Assuming tuples are enclosed in parentheses
+                    # Evaluate the line as a Python expression
+                    numbers = eval(line)
+                    # Extract individual numbers from the tuple
+                    unique_numbers.update(numbers)
+                except (SyntaxError, ValueError) as e:
+                    print(f"Error: Line in file '{filename}' is invalid: {e}")
 
-  except FileNotFoundError:
-    print(f"Error: File '{filename}' not found.")
+    except FileNotFoundError:
+        print(f"Error: File '{filename}' not found.")
 
-  if unique_numbers:
-    # print("Unique numbers found:\n")
-    # print(sorted(unique_numbers))
-    return unique_numbers
-  else:
-    print("No unique numbers found in the file.")
+    if unique_numbers:
+        # print("Unique numbers found:\n")
+        # print(sorted(unique_numbers))
+        return unique_numbers
+    else:
+        print("No unique numbers found in the file.")
 
 # Modify the values here as need to analyze deeply a specific graph.
 # analysis/34
@@ -165,13 +167,19 @@ def get_unique_numbers(filename):
 
 ## UNIQUE BRUTE FORCE RESOLVING TESTING ##
 
-# nodes = 34
-# radius = 0.2
-# seed_list = [852397, 763785, 726260, 657341, 628768, 614008, 439468, 437162, 289604, 267652]
-
-# for seed in seed_list:
-#     G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
-#     get_unique_resolve_runs(filename=seed, nodes=nodes, radius=radius, seed=seed, G=G)
+nodes = 34
+radius = 0.2
+seed_list = [267652, 289604, 437162, 439468,
+             614008, 628768, 657341, 726260, 763785, 852397]
+for seed in seed_list:
+    print(f'\nSeed:\n{seed}\n')
+    G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
+    print(get_unique_numbers(f'metric_d/d_10/34/{seed}.txt'), '\n')
+    draw_graph(G,
+               static_pos=decode.get_data(
+                   nodes=nodes, radius=radius, seed=seed, output=False)[5],
+               r_set=get_unique_numbers(f'metric_d/d_10/34/{seed}.txt'), seed=seed)
+#     get_unique_resolve_runs(filename=seed, nodes=nodes, radius=radius, seed=seed, G=G, repeat=1)
 
 ## DISTANCE MATRIX TESTING ##
 
@@ -205,7 +213,7 @@ def get_unique_numbers(filename):
 # Example of collected Static Position drawn on graph.
 # Note: Have one parameter of output=False so you so do not get double output
 # from decode.get_data()
-#
+
 # draw_graph(G,
 #            static_pos=decode.get_data(
 #                nodes=nodes, radius=radius, seed=seed, output=True)[5],
