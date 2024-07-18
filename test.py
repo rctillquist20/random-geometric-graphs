@@ -5,7 +5,10 @@ import numpy as np
 import multilateration as geo
 import networkx as nx
 import os
-import geohat
+# import geohat
+import sys
+sys.path.append('/Users/evanalba/random-geometric-graphs/shelf')
+import geopigeon
 import time
 
 nodes = 34
@@ -30,8 +33,11 @@ for seed in seed_list:
     G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
     matrix = analysis.get_distance_matrix(G, submatrix=False, display=False)
     for _ in range(repeat):
-        geo_r, geo_execution_time = geohat.get_stats_geohat(matrix, option=[1,2,3])
-        metric_count.append(len(geo_r))
+        geo_r, geo_execution_time = geopigeon.get_stats_geopigeon(nodes, matrix)
+        if geo_r == False:
+            metric_count.append(-1)
+        else:
+            metric_count.append(len(geo_r))
         metric_time.append(geo_execution_time)
         print('Metric Count:\n', metric_count, '\n')
         print('Metric Time:\n', metric_time, '\n')
@@ -51,7 +57,7 @@ for seed in seed_list:
         # metric_time.append(execution_time)
 
 ### STATE YOUR METHOD ###
-method = 'Geohat'
+method = 'Geopigeon'
 
 ### ICH METRIC DIMENSION ###
 

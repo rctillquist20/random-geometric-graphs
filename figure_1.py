@@ -28,7 +28,7 @@ print("Shortest Distance Matrix:")
 for row in distance_matrix:
   print(row)
 
-import analysis
+# import analysis
 
 # TODO: Fix because for some reason possible R not showing.
 # ONLY [0, 2] shows when I do repeat = 100 for Brute Force???
@@ -39,7 +39,7 @@ nodes = 6
 
 # [0, 5]
 # [0, 2] 
-analysis.get_unique_resolve_runs(filename='figure_1', nodes=nodes, radius=0, seed=0, G=G, repeat=100)
+#analysis.get_unique_resolve_runs(filename='figure_1', nodes=nodes, radius=0, seed=0, G=G, repeat=100)
 
 
 # print('\nICH Algorithm:')

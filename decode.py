@@ -79,16 +79,16 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
         print('Error: Can not decode and read file.')
         return None
 
-nodes = 34
-radius = 0.2
-# seed = 852397
-seed_list = [267652, 289604, 437162, 439468, 614008, 628768, 657341, 726260, 763785, 852397]
-static_positions = []
+# nodes = 34
+# radius = 0.2
+# # seed = 852397
+# seed_list = [267652, 289604, 437162, 439468, 614008, 628768, 657341, 726260, 763785, 852397]
+# static_positions = []
 
-# get_data( sort_by=True, ascending=False)
-for seed in seed_list:
-    static_positions.append(get_data(nodes = 34, radius=0.2, seed=seed, output=False)[5])
+# # get_data( sort_by=True, ascending=False)
+# for seed in seed_list:
+#     static_positions.append(get_data(nodes = 34, radius=0.2, seed=seed, output=False)[5])
 
-print('\n')
-print(static_positions, '\n')
+# print('\n')
+# print(static_positions, '\n')
 # get_data(nodes=nodes, radius=radius, seed=seed)
