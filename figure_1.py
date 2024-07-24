@@ -47,5 +47,5 @@ nodes = 6
 # print('\nBrute Force:\n')
 # print(geo.bruteForce(G))
 
-# nx.draw(G, with_labels=True, font_weight='bold', node_color='red', edge_color='black')
+# nx.draw(G, with_labels=True, font_weight='bold', node_color='white', edge_color='black')
 # plt.show()
