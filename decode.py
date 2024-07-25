@@ -73,16 +73,17 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
                         f"data_images/data_{data_num}/graph_{item[0]}_{item[1]}_{item[2]}.png")
 
             else:
-                # return item
-                n_seeds.append(item[2])
+                return item
+                # n_seeds.append(item[2])
         # print('\n')
-        return n_seeds
+        return item
+        # return n_seeds
     except:
         print('Error: Can not decode and read file.')
         return None
 
-nodes = 10
-radius = 0.4000000000000001
+# nodes = 10
+# radius = 0.4000000000000001
 # # seed = 852397
 # seed_list = [267652, 289604, 437162, 439468, 614008, 628768, 657341, 726260, 763785, 852397]
 # static_positions = []
@@ -93,5 +94,5 @@ radius = 0.4000000000000001
 
 # print('\n')
 # print(static_positions, '\n')
-seed_list = get_data(nodes=nodes, radius=radius, output=False)
-print(sorted(seed_list))
+# seed_list = get_data(nodes=nodes, radius=radius, output=False)
+# print(sorted(seed_list))

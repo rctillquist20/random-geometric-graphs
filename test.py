@@ -1,3 +1,4 @@
+import time
 import decode
 import analysis
 import matplotlib.pyplot as plt
@@ -8,14 +9,26 @@ import os
 # import geohat
 import sys
 sys.path.append('/Users/evanalba/random-geometric-graphs/shelf')
-import geopigeon
-import time
+import degnite
 
 nodes = 34
 radius = 0.2
 # seed = 726260
-seed_list = [852397, 763785, 726260, 657341,
-             628768, 614008, 439468, 437162, 289604, 267652]
+# seed_list = [852397, 763785, 726260, 657341,
+#              628768, 614008, 439468, 437162, 289604, 267652]
+
+# EDGES ASCENDING!!
+seed_list = [267652,
+             439468,
+             657341,
+             289604,
+             852397,
+             437162,
+             726260,
+             614008,
+             763785,
+             628768]
+
 geo_r_set = []
 ich_r_set = []
 geo_runtime = []
@@ -33,7 +46,7 @@ for seed in seed_list:
     G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
     matrix = analysis.get_distance_matrix(G, submatrix=False, display=False)
     for _ in range(repeat):
-        geo_r, geo_execution_time = geopigeon.get_stats_geopigeon(nodes, matrix)
+        geo_r, geo_execution_time = degnite.get_stats_degnite(G, matrix)
         if geo_r == False:
             metric_count.append(-1)
         else:
@@ -41,7 +54,6 @@ for seed in seed_list:
         metric_time.append(geo_execution_time)
         print('Metric Count:\n', metric_count, '\n')
         print('Metric Time:\n', metric_time, '\n')
-
 
         # print(geo_r_set)
         # print(f'\nGEO RUNTIME:\n{geo_runtime}')
@@ -57,18 +69,18 @@ for seed in seed_list:
         # metric_time.append(execution_time)
 
 ### STATE YOUR METHOD ###
-method = 'Geopigeon'
+method = 'Degnite Jr.'
 
 ### ICH METRIC DIMENSION ###
 
 x_axis_data = ('(267652 | 50)', '(657341 | 52)', '(439468 | 52)',
-           '(852397 | 54)', '(289604 | 54)', '(437162 | 56)',
-           '(726260 | 57)', '(614008 | 60)', '(763785 | 65)',
-           '(628768 | 84)')
+               '(852397 | 54)', '(289604 | 54)', '(437162 | 56)',
+               '(726260 | 57)', '(614008 | 60)', '(763785 | 65)',
+               '(628768 | 84)')
 
 # Note: 0 == False
 bar_groups = {'Metric Dimension': metric_count,
-               'False': false_count}
+              'False': false_count}
 
 x = np.arange(len(x_axis_data))
 width = 0.25
@@ -96,9 +108,9 @@ plt.show()
 ### ICH TIME ###
 
 x_axis_data = ('(267652 | 50)', '(657341 | 52)', '(439468 | 52)',
-           '(852397 | 54)', '(289604 | 54)', '(437162 | 56)',
-           '(726260 | 57)', '(614008 | 60)', '(763785 | 65)',
-           '(628768 | 84)')
+               '(852397 | 54)', '(289604 | 54)', '(437162 | 56)',
+               '(726260 | 57)', '(614008 | 60)', '(763785 | 65)',
+               '(628768 | 84)')
 
 bar_groups = {'Time (Seconds)': metric_time}
 

@@ -21,7 +21,7 @@ def draw_graph(G, static_pos=None, show_resolving=True, r_set=[], seed=None):
             nx.draw(G, pos=static_pos, with_labels=True, font_weight='bold',
                     node_color=color_map, edge_color='black')
             
-            #plt.savefig(f"images/d_10/34/bruteforce/{seed}.png")
+            plt.savefig(f"images/d_10/10_0.4/bruteforce/{seed}.png")
         else:
             nx.draw(G, with_labels=True, font_weight='bold',
                     node_color='cyan', edge_color='black')
@@ -81,8 +81,7 @@ def get_distance_matrix(G, submatrix=False, r_set=[], display=False):
 # get_brute_force_runs(15, nodes=nodes, radius=radius, seed=seed, G=G)
 
 
-def get_unique_resolve_runs(filename, nodes, radius, seed, G, repeat=100):
-    relative_path = 'metric_d/d_10/34/'
+def get_unique_resolve_runs(filename, nodes, radius, relative_path, seed, G, repeat=1):
     if not os.path.exists(f'{relative_path}{filename}.txt'):
         file_type = '.txt'
         with open(f'{relative_path}{filename}{file_type}', 'w') as f:
@@ -183,20 +182,24 @@ def write_distance_matrix(filename, matrix):
 
 ## UNIQUE BRUTE FORCE RESOLVING TESTING ##
 
-nodes = 34
-radius = 0.2
+# nodes = 10
+# radius = 0.4000000000000001
 # seed_list = [267652, 289604, 437162, 439468,
 #              614008, 628768, 657341, 726260, 763785, 852397]
-seed_list = []
-for seed in seed_list:
-    print(f'\nSeed:\n{seed}\n')
-    G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
-    print(get_unique_numbers(f'metric_d/d_10/10_0.4/{seed}.txt'), '\n')
-    draw_graph(G,
-               static_pos=decode.get_data(
-                   nodes=nodes, radius=radius, seed=seed, output=False)[5],
-               r_set=get_unique_numbers(f'metric_d/d_10/10_0.4/{seed}.txt'), seed=seed)
-    get_unique_resolve_runs(filename=seed, nodes=nodes, radius=radius, seed=seed, G=G, repeat=1)
+# seed_list = [294604, 414583, 518734, 658712, 684247, 692182, 750327, 837916, 973605, 983282]
+# relative_path = 'metric_d/d_10/10_0.4/'
+
+
+# for seed in seed_list:
+#     print(f'\nSeed:\n{seed}\n')
+#     G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
+#     print(get_unique_numbers(f'{relative_path}{seed}.txt'), '\n')
+    
+#     draw_graph(G,
+#                static_pos=decode.get_data(
+#                    nodes=nodes, radius=radius, seed=seed, output=False)[5],
+#                r_set=get_unique_numbers(f'{relative_path}{seed}.txt'), seed=seed)
+#     get_unique_resolve_runs(filename=seed, nodes=nodes, radius=radius, relative_path=relative_path,seed=seed, G=G, repeat=1)
 
 ## DISTANCE MATRIX TESTING ##
 

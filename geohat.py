@@ -10,11 +10,11 @@ import time
 # analysis.get_distance_matrix(G, submatrix=False, display=False)
 
 ## Metric Dimension EXISTS
-matrix = [
-    [1, 2, -1, 0],
-    [1, 0, 0, -1],
-    [2, 8, -1, -1]
-]
+# matrix = [
+#     [1, 2, -1, 0],
+#     [1, 0, 0, -1],
+#     [2, 8, -1, -1]
+# ]
 
 ## Metric Dimension NOT
 # matrix = [
