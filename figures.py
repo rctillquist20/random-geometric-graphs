@@ -1,3 +1,7 @@
+#####
+# Draws the Graphs for Metric and Time by ascending in Total Edges Size
+#####
+
 import time
 import decode
 import analysis

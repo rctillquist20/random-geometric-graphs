@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 # _10 for 10 repeats based on experiments.py
 
-file_name = 'rgg_data_10.list'
+file_name = 'rgg_data_10_geopigeon.list'
 
 # Returns data that can be filter based on what what we collected so can
 # analyze it.
@@ -50,10 +50,10 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
                 print('Seed: ', item[2])
                 G = nx.random_geometric_graph(
                     n=int(item[0]), radius=float(item[1]), seed=int(item[2]))
-                print('Edges: ', nx.number_of_edges(G))
-                print('Resolving Set: ', item[3])
-                print('Execution Time: ', item[4])
-                print('\nPositions: ', item[5], '\n')
+                # print('Edges: ', nx.number_of_edges(G))
+                # print('Resolving Set: ', item[3])
+                # print('Execution Time: ', item[4])
+                # print('\nPositions: ', item[5], '\n')
                 if image == True:
                     plt.figure(figsize=(7, 7))
                     plt.title(f"Nodes: {item[0]}, Radius: {item[1]}, Seed: {item[2]}, Edges: {nx.number_of_edges(G)}")
@@ -88,7 +88,7 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
 # seed_list = [267652, 289604, 437162, 439468, 614008, 628768, 657341, 726260, 763785, 852397]
 # static_positions = []
 
-# # get_data( sort_by=True, ascending=False)
+get_data( sort_by=True, ascending=False)
 # for seed in seed_list:
 #     static_positions.append(get_data(nodes = 34, radius=0.2, seed=seed, output=False)[5])
 

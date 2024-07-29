@@ -81,21 +81,44 @@ def degnitejr(G, matrix):
 import time
 def get_stats_degnite(G, matrix):
     start = time.perf_counter()
-    r_set = degnitejr(G, matrix)
+    r_set = degnite(G, matrix)
     end = time.perf_counter()
     execution_time = (end - start)
     return r_set, execution_time
 
 # nodes = 34
 # radius = 0.2
-# seed_list = [267652, 289604, 437162, 439468,
-#              614008, 628768, 657341, 726260, 763785, 852397]
-# # seed = 267652
+# # seed_list = [267652, 289604, 437162, 439468,
+# #              614008, 628768, 657341, 726260, 763785, 852397]
+# seed_list = [267652,
+#              439468,
+#              657341,
+#              289604,
+#              852397,
+#              437162,
+#              726260,
+#              614008,
+#              763785,
+#              628768]
+# # seed = 657341
 # for seed in seed_list:
 #     G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
 #     matrix = analysis.get_distance_matrix(G=G)
+#     r_set = degnite(G, matrix)
+#     jr_set = degnitejr(G, matrix)
+#     # print(seed)
+#     if len(list(set(jr_set) - set(r_set))) > 1:
+#         print(list(set(jr_set) - set(r_set)), '\nSeed: ', seed, '\n')
+    
+
 #     # degnite(G=G, matrix=matrix)
 #     get_stats_degnite(G, matrix)
 
 # print(degnite(G=G, matrix=matrix))
-# list(set(arr1) - set(arr2))
+# r_set = degnite(G, matrix)
+# jr_set = degnitejr(G, matrix)
+# # print(r_set, '\n')
+# # print(jr_set)
+# print(seed)
+# print(list(set(r_set) - set(jr_set)))
+

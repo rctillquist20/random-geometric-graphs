@@ -82,8 +82,8 @@ def get_distance_matrix(G, submatrix=False, r_set=[], display=False):
 
 
 def get_unique_resolve_runs(filename, nodes, radius, relative_path, seed, G, repeat=1):
-    if not os.path.exists(f'{relative_path}{filename}.txt'):
-        file_type = '.txt'
+    file_type = '.txt'
+    if not os.path.exists(f'{relative_path}{filename}{file_type}'):
         with open(f'{relative_path}{filename}{file_type}', 'w') as f:
             wrapped_header = textwrap.wrap(f'Nodes: {nodes}, Radius: {radius}, Seed: {
                                            seed}, Edges: {nx.number_of_edges(G)}', width=80)

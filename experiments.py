@@ -14,7 +14,11 @@ import threshold
 ##################
 ### READ/WRITE ###
 ##################
-
+# import geohat
+# import sys
+# sys.path.insert(1, '/Users/evanalba/random-geometric-graphs/shelf/')
+# import geopigeon
+# import analysis
 
 def readList(inFile):
     L = []
@@ -51,7 +55,7 @@ def countComplete(data, pairs, repeats):
 if __name__ == '__main__':
 
     ### IMPORTANT ###
-    dataFile = 'rgg_data_10.list'
+    dataFile = 'rgg_data_10_geohat.list'
     #################
 
     data = readList(dataFile) if glob.glob(dataFile) else []
@@ -89,10 +93,14 @@ if __name__ == '__main__':
         for seed in np.random.randint(1, 1000000, size=countComplete(data, [(n, r)], repeats)[(n, r)]):
             print("\nNodes: ", n, "\nRadius: ", r, "\nSeed: ", seed)
             G = nx.random_geometric_graph(n, r, seed=int(seed))
-            start = time.perf_counter()
-            resSet = geo.ich(G)
-            end = time.perf_counter()
-            execution_time = (end - start)
+            # start = time.perf_counter()
+            # resSet = geohat.ich(G)
+            # end = time.perf_counter()
+            # execution_time = (end - start)
+            matrix = analysis.get_distance_matrix(G=G)
+            #print(matrix)
+            # resSet, execution_time = geohat.get_stats_geohat(matrix=matrix, option=[1, 2, 3])
+            resSet, execution_time = geopigeon.get_stats_geopigeon(nodes=n, matrix=matrix)
             print('Time:', execution_time)
             data.append(
                 (n, r, seed, resSet, execution_time,  G.nodes(data='pos')))
