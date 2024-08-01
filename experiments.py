@@ -10,6 +10,7 @@ import pickle
 import glob
 import time
 import threshold
+from multilateration import checkResolving
 
 ##################
 ### READ/WRITE ###
@@ -30,6 +31,20 @@ def readList(inFile):
 def writeFile(data, outFile):
     with open(outFile, 'wb') as o:
         pickle.dump(data, o, protocol=pickle.HIGHEST_PROTOCOL)
+
+# Random Algorithm
+def randomSet(G):
+  nodes = sorted(G.nodes())
+  G = nx.floyd_warshall(G)
+  G = [[int(G[u][v]) if (v in G and G[u][v]!=np.inf) else -1 for v in nodes] for u in nodes]
+  nodes = set(nodes)
+  R = [np.random.choice(list(nodes))]
+  nodes.remove(R[0])
+  while not checkResolving(R, G) and len(nodes) > 0:
+    v = np.random.choice(list(nodes))
+    R.append(v)
+    nodes.remove(v)
+  return R
 
 #############
 ### UTILS ###
@@ -55,7 +70,7 @@ def countComplete(data, pairs, repeats):
 if __name__ == '__main__':
 
     ### IMPORTANT ###
-    dataFile = 'rgg_data_10_geohat.list'
+    dataFile = 'rgg_data_10_ich.list'
     #################
 
     data = readList(dataFile) if glob.glob(dataFile) else []
@@ -83,32 +98,42 @@ if __name__ == '__main__':
 
     print('\nnList:', nList)
     print('\nrList:', rList)
-    nList_sliced = nList[2:]
-    rList_sliced = rList[2:]
+    # 92 
+    # nList_sliced = nList[11:]
+    # rList_sliced = rList[11:]
+    # 25
+    # 34 START
+    # 12 work
+    nList_sliced = nList[12:23]
+    rList_sliced = rList[12:23]
     print('\nnList Sliced:', nList_sliced)
     print('\nrList Sliced:', rList_sliced)
     print('\n\n')
 
-    for n, r in zip(nList_sliced, rList_sliced):
-        for seed in np.random.randint(1, 1000000, size=countComplete(data, [(n, r)], repeats)[(n, r)]):
-            print("\nNodes: ", n, "\nRadius: ", r, "\nSeed: ", seed)
-            G = nx.random_geometric_graph(n, r, seed=int(seed))
-            # start = time.perf_counter()
-            # resSet = geohat.ich(G)
-            # end = time.perf_counter()
-            # execution_time = (end - start)
-            matrix = analysis.get_distance_matrix(G=G)
-            #print(matrix)
-            # resSet, execution_time = geohat.get_stats_geohat(matrix=matrix, option=[1, 2, 3])
-            resSet, execution_time = geopigeon.get_stats_geopigeon(nodes=n, matrix=matrix)
-            print('Time:', execution_time)
-            data.append(
-                (n, r, seed, resSet, execution_time,  G.nodes(data='pos')))
+    # for n, r in zip(nList_sliced, rList_sliced):
+    #     for seed in np.random.randint(1, 1000000, size=countComplete(data, [(n, r)], repeats)[(n, r)]):
+    #         print("\nNodes: ", n, "\nRadius: ", r, "\nSeed: ", seed)
+    #         G = nx.random_geometric_graph(n, r, seed=int(seed))
+    #         start = time.perf_counter()
+    #         resSet = geo.ich(G)
+    #         end = time.perf_counter()
+    #         execution_time = (end - start)
+    #         # matrix = analysis.get_distance_matrix(G=G)
+    #         #print(matrix)
+    #         # resSet, execution_time = geohat.get_stats_geohat(matrix=matrix, option=[1, 2, 3])
+    #         # resSet, execution_time = geohat.get_stats_geohat(n, matrix=matrix)
+    #         # start = time.perf_counter()
+    #         # resSet = randomSet(G=G)
+    #         # end = time.perf_counter()
+    #         # execution_time = (end - start)
+    #         print('Time:', execution_time)
+    #         data.append(
+    #             (n, r, seed, resSet, execution_time,  G.nodes(data='pos')))
 
-        # Write to File after sharing N and R with some seed(s) based on repeats.
-        writeFile(data, dataFile)
+    #     # Write to File after sharing N and R with some seed(s) based on repeats.
+    #     writeFile(data, dataFile)
 
-    print('\nExperiments Complete!\n')
+    # print('\nExperiments Complete!\n')
 
     ### OLD METHOD ###
     # for n in nList:

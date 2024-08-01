@@ -107,9 +107,10 @@ def powerset(iterable):
 
 
 def get_combinations(isolated_vertices, close_to_unique):
-
+    print('BEFORE GET COMBO!')
     isolated_combo = list(powerset(isolated_vertices))
     column_type_combo = list(powerset(close_to_unique))
+    print('AFTER GET COMBO!')
 
     return list(itertools.product(isolated_combo, column_type_combo))
 
@@ -210,15 +211,17 @@ def get_r_based_on_least_occurences(distance_matrix, least_common):
 def geohat(distance_matrix, option=[1]):
     if 1 in option:
         # Size 1 Metric Dimension
+        print('Option 1 START!\n')
         if get_unique_column(distance_matrix) != False:
             return get_unique_column(distance_matrix)
-
+        print('Option 1 DONE!\n')
         ### Approaches for Metric Dimension ###
         # Maybe 1 approach is faster and more accurate???
 
     if 2 in option:
         # 1st Approach: Check for close to unique row column and use if possible
         # isolated vertices.
+        print('Option 2 START!\n')
         isolated_vertices = get_isolated_vertices(distance_matrix)
         close_to_unique = get_close_to_unique_columns(distance_matrix)
 
@@ -230,15 +233,18 @@ def geohat(distance_matrix, option=[1]):
                 distance_matrix, combinations)
             if is_r_set != False:
                 return list(is_r_set)
+        print('Option 2 DONE!\n')
         # Converting to list affects time significantly??
 
     if 3 in option:
         # 2nd Approach: Use the matrix to pick columns based on the least common
         # elements gathered in the whole matrix.
+        print('Option 3 START!\n')
         least_common = get_least_common_elements(distance_matrix)
         is_r_set = get_r_based_on_least_occurences(distance_matrix, least_common)
         if is_r_set != False:
             return is_r_set
+        print('Option 3 DONE!\n')
 
     if 4 in option:
         # Approaches 1st + 2nd = 3rd

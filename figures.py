@@ -73,7 +73,7 @@ for seed in seed_list:
         # metric_time.append(execution_time)
 
 ### STATE YOUR METHOD ###
-method = 'Degnite Jr.'
+method = 'ICH vs Random vs GeoHAT'
 
 ### ICH METRIC DIMENSION ###
 
