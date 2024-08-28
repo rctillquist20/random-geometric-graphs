@@ -21,7 +21,7 @@ def draw_graph(G, static_pos=None, show_resolving=True, r_set=[], seed=None):
             nx.draw(G, pos=static_pos, with_labels=True, font_weight='bold',
                     node_color=color_map, edge_color='black')
             
-            plt.savefig(f"images/d_10/10_0.4/bruteforce/{seed}.png")
+            # plt.savefig(f"images/d_10/10_0.4/bruteforce/{seed}.png")
         else:
             nx.draw(G, with_labels=True, font_weight='bold',
                     node_color='cyan', edge_color='black')
@@ -228,17 +228,17 @@ def write_distance_matrix(filename, matrix):
 # write_distance_matrix(filename='not'+str(seed),matrix=dm)
 
 ## DRAW GRAPH TESTING ##
-# nodes = 92
-# radius = 0.12999999999999998
-# seed = 267868
-# G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
+nodes = 10
+radius = 0.4000000000000001
+seed = 294604
+G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
 
-# draw_graph(G,
-#            static_pos=decode.get_data(
-#                nodes=nodes, radius=radius, seed=seed, output=False)[5],
-#            r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed, output=False)[3])
+draw_graph(G,
+           static_pos=decode.get_data(
+               nodes=nodes, radius=radius, seed=seed, output=False)[5],
+           r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed, output=False)[3], seed=seed)
 
-# draw_graph(G, r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed)[3])
+# draw_graph(G, r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed)[3], seed=seed)
 
 
 ##########################################

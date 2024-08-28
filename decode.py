@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 # _10 for 10 repeats based on experiments.py
 
-# file_name = 'rgg_data_10_geopigeon.list'
+# file_name = 'rgg_data_10.list'
 
 # Returns data that can be filter based on what what we collected so can
 # analyze it.
@@ -19,6 +19,7 @@ import matplotlib.pyplot as plt
 # - ascending (data) Default: True
 # - output (Displays information about data on file.) Default: True
 
+# IMPORTANT NOTE: MAKE SURE THE PARAMETER FOR FILE_NAME IS SPECIFIED!!
 
 def get_data(nodes=None, radius=None, seed=None, r_set=None,
              execution_time=None, sort_by=None, ascending=True, output=False, image=False, file_name='no_name_'):
@@ -79,13 +80,13 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
         print('Error: Can not decode and read file.')
         return None
 
-# nodes = 10
-# radius = 0.4000000000000001
-# # seed = 852397
+nodes = 10
+radius = 0.4000000000000001
+seed = 294604
 # seed_list = [267652, 289604, 437162, 439468, 614008, 628768, 657341, 726260, 763785, 852397]
 # static_positions = []
 
-# get_data(sort_by=True, ascending=False)
+get_data(sort_by=True, ascending=False, file_name = 'rgg_data.list')
 # for seed in seed_list:
 #     static_positions.append(get_data(nodes = 34, radius=0.2, seed=seed, output=False)[5])
 
@@ -105,65 +106,65 @@ def calculate_average(numbers):
     average = total / len(numbers)
     return average
 
-nodes = [34, 15, 10, 10, 10, 10, 10, 10, 10, 10, 10]
-r_list = [0.2, 0.30000000000000004, 0.4000000000000001, 0.5000000000000001, 0.6000000000000001, 0.7000000000000002, 0.8000000000000003, 0.9000000000000001, 1.0000000000000002, 1.1000000000000003, 1.2000000000000004]
+# nodes = [34, 15, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+# r_list = [0.2, 0.30000000000000004, 0.4000000000000001, 0.5000000000000001, 0.6000000000000001, 0.7000000000000002, 0.8000000000000003, 0.9000000000000001, 1.0000000000000002, 1.1000000000000003, 1.2000000000000004]
 
-data = []
-for n, r in zip(nodes, r_list):
-    ich = get_data(sort_by=True, ascending=True, file_name='rgg_data_10_ich.list', output=False, nodes=n, radius=r)
-    average = []
-    for i in ich:
-        average.append(len(i[3]))
-    ich_avg = calculate_average(average)
-
-
-    ran = get_data(sort_by=True, ascending=True, file_name='rgg_data_10_random.list', output=False, nodes=n, radius=r)
-    average = []
-    for i in ran:
-        average.append(len(i[3]))
-    ran_avg = calculate_average(average)
-
-    geo = get_data(sort_by=True, ascending=True, file_name='rgg_data_10_random.list', output=False, nodes=n, radius=r)
-    average = []
-    for i in geo:
-        average.append(len(i[3]))
-    geo_avg = calculate_average(average)
-    data.append((n, [ich_avg, ran_avg, geo_avg], r))
+# data = []
+# for n, r in zip(nodes, r_list):
+#     ich = get_data(sort_by=True, ascending=True, file_name='rgg_data_10_ich.list', output=False, nodes=n, radius=r)
+#     average = []
+#     for i in ich:
+#         average.append(len(i[3]))
+#     ich_avg = calculate_average(average)
 
 
-import matplotlib.pyplot as plt
-import numpy as np
+#     ran = get_data(sort_by=True, ascending=True, file_name='rgg_data_10_random.list', output=False, nodes=n, radius=r)
+#     average = []
+#     for i in ran:
+#         average.append(len(i[3]))
+#     ran_avg = calculate_average(average)
 
-# Extract data
-nodes, metric_dimensions, radii = zip(*data)
-
-# Number of bars at each x-axis location
-n_bars = len(metric_dimensions[0])
-
-# Get the width of the bars
-bar_width = 0.25
-
-# Positions of the bars on the x-axis
-x = np.arange(len(nodes))
-
-# Create the plot
-fig, ax = plt.subplots()
-
-legend_labels = ["ICH", "Random", "GeoHAT"]
-
-# Create the bars
-for i in range(n_bars):
-    offset = (i - n_bars / 2) * bar_width
-    plt.bar(x + offset, [md[i] for md in metric_dimensions], width=bar_width, label=legend_labels[i])
-
-x_labels = [f"{n} | {r:.2f}" for n, r in zip(nodes, radii)]
+#     geo = get_data(sort_by=True, ascending=True, file_name='rgg_data_10_random.list', output=False, nodes=n, radius=r)
+#     average = []
+#     for i in geo:
+#         average.append(len(i[3]))
+#     geo_avg = calculate_average(average)
+#     data.append((n, [ich_avg, ran_avg, geo_avg], r))
 
 
-# Add labels, title, and legend
-plt.xlabel("Nodes |  Radius")
-plt.ylabel("Average Metric Dimension Count")
-plt.title("ICH vs Random vs GeoHAT (10 Different Graph Seeds)")
-plt.xticks(x, x_labels)
-plt.legend()
+# import matplotlib.pyplot as plt
+# import numpy as np
 
-plt.show()
+# # Extract data
+# nodes, metric_dimensions, radii = zip(*data)
+
+# # Number of bars at each x-axis location
+# n_bars = len(metric_dimensions[0])
+
+# # Get the width of the bars
+# bar_width = 0.25
+
+# # Positions of the bars on the x-axis
+# x = np.arange(len(nodes))
+
+# # Create the plot
+# fig, ax = plt.subplots()
+
+# legend_labels = ["ICH", "Random", "GeoHAT"]
+
+# # Create the bars
+# for i in range(n_bars):
+#     offset = (i - n_bars / 2) * bar_width
+#     plt.bar(x + offset, [md[i] for md in metric_dimensions], width=bar_width, label=legend_labels[i])
+
+# x_labels = [f"{n} | {r:.2f}" for n, r in zip(nodes, radii)]
+
+
+# # Add labels, title, and legend
+# plt.xlabel("Nodes |  Radius")
+# plt.ylabel("Average Metric Dimension Count")
+# plt.title("ICH vs Random vs GeoHAT (10 Different Graph Seeds)")
+# plt.xticks(x, x_labels)
+# plt.legend()
+
+# plt.show()
