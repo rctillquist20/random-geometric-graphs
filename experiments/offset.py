@@ -43,3 +43,5 @@ def get_close_to_unique_columns(matrix):
 
 
 # negatives, not isolated vertices pick rate?
+
+# Why was 0 always picked in 294604 even though the others had the same offset (some did not even appear)?
