@@ -84,10 +84,12 @@ if __name__ == '__main__':
     # rList = []
 
     repeats = 10
-    for r in rList:
-        # (Node, Threshold)
-        nList.append(threshold.get_n_below_radius(
-            starting_n=1, radius=r, repeat=repeats)[repeats-1][0])
+
+    # BELLOW THE THRESHOLD OLD CODE
+    # for r in rList:
+    #     # (Node, Threshold)
+    #     nList.append(threshold.get_n_below_radius(
+    #         starting_n=1, radius=r, repeat=repeats)[repeats-1][0])
 
     print('''
     You know the greatest danger facing us is ourselves, and irrational fear 
