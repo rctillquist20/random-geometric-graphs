@@ -70,13 +70,13 @@ def countComplete(data, pairs, repeats):
 if __name__ == '__main__':
 
     ### IMPORTANT ###
-    dataFile = 'rgg_data_10_ich.list'
+    dataFile = 'comeback_1_10.list'
     #################
 
     data = readList(dataFile) if glob.glob(dataFile) else []
 
     # Node Sizes
-    nList = []
+    nList = list(range(3, 23))
 
     # Radius Amounts
     rList = list(np.arange(0.02, 0.14, 0.01)) + \
@@ -96,44 +96,44 @@ if __name__ == '__main__':
     -- Captain Kirk
     ''')
 
-    print('\nnList:', nList)
-    print('\nrList:', rList)
+    # print('\nnList:', nList)
+    # print('\nrList:', rList)
     # 92 
     # nList_sliced = nList[11:]
     # rList_sliced = rList[11:]
     # 25
     # 34 START
     # 12 work
-    nList_sliced = nList[12:23]
-    rList_sliced = rList[12:23]
+    nList_sliced = nList
+    rList_sliced = rList
     print('\nnList Sliced:', nList_sliced)
     print('\nrList Sliced:', rList_sliced)
     print('\n\n')
 
-    # for n, r in zip(nList_sliced, rList_sliced):
-    #     for seed in np.random.randint(1, 1000000, size=countComplete(data, [(n, r)], repeats)[(n, r)]):
-    #         print("\nNodes: ", n, "\nRadius: ", r, "\nSeed: ", seed)
-    #         G = nx.random_geometric_graph(n, r, seed=int(seed))
-    #         start = time.perf_counter()
-    #         resSet = geo.ich(G)
-    #         end = time.perf_counter()
-    #         execution_time = (end - start)
-    #         # matrix = analysis.get_distance_matrix(G=G)
-    #         #print(matrix)
-    #         # resSet, execution_time = geohat.get_stats_geohat(matrix=matrix, option=[1, 2, 3])
-    #         # resSet, execution_time = geohat.get_stats_geohat(n, matrix=matrix)
-    #         # start = time.perf_counter()
-    #         # resSet = randomSet(G=G)
-    #         # end = time.perf_counter()
-    #         # execution_time = (end - start)
-    #         print('Time:', execution_time)
-    #         data.append(
-    #             (n, r, seed, resSet, execution_time,  G.nodes(data='pos')))
+    for n, r in zip(nList_sliced, rList_sliced):
+        for seed in np.random.randint(1, 1000000, size=countComplete(data, [(n, r)], repeats)[(n, r)]):
+            print("\nNodes: ", n, "\nRadius: ", r, "\nSeed: ", seed)
+            G = nx.random_geometric_graph(n, r, seed=int(seed))
+            start = time.perf_counter()
+            resSet = geo.ich(G)
+            end = time.perf_counter()
+            execution_time = (end - start)
+            # matrix = analysis.get_distance_matrix(G=G)
+            #print(matrix)
+            # resSet, execution_time = geohat.get_stats_geohat(matrix=matrix, option=[1, 2, 3])
+            # resSet, execution_time = geohat.get_stats_geohat(n, matrix=matrix)
+            # start = time.perf_counter()
+            # resSet = randomSet(G=G)
+            # end = time.perf_counter()
+            # execution_time = (end - start)
+            print('Time:', execution_time)
+            data.append(
+                (n, r, seed, resSet, execution_time,  G.nodes(data='pos')))
 
-    #     # Write to File after sharing N and R with some seed(s) based on repeats.
-    #     writeFile(data, dataFile)
+        # Write to File after sharing N and R with some seed(s) based on repeats.
+        writeFile(data, dataFile)
 
-    # print('\nExperiments Complete!\n')
+    print('\nExperiments Complete!\n')
 
     ### OLD METHOD ###
     # for n in nList:

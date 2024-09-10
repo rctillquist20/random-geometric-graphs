@@ -3,9 +3,11 @@ import sys
 sys.path.insert(1, '/Users/evanalba/random-geometric-graphs/')
 # from analysis import get_distance_matrix
 import analysis
-
-# Question: Will having the lowest offset to unique rows NODES GROUP be 
+import decode
+# Question: Will having the lowest / middle / highest (excluding isolated 
+# vertices) offset to unique rows NODES GROUP be 
 # always have 100% pick rate included in metric dimension tuple?
+
 
 # Get close to not having the highest count common rows' value for an
 # individual column and group those columns by
@@ -14,7 +16,7 @@ import analysis
 #
 # close_to_unique Dictionary Format:
 # {Highest count of common value shared based on rows of an individual column of value : columns index}
-# Returns Close to unique rows Columns SORTED BY KEY
+# Return: Close to unique rows Columns SORTED BY KEY
 def get_close_to_unique_columns(matrix):
     close_to_unique = {}
     num_cols = len(matrix[0])
@@ -34,10 +36,19 @@ def get_close_to_unique_columns(matrix):
 
     return sorted(close_to_unique.items())
 
+# import multilateration as geo
+# import math
+# import time
+# G = nx.random_geometric_graph(23, radius=math.sqrt(2))
+# start = time.perf_counter()
+# print(geo.bruteForce(G))
+# end = time.perf_counter()
+# execution_time = (end - start)
+# print("\nTime: ", execution_time, "\n\n")
 
-# G = nx.random_geometric_graph(10, radius=0.4, seed=294604)
 # test= get_close_to_unique_columns(analysis.get_distance_matrix(G=G, display=True))
 # print(test[0][1])
+# decode.get_data(file_name="rgg_data_10.list")
 
 
 
