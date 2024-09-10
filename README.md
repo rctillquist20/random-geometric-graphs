@@ -8,3 +8,4 @@ Given a graph G, a subset of vertices R is called a resolving set when, for all 
 
 `rgg_data.list` - Dr. Tillquist's Data\
 `rgg_data_10.list` - 10 repeats of RGGs (Note: A good portion of them are 10 node graphs.)
+`comeback_1_10.list` - RGGs from 3-23 nodes with random radiuses.
