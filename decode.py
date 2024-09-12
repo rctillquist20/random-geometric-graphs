@@ -21,6 +21,7 @@ import matplotlib.pyplot as plt
 
 # IMPORTANT NOTE: MAKE SURE THE PARAMETER FOR FILE_NAME IS SPECIFIED!!
 
+
 def get_data(nodes=None, radius=None, seed=None, r_set=None,
              execution_time=None, sort_by=None, ascending=True, output=False, image=False, file_name='no_name_'):
 
@@ -46,9 +47,9 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
         n_seeds = []
         for item in filtered_data:
             if output == True:
-                # print('\nNodes: ', item[0])
-                # print('Radius: ', item[1])
-                # print('Seed: ', item[2])
+                print('\nNodes: ', item[0])
+                print('Radius: ', item[1])
+                print('Seed: ', item[2])
                 # G = nx.random_geometric_graph(
                 #     n=int(item[0]), radius=float(item[1]), seed=int(item[2]))
                 # print('Edges: ', nx.number_of_edges(G))
@@ -57,7 +58,8 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
                 # print('\nPositions: ', item[5], '\n')
                 if image == True:
                     plt.figure(figsize=(7, 7))
-                    plt.title(f"Nodes: {item[0]}, Radius: {item[1]}, Seed: {item[2]}, Edges: {nx.number_of_edges(G)}")
+                    plt.title(f"Nodes: {item[0]}, Radius: {item[1]}, Seed: {
+                              item[2]}, Edges: {nx.number_of_edges(G)}")
                     color_map = []
                     for node in G:
                         if node in item[3]:
@@ -79,3 +81,23 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
     except:
         print('Error: Can not decode and read file.')
         return None
+
+# nodes
+
+
+def get_seeds(file_name, nodes=None, radius=None, seed=None):
+    if not os.path.isfile(file_name):
+        print('Error: File does not exist.')
+        return
+
+    try:
+        seeds = []
+        data_list = readList(file_name)
+        for item in data_list:
+            if item[0] == nodes:
+                seeds.append(item[2])
+     
+    except:
+        print('Error: Can not decode and read file.')
+
+    return seeds

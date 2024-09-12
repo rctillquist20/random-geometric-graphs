@@ -39,10 +39,27 @@ def get_close_to_unique_rows_offset(matrix):
 
     return dict(sorted(offset.items()))
 
+# Helps us get the highest offset.
+def get_highest_key(dictionary):
+    if not dictionary:
+        return None
+
+    max_key = max(dictionary, key=dictionary.get)
+    return max_key
+
+# Helps us get the lowest offset.
+def get_lowest_key(dictionary):
+    if not dictionary:
+        return None
+
+    min_key = min(dictionary, key=dictionary.get)
+    return min_key
+
+
 # import multilateration as geo
 # import math
 # import time
-G = nx.random_geometric_graph(23, radius=1, seed=1)
+# G = nx.random_geometric_graph(n=10, radius=0.09, seed=897200)
 # start = time.perf_counter()
 # print(geo.bruteForce(G))
 # end = time.perf_counter()
@@ -54,8 +71,22 @@ G = nx.random_geometric_graph(23, radius=1, seed=1)
 # decode.get_data(file_name="rgg_data_10.list")
 
 
-offset = get_close_to_unique_rows_offset(analysis.get_distance_matrix(G=G, display=True))
-print(offset)
+# offset = get_close_to_unique_rows_offset(analysis.get_distance_matrix(G=G, display=True))
+# print(offset)
+# print(get_highest_key(offset))
+# print(get_lowest_key(offset))
+
+decode.get_data(file_name='comeback_1_10.list', nodes=10,output=True)
+
+### Create Experiment of x-axis = seeds (lowest to highest sorted) | y-axis = true/false (1/0) in Bruteforce Metric Dimension.
+figure_title = 'A column of the Lowest Offset always a part of the Metric Dimension? (N = 10, R = 0.9)'
+file_name = 'comeback_1_10.list'
+print(decode.get_seeds(file_name, nodes=10))
+# for seed in seed_list:
+#     print(seed)
+
+
+
 
 # negatives, not isolated vertices pick rate?
 
