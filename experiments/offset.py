@@ -76,17 +76,42 @@ def get_lowest_key(dictionary):
 # print(get_highest_key(offset))
 # print(get_lowest_key(offset))
 
-decode.get_data(file_name='comeback_1_10.list', nodes=10,output=True)
+# decode.get_data(file_name='comeback_1_10.list', nodes=10,output=True)
 
+
+from matplotlib import pyplot as plt
+import multilateration as geo
+import numpy as np
 ### Create Experiment of x-axis = seeds (lowest to highest sorted) | y-axis = true/false (1/0) in Bruteforce Metric Dimension.
-figure_title = 'A column of the Lowest Offset always a part of the Metric Dimension? (N = 10, R = 0.9)'
-file_name = 'comeback_1_10.list'
-print(decode.get_seeds(file_name, nodes=10))
-# for seed in seed_list:
-#     print(seed)
+nodes = 10
+radius = 0.9
+# plt.title(f'A column of the Lowest Offset always a part of the Metric Dimension? (N = {nodes}, R = {radius})')
+seed_list = sorted(decode.get_seeds(file_name='comeback_1_10.list', nodes=10))
+probability_list = []
+for seed in seed_list:
+    G = nx.random_geometric_graph(n=nodes, radius=radius, seed=int(seed))
+    r_sets = geo.bruteForce(G,numSets=-1)
+    offset_in_r_set = 0
+    for set_ in r_sets:
+        if 0 in set_:
+            offset_in_r_set += 1
+    probability_list.append(offset_in_r_set / len(r_sets))
 
+### USING BAR CHARTS ###
+plt.figure(figsize=(9, 6))
+plt.xlabel('Seeds')
+plt.ylabel('Probability')
+plt.title(f'A column of the Lowest Offset always a part of the Metric Dimension? (N = {nodes}, Radius = {radius})')
+plt.ylim(0, 1)  # Set y-axis limits to 0 and 1
+plt.xticks(range(len(seed_list)), seed_list)  # Set x-axis labels to seed names
+plt.bar(range(len(seed_list)), probability_list, width=0.5)
+plt.show()
 
-
+### USING PRINT OUT TABLE ###
+import pandas as pd
+data = {'Seeds': seed_list, 'Probability': probability_list}
+df = pd.DataFrame(data)
+print(df)
 
 # negatives, not isolated vertices pick rate?
 
