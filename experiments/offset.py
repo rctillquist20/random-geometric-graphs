@@ -55,7 +55,19 @@ def get_lowest_key(dictionary):
     min_key = min(dictionary, key=dictionary.get)
     return min_key
 
+def get_median_key(dictionary):
+    keys = list(dictionary.keys())
+    import statistics
+    median_key = statistics.median(keys)
+    return median_key
 
+def is_float(value):
+  try:
+    float_value = float(value)
+    return float_value != int(float_value)
+  except ValueError:
+    return False
+  
 
 # import multilateration as geo
 # import math
@@ -89,47 +101,72 @@ nodes = 10
 radius = 0.9
 # desired_offset = 0
 # plt.title(f'A column of the Lowest Offset always a part of the Metric Dimension? (N = {nodes}, R = {radius})')
-
-# all_seeds = list(range(3, 23))
-# for n in all_seeds:
-#     n
-seed_list = sorted(decode.get_seeds(file_name='comeback_1_10.list', nodes=10))
-probability_list = []
-for seed in seed_list:
-    G = nx.random_geometric_graph(n=nodes, radius=radius, seed=int(seed))
-    r_sets = geo.bruteForce(G, numSets=-1)
-    offset_dict = get_close_to_unique_rows_offset(analysis.get_distance_matrix(G=G, display=False))
+all_r = list(np.arange(0.02, 0.14, 0.01)) + \
+        list(np.arange(0.2, np.sqrt(2)+0.1, 0.1))
+all_seeds = list(range(3, 23))
+for n, r in zip(all_seeds, all_r):
+    nodes = n
+    radius = r
+    seed_list = sorted(decode.get_seeds(file_name='comeback_1_10.list', nodes=n))
+    probability_list = []
     
-    ### IMPORTANT: OFFSET SETTINGS TESTING ###   
-    desired_offset_key = get_lowest_key(offset_dict)
-    offset_items = offset_dict[desired_offset_key]
+    # Round due to median being like 5.5
+    round = False
+    for seed in seed_list:
+        G = nx.random_geometric_graph(n=nodes, radius=radius, seed=int(seed))
+        r_sets = geo.bruteForce(G, numSets=-1)
+        offset_dict = get_close_to_unique_rows_offset(analysis.get_distance_matrix(G=G, display=False))
+        
+        ### IMPORTANT: OFFSET SETTINGS TESTING ###   
+        # print(offset_dict)
+        desired_offset_key = get_median_key(offset_dict) ## CHANGE IF GETTING DIFFERENT OFFSET
+        if (is_float(desired_offset_key) != False) or (desired_offset_key not in offset_dict.keys()):
+            round = True
+            import math
+            desired_offset_key = int(math.ceil(desired_offset_key))
+            if desired_offset_key not in offset_dict.keys():
+                for key in offset_dict.keys():
+                    if key > desired_offset_key:
+                        desired_offset_key = key
+                        break
+            offset_items = offset_dict[desired_offset_key]
+        else:
+            offset_items = offset_dict[desired_offset_key]
 
-    offset_found = 0
-    for set_ in r_sets:
-        for item in offset_items:
-            if item in set_:
-                offset_found += 1
-                break
-    probability_list.append(offset_found / len(r_sets))
+        offset_found = 0
+        for set_ in r_sets:
+            for item in offset_items:
+                if item in set_:
+                    offset_found += 1
+                    break
+        probability_list.append(offset_found / len(r_sets))
 
-### USING BAR CHARTS ###
-plt.figure(figsize=(9, 6))
-plt.xlabel('Seeds')
-plt.ylabel('Probability')
-plt.title(f'Lowest Offset node(s) always a part of the Metric Dimension? (N = {nodes}, Radius = {radius})')
-plt.ylim(0, 1.1)  # Set y-axis limits to 0 and 1
-plt.xticks(range(len(seed_list)), seed_list)  # Set x-axis labels to seed names
+    ### USING BAR CHARTS ###
+    plt.figure(figsize=(9, 6))
+    plt.xlabel('Seeds')
+    plt.ylabel('Probability')
+    ### IMPORTANT: CHANGE TITLE ###
+    if round == True:
+        plt.title(f'Median Offset node(s) always a part of the Metric Dimension? (N = {nodes}, Radius = {radius}) | Median is Ceiled.')
+    else: 
+        plt.title(f'Median Offset node(s) always a part of the Metric Dimension? (N = {nodes}, Radius = {radius})')
+    plt.ylim(0, 1.1)  # Set y-axis limits to 0 and 1
+    plt.xticks(range(len(seed_list)), seed_list)  # Set x-axis labels to seed names
 
-# Create bars with probability values on top
-bars = plt.bar(range(len(seed_list)), probability_list, width=0.5)
-for bar, value in zip(bars, probability_list):
-    plt.text(bar.get_x() + bar.get_width() / 2, value + 0.02, f'{value:.2f}', ha='center')
-# plt.show()
+    # Create bars with probability values on top
+    bars = plt.bar(range(len(seed_list)), probability_list, width=0.5)
+    for bar, value in zip(bars, probability_list):
+        plt.text(bar.get_x() + bar.get_width() / 2, value + 0.02, f'{value:.2f}', ha='center')
+    # plt.show()
 
-### IMPORTANT ###
-save_dir = "/Users/evanalba/random-geometric-graphs/images/offset"
-file_name = f"{nodes}_{radius}.jpg"
-plt.savefig(f"{save_dir}/{file_name}")
+    ### IMPORTANT ###
+    if round == True:
+        save_dir = "/Users/evanalba/random-geometric-graphs/images/offset/median/ceil"
+    else:
+        save_dir = "/Users/evanalba/random-geometric-graphs/images/offset/median"
+
+    file_name = f"{nodes}_{radius}.jpg"
+    plt.savefig(f"{save_dir}/{file_name}")
 
 ### USING PRINT OUT TABLE ###
 # import pandas as pd
