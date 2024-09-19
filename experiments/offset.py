@@ -56,6 +56,7 @@ def get_lowest_key(dictionary):
     return min_key
 
 
+
 # import multilateration as geo
 # import math
 # import time
@@ -83,36 +84,62 @@ from matplotlib import pyplot as plt
 import multilateration as geo
 import numpy as np
 ### Create Experiment of x-axis = seeds (lowest to highest sorted) | y-axis = true/false (1/0) in Bruteforce Metric Dimension.
+### IMPORTANT ###
 nodes = 10
 radius = 0.9
+# desired_offset = 0
 # plt.title(f'A column of the Lowest Offset always a part of the Metric Dimension? (N = {nodes}, R = {radius})')
+
+# all_seeds = list(range(3, 23))
+# for n in all_seeds:
+#     n
 seed_list = sorted(decode.get_seeds(file_name='comeback_1_10.list', nodes=10))
 probability_list = []
 for seed in seed_list:
     G = nx.random_geometric_graph(n=nodes, radius=radius, seed=int(seed))
-    r_sets = geo.bruteForce(G,numSets=-1)
-    offset_in_r_set = 0
+    r_sets = geo.bruteForce(G, numSets=-1)
+    offset_dict = get_close_to_unique_rows_offset(analysis.get_distance_matrix(G=G, display=False))
+    
+    ### IMPORTANT: OFFSET SETTINGS TESTING ###   
+    desired_offset_key = get_lowest_key(offset_dict)
+    offset_items = offset_dict[desired_offset_key]
+
+    offset_found = 0
     for set_ in r_sets:
-        if 0 in set_:
-            offset_in_r_set += 1
-    probability_list.append(offset_in_r_set / len(r_sets))
+        for item in offset_items:
+            if item in set_:
+                offset_found += 1
+                break
+    probability_list.append(offset_found / len(r_sets))
 
 ### USING BAR CHARTS ###
 plt.figure(figsize=(9, 6))
 plt.xlabel('Seeds')
 plt.ylabel('Probability')
-plt.title(f'A column of the Lowest Offset always a part of the Metric Dimension? (N = {nodes}, Radius = {radius})')
-plt.ylim(0, 1)  # Set y-axis limits to 0 and 1
+plt.title(f'Lowest Offset node(s) always a part of the Metric Dimension? (N = {nodes}, Radius = {radius})')
+plt.ylim(0, 1.1)  # Set y-axis limits to 0 and 1
 plt.xticks(range(len(seed_list)), seed_list)  # Set x-axis labels to seed names
-plt.bar(range(len(seed_list)), probability_list, width=0.5)
-plt.show()
+
+# Create bars with probability values on top
+bars = plt.bar(range(len(seed_list)), probability_list, width=0.5)
+for bar, value in zip(bars, probability_list):
+    plt.text(bar.get_x() + bar.get_width() / 2, value + 0.02, f'{value:.2f}', ha='center')
+# plt.show()
+
+### IMPORTANT ###
+save_dir = "/Users/evanalba/random-geometric-graphs/images/offset"
+file_name = f"{nodes}_{radius}.jpg"
+plt.savefig(f"{save_dir}/{file_name}")
 
 ### USING PRINT OUT TABLE ###
-import pandas as pd
-data = {'Seeds': seed_list, 'Probability': probability_list}
-df = pd.DataFrame(data)
-print(df)
+# import pandas as pd
+# data = {'Seeds': seed_list, 'Probability': probability_list}
+# df = pd.DataFrame(data)
+# print(df)
 
 # negatives, not isolated vertices pick rate?
 
 # Why was 0 always picked in 294604 even though the others had the same offset (some did not even appear)?
+
+
+# INDIVIDUALLY for each graph go through all the offsets and calculate the probability for each one? Another experiment...

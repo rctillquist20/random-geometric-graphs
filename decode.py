@@ -50,8 +50,8 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
                 print('\nNodes: ', item[0])
                 print('Radius: ', item[1])
                 print('Seed: ', item[2])
-                # G = nx.random_geometric_graph(
-                #     n=int(item[0]), radius=float(item[1]), seed=int(item[2]))
+                G = nx.random_geometric_graph(
+                    n=int(item[0]), radius=float(item[1]), seed=int(item[2]))
                 # print('Edges: ', nx.number_of_edges(G))
                 # print('Resolving Set: ', item[3])
                 # print('Execution Time: ', item[4])
