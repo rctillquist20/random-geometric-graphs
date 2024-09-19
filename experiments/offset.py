@@ -195,7 +195,7 @@ probability_list = [167.2721320958702, 183.96172041994345, 184.8501585357503, 18
 plt.figure(figsize=(9, 6))
 plt.xlabel('Offset Types')
 plt.ylabel('Probability')
-plt.title('Highest vs Lowest vs Ceil median vs Floor median Offset node(s) always a part of the Metric Dimension?\n Note: 192 Graphs, 19 different N graph families.')
+plt.title('Highest vs Lowest vs Ceil median vs Floor median Offset node(s) always a part of the Metric Dimension?\n Note: 190 Graphs, 19 different N graph families. Each family has 10 graphs of random seeds.')
 plt.ylim(0, 200)  # Set y-axis limits to 0 and 200
 label_list = ['Highest', 'Lowest', 'Ceil median', 'Floor median']
 plt.xticks(range(len(label_list)),  label_list)  # Set x-axis labels to seed names
