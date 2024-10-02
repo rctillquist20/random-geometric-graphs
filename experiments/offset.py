@@ -108,7 +108,8 @@ import numpy as np
 # for n, r in zip(all_seeds, all_r):
 #     nodes = n
 #     radius = r
-#     seed_list = sorted(decode.get_seeds(file_name='comeback_1_10.list', nodes=n))
+#     seed_list = sorted(decode.get_seeds(file_name='comeback_2_1_repeat_3_to_23nodes_200graphs.list', nodes=n)) 
+#     # NOTE: If Random Graphs with RANDOM NODES AND RANDOM RADIUS CHANGE UP THE CODE!!!
 #     probability_list = []
     
 #     # Round due to median being like 5.5
@@ -120,7 +121,7 @@ import numpy as np
         
 #         ### IMPORTANT: OFFSET SETTINGS TESTING ###   
 #         # print(offset_dict)
-#         desired_offset_key = get_median_key(offset_dict) ## CHANGE IF GETTING DIFFERENT OFFSET
+#         desired_offset_key = get_highest_key(offset_dict) ## CHANGE IF GETTING DIFFERENT OFFSET
 #         if (is_float(desired_offset_key) != False) or (desired_offset_key not in offset_dict.keys()):
 #             round = True
 #             import math
@@ -151,13 +152,73 @@ import numpy as np
 #                     break
 #         probability_list.append(offset_found / len(r_sets))
 #     total_offset_probability.append(sum(probability_list))
+def get_offset_probability(mode):
+    # NOTE: If Random Graphs with RANDOM NODES AND RANDOM RADIUS CODE HERE!!!
+    nodes = 10
+    radius = 0.9
+    # plt.title(f'A column of the Lowest Offset always a part of the Metric Dimension? (N = {nodes}, R = {radius})')
+    all_r = list(np.arange(0.02, 0.14, 0.01)) + \
+            list(np.arange(0.2, np.sqrt(2)+0.1, 0.1))
+    all_seeds = list(range(3, 23))
+    total_offset_probability = []
+    for n, r in zip(all_seeds, all_r):
+        nodes = n
+        radius = r
+        seed_list = sorted(decode.get_seeds(file_name='comeback_2_1_repeat_3_to_23nodes_200graphs.list', nodes=n)) 
+        # NOTE: If Random Graphs with RANDOM NODES AND RANDOM RADIUS CHANGE UP THE CODE!!!
+        probability_list = []
+        
+        # Round due to median being like 5.5
+        round = False
+        for seed in seed_list:
+            G = nx.random_geometric_graph(n=nodes, radius=radius, seed=int(seed))
+            r_sets = geo.bruteForce(G, numSets=-1)
+            offset_dict = get_close_to_unique_rows_offset(analysis.get_distance_matrix(G=G, display=False))
+            
+            ### IMPORTANT: OFFSET SETTINGS TESTING ###   
+            # print(offset_dict)
+            desired_offset_key = get_highest_key(offset_dict) ## CHANGE IF GETTING DIFFERENT OFFSET
+            if (is_float(desired_offset_key) != False) or (desired_offset_key not in offset_dict.keys()):
+                round = True
+                import math
+                desired_offset_key = int(math.ceil(desired_offset_key))
+                # # Ceil Setting ##
+                # if desired_offset_key not in offset_dict.keys():
+                #     for key in offset_dict.keys():
+                #         if key > desired_offset_key:
+                #             desired_offset_key = key
+                #             break
+                
+                # Floor Setting ##
+                if desired_offset_key not in offset_dict.keys():
+                    for key in reversed(offset_dict.keys()):
+                        if key < desired_offset_key:
+                            desired_offset_key = key
+                            break
+
+                offset_items = offset_dict[desired_offset_key]
+            else:
+                offset_items = offset_dict[desired_offset_key]
+
+            offset_found = 0
+            for set_ in r_sets:
+                for item in offset_items:
+                    if item in set_:
+                        offset_found += 1
+                        break
+            probability_list.append(offset_found / len(r_sets))
+        total_offset_probability.append(sum(probability_list))
+    with open('/Users/evanalba/random-geometric-graphs/images/offset/offset_types_2.txt', 'a') as file:
+        file.write(f'\n{mode}: {str(sum(total_offset_probability))}')
+
+get_offset_probability("Highest")
 
 #     ### USING BAR CHARTS ###
 #     plt.figure(figsize=(9, 6))
 #     plt.xlabel('Seeds')
 #     plt.ylabel('Probability')
 #     ### IMPORTANT: CHANGE TITLE ###
-#     mode = "Floor median"
+# mode = "Highest"
 #     if round == True:
 #         plt.title(f'Median Offset node(s) always a part of the Metric Dimension? (N = {nodes}, Radius = {radius})\nNote: Median is {mode}ed. If you can not get median offset key, go down to the next lowest key. ')
 #     else: 
@@ -180,7 +241,7 @@ import numpy as np
 #     file_name = f"{nodes}_{radius}.jpg"
 #     plt.savefig(f"{save_dir}/{file_name}")
 
-# with open('/Users/evanalba/random-geometric-graphs/images/offset/offset_types.txt', 'a') as file:
+# with open('/Users/evanalba/random-geometric-graphs/images/offset/offset_types_2.txt', 'a') as file:
 #     file.write(f'\n{mode}: {str(sum(total_offset_probability))}')
 
 ### USING PRINT OUT TABLE ###

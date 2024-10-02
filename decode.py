@@ -82,8 +82,25 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
         print('Error: Can not decode and read file.')
         return None
 
-# nodes
 
+# Gives us data in format:
+# [[nodes, radius, seed]]
+# NOTE: Filtered mode coming soon!
+def get_items_list(file_name, nodes=None, radius=None, seed=None):
+    if not os.path.isfile(file_name):
+        print('Error: File does not exist.')
+        return None
+    
+    try:
+        data_list = readList(file_name)
+
+        filtered_data = []
+        for item in data_list:
+            filtered_data.append([item[0], item[1], item[2]])
+        return filtered_data
+    except:
+        print('Error: Can not decode and read file.')
+        return None
 
 def get_seeds(file_name, nodes=None, radius=None, seed=None):
     if not os.path.isfile(file_name):
@@ -101,3 +118,5 @@ def get_seeds(file_name, nodes=None, radius=None, seed=None):
         print('Error: Can not decode and read file.')
 
     return seeds
+
+
