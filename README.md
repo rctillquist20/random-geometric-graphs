@@ -8,5 +8,5 @@ Given a graph G, a subset of vertices R is called a resolving set when, for all 
 `rgg_data.list` - Dr. Tillquist's Data\
 `rgg_data_10.list` - 10 repeats of RGGs (Note: A good portion of them are 10 node graphs.)\
 `rgg_data_10.geohat or ich or random` - 10 repeats of RGGs of the same rgg_data_10.list parameters but using these algorithms to gather metric dimension and time execution.\
-`comeback_1_10.list` - RGGs from 3-23 nodes with random radiuses. **Each N family of graphs share the same radius.**
+`comeback_1_10.list` - RGGs from 3-23 nodes with random radiuses. **Each N family of graphs share the same radius.**\
 `comeback_2_1_repeat_3_to_23nodes_200graphs` - RGGs from 3-23 nodes with random radiuses.
