@@ -191,25 +191,25 @@ import numpy as np
 
 ### Note: sum(probability of each graph seed) / Total 190 Graphs (Each Graph Seed == 1, Graph Family = 10) (22 - 3) * 10 = 190
 ## Bar Graph Compare types of offsets: highest, lowest, ceil median, floor median. ##
-probability_list = [167.2721320958702, 183.96172041994345, 184.8501585357503, 186.61811786835509]
-plt.figure(figsize=(9, 6))
-plt.xlabel('Offset Types')
-plt.ylabel('Probability')
-plt.title('Highest vs Lowest vs Ceil median vs Floor median Offset node(s) always a part of the Metric Dimension?\n Note: 190 Graphs, 19 different N graph families. Each family has 10 graphs of random seeds.')
-plt.ylim(0, 200)  # Set y-axis limits to 0 and 200
-label_list = ['Highest', 'Lowest', 'Ceil median', 'Floor median']
-plt.xticks(range(len(label_list)),  label_list)  # Set x-axis labels to seed names
+# probability_list = [167.2721320958702, 183.96172041994345, 184.8501585357503, 186.61811786835509]
+# plt.figure(figsize=(9, 6))
+# plt.xlabel('Offset Types')
+# plt.ylabel('Probability')
+# plt.title('Highest vs Lowest vs Ceil median vs Floor median Offset node(s) always a part of the Metric Dimension?\n Note: 190 Graphs, 19 different N graph families. Each family has 10 graphs of random seeds.')
+# plt.ylim(0, 200)  # Set y-axis limits to 0 and 200
+# label_list = ['Highest', 'Lowest', 'Ceil median', 'Floor median']
+# plt.xticks(range(len(label_list)),  label_list)  # Set x-axis labels to seed names
 
-# Create bars with probability values on top
-bars = plt.bar(range(len(label_list)), probability_list, width=0.5, color=['blue', 'orange', 'green', 'red'])
-for bar, value in zip(bars, probability_list):
-    plt.text(bar.get_x() + bar.get_width() / 2, value + 3, f'{value:.2f}', ha='center')
-# plt.show()
+# # Create bars with probability values on top
+# bars = plt.bar(range(len(label_list)), probability_list, width=0.5, color=['blue', 'orange', 'green', 'red'])
+# for bar, value in zip(bars, probability_list):
+#     plt.text(bar.get_x() + bar.get_width() / 2, value + 3, f'{value:.2f}', ha='center')
+# # plt.show()
 
-save_dir = "/Users/evanalba/random-geometric-graphs/images/offset/"
+# save_dir = "/Users/evanalba/random-geometric-graphs/images/offset/"
 
-file_name = f"offset_types.jpg"
-plt.savefig(f"{save_dir}/{file_name}")
+# file_name = f"random_offset_types.jpg"
+# plt.savefig(f"{save_dir}/{file_name}")
 
 
 # negatives, not isolated vertices pick rate?

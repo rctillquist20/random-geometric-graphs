@@ -64,26 +64,43 @@ def countComplete(data, pairs, repeats):
     return counts
 
 
+import random
+# Start and Stop given Range
+def generate_random_floats(start, stop, num_values):
+  random_values = [random.uniform(start, stop) for _ in range(num_values)]
+  return random_values
+
+# Start and Stop given Range
+def generate_random_integers(start, stop, num_values):
+  random_integers = [random.randint(start, stop) for _ in range(num_values)]
+  return random_integers
+
+
+num_values = 200
+
+random_float_list = generate_random_floats(0.02, np.sqrt(2)+0.1, num_values=num_values)
+random_integer_list = generate_random_integers(3, 23, num_values=num_values)
+
+
 # Thoughts:
 # - rgg_data_10.list == 10 repeats of N and R :)
 
 if __name__ == '__main__':
 
     ### IMPORTANT ###
-    dataFile = 'comeback_1_10.list'
+    dataFile = 'comeback_2_1_repeat_3_to_23nodes_200graphs.list'
     #################
 
     data = readList(dataFile) if glob.glob(dataFile) else []
 
     # Node Sizes
-    nList = list(range(3, 23))
+    nList = random_integer_list
 
     # Radius Amounts
-    rList = list(np.arange(0.02, 0.14, 0.01)) + \
-        list(np.arange(0.2, np.sqrt(2)+0.1, 0.1))
+    rList = random_float_list
     # rList = []
 
-    repeats = 10
+    repeats = 1
 
     # BELLOW THE THRESHOLD OLD CODE
     # for r in rList:
@@ -111,7 +128,7 @@ if __name__ == '__main__':
     print('\nnList Sliced:', nList_sliced)
     print('\nrList Sliced:', rList_sliced)
     print('\n\n')
-
+    counter = 0 
     for n, r in zip(nList_sliced, rList_sliced):
         for seed in np.random.randint(1, 1000000, size=countComplete(data, [(n, r)], repeats)[(n, r)]):
             print("\nNodes: ", n, "\nRadius: ", r, "\nSeed: ", seed)
@@ -128,6 +145,7 @@ if __name__ == '__main__':
             # resSet = randomSet(G=G)
             # end = time.perf_counter()
             # execution_time = (end - start)
+            counter += 1
             print('Time:', execution_time)
             data.append(
                 (n, r, seed, resSet, execution_time,  G.nodes(data='pos')))
@@ -135,6 +153,7 @@ if __name__ == '__main__':
         # Write to File after sharing N and R with some seed(s) based on repeats.
         writeFile(data, dataFile)
 
+    print(counter)
     print('\nExperiments Complete!\n')
 
     ### OLD METHOD ###
