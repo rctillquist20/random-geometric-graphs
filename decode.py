@@ -85,8 +85,9 @@ def get_data(nodes=None, radius=None, seed=None, r_set=None,
 
 # Gives us data in format:
 # [[nodes, radius, seed]]
-# NOTE: Filtered mode coming soon!
-def get_items_list(file_name, nodes=None, radius=None, seed=None):
+# Filtered Mode: Get a list of only 1 attribute by setting it to True.
+# E.g. Nodes = True Get only a list nodes.
+def get_items_list(file_name, nodes=False, radius=False, seed=False):
     if not os.path.isfile(file_name):
         print('Error: File does not exist.')
         return None
@@ -95,9 +96,19 @@ def get_items_list(file_name, nodes=None, radius=None, seed=None):
         data_list = readList(file_name)
 
         filtered_data = []
-        for item in data_list:
-            filtered_data.append([item[0], item[1], item[2]])
-        return filtered_data
+        if (nodes == False) and (radius == False) and (seed == False):
+            for item in data_list:
+                filtered_data.append([item[0], item[1], item[2]])
+            return filtered_data
+        else:
+            for item in data_list:
+                if nodes == True:
+                    filtered_data.append(item[0])
+                elif radius == True:
+                    filtered_data.append(item[1])
+                elif seed == True:
+                    filtered_data.append(item[2])
+            return filtered_data
     except:
         print('Error: Can not decode and read file.')
         return None

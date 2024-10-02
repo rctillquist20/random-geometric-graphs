@@ -6,4 +6,4 @@ import decode
 # for i in test:
 #   print("\nYOLO:\n", i)
 
-print(decode.get_items_list(file_name='comeback_2_1_repeat_3_to_23nodes_200graphs.list'))
+print(decode.get_items_list(file_name='comeback_2_1_repeat_3_to_23nodes_200graphs.list', nodes=True))

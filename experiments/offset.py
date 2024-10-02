@@ -154,11 +154,9 @@ import numpy as np
 #     total_offset_probability.append(sum(probability_list))
 def get_offset_probability(mode):
     # NOTE: If Random Graphs with RANDOM NODES AND RANDOM RADIUS CODE HERE!!!
-    nodes = 10
-    radius = 0.9
-    # plt.title(f'A column of the Lowest Offset always a part of the Metric Dimension? (N = {nodes}, R = {radius})')
-    all_r = list(np.arange(0.02, 0.14, 0.01)) + \
-            list(np.arange(0.2, np.sqrt(2)+0.1, 0.1))
+ 
+
+    all_r = decode.get_items_list(file_name='comeback_2_1_repeat_3_to_23nodes_200graphs.list')
     all_seeds = list(range(3, 23))
     total_offset_probability = []
     for n, r in zip(all_seeds, all_r):
