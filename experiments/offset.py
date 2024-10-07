@@ -155,61 +155,54 @@ import numpy as np
 def get_offset_probability(mode):
     # NOTE: If Random Graphs with RANDOM NODES AND RANDOM RADIUS CODE HERE!!!
  
-
-    all_r = decode.get_items_list(file_name='comeback_2_1_repeat_3_to_23nodes_200graphs.list')
-    all_seeds = list(range(3, 23))
+    all_nodes = decode.get_items_list(file_name='comeback_2_1_repeat_3_to_23nodes_200graphs.list', nodes=True)
+    all_r = decode.get_items_list(file_name='comeback_2_1_repeat_3_to_23nodes_200graphs.list', radius=True)
+    all_seeds = decode.get_items_list(file_name='comeback_2_1_repeat_3_to_23nodes_200graphs.list', seed=True)
     total_offset_probability = []
-    for n, r in zip(all_seeds, all_r):
-        nodes = n
-        radius = r
-        seed_list = sorted(decode.get_seeds(file_name='comeback_2_1_repeat_3_to_23nodes_200graphs.list', nodes=n)) 
-        # NOTE: If Random Graphs with RANDOM NODES AND RANDOM RADIUS CHANGE UP THE CODE!!!
-        probability_list = []
+    for node, radius, seed in zip(all_nodes, all_r, all_seeds):
         
         # Round due to median being like 5.5
         round = False
-        for seed in seed_list:
-            G = nx.random_geometric_graph(n=nodes, radius=radius, seed=int(seed))
-            r_sets = geo.bruteForce(G, numSets=-1)
-            offset_dict = get_close_to_unique_rows_offset(analysis.get_distance_matrix(G=G, display=False))
+        G = nx.random_geometric_graph(n=node, radius=radius, seed=int(seed))
+        r_sets = geo.bruteForce(G, numSets=-1)
+        offset_dict = get_close_to_unique_rows_offset(analysis.get_distance_matrix(G=G, display=False))
             
-            ### IMPORTANT: OFFSET SETTINGS TESTING ###   
-            # print(offset_dict)
-            desired_offset_key = get_highest_key(offset_dict) ## CHANGE IF GETTING DIFFERENT OFFSET
-            if (is_float(desired_offset_key) != False) or (desired_offset_key not in offset_dict.keys()):
-                round = True
-                import math
-                desired_offset_key = int(math.ceil(desired_offset_key))
-                # # Ceil Setting ##
-                # if desired_offset_key not in offset_dict.keys():
-                #     for key in offset_dict.keys():
-                #         if key > desired_offset_key:
-                #             desired_offset_key = key
-                #             break
-                
-                # Floor Setting ##
-                if desired_offset_key not in offset_dict.keys():
-                    for key in reversed(offset_dict.keys()):
-                        if key < desired_offset_key:
-                            desired_offset_key = key
-                            break
-
-                offset_items = offset_dict[desired_offset_key]
-            else:
-                offset_items = offset_dict[desired_offset_key]
-
-            offset_found = 0
-            for set_ in r_sets:
-                for item in offset_items:
-                    if item in set_:
-                        offset_found += 1
+        ### IMPORTANT: OFFSET SETTINGS TESTING ###   
+        # print(offset_dict)
+        desired_offset_key = get_median_key(offset_dict) ## CHANGE IF GETTING DIFFERENT OFFSET
+        if (is_float(desired_offset_key) != False) or (desired_offset_key not in offset_dict.keys()):
+            round = True
+            import math
+            desired_offset_key = int(math.ceil(desired_offset_key))
+            # Ceil Setting ##
+            # if desired_offset_key not in offset_dict.keys():
+            #     for key in offset_dict.keys():
+            #         if key > desired_offset_key:
+            #             desired_offset_key = key
+            #             break
+            
+            # Floor Setting ##
+            if desired_offset_key not in offset_dict.keys():
+                for key in reversed(offset_dict.keys()):
+                    if key < desired_offset_key:
+                        desired_offset_key = key
                         break
-            probability_list.append(offset_found / len(r_sets))
-        total_offset_probability.append(sum(probability_list))
+
+            offset_items = offset_dict[desired_offset_key]
+        else:
+            offset_items = offset_dict[desired_offset_key]
+
+        offset_found = 0
+        for set_ in r_sets:
+            for item in offset_items:
+                if item in set_:
+                    offset_found += 1
+                    break
+        total_offset_probability.append(offset_found / len(r_sets))
     with open('/Users/evanalba/random-geometric-graphs/images/offset/offset_types_2.txt', 'a') as file:
         file.write(f'\n{mode}: {str(sum(total_offset_probability))}')
 
-get_offset_probability("Highest")
+# get_offset_probability("Floor median")
 
 #     ### USING BAR CHARTS ###
 #     plt.figure(figsize=(9, 6))
