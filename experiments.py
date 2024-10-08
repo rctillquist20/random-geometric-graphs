@@ -88,7 +88,7 @@ random_integer_list = generate_random_integers(3, 23, num_values=num_values)
 if __name__ == '__main__':
 
     ### IMPORTANT ###
-    dataFile = 'comeback_2_1_repeat_3_to_23nodes_200graphs.list'
+    dataFile = 'comeback_4_1_repeat_3_to_23nodes_200graphs.list'
     #################
 
     data = readList(dataFile) if glob.glob(dataFile) else []

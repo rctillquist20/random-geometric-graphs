@@ -155,9 +155,9 @@ import numpy as np
 def get_offset_probability(mode):
     # NOTE: If Random Graphs with RANDOM NODES AND RANDOM RADIUS CODE HERE!!!
  
-    all_nodes = decode.get_items_list(file_name='comeback_2_1_repeat_3_to_23nodes_200graphs.list', nodes=True)
-    all_r = decode.get_items_list(file_name='comeback_2_1_repeat_3_to_23nodes_200graphs.list', radius=True)
-    all_seeds = decode.get_items_list(file_name='comeback_2_1_repeat_3_to_23nodes_200graphs.list', seed=True)
+    all_nodes = decode.get_items_list(file_name='comeback_4_1_repeat_3_to_23nodes_200graphs.list', nodes=True)
+    all_r = decode.get_items_list(file_name='comeback_4_1_repeat_3_to_23nodes_200graphs.list', radius=True)
+    all_seeds = decode.get_items_list(file_name='comeback_4_1_repeat_3_to_23nodes_200graphs.list', seed=True)
     total_offset_probability = []
     for node, radius, seed in zip(all_nodes, all_r, all_seeds):
         
@@ -199,10 +199,14 @@ def get_offset_probability(mode):
                     offset_found += 1
                     break
         total_offset_probability.append(offset_found / len(r_sets))
-    with open('/Users/evanalba/random-geometric-graphs/images/offset/offset_types_2.txt', 'a') as file:
+    with open('/Users/evanalba/random-geometric-graphs/images/offset/offset_types_4.txt', 'a') as file:
         file.write(f'\n{mode}: {str(sum(total_offset_probability))}')
 
 # get_offset_probability("Floor median")
+
+# Radius affects offset probability or what??
+# Lowest Offset node seems to be starting, but which one??
+# Around the Median offset seems to be 2nd best pick.
 
 #     ### USING BAR CHARTS ###
 #     plt.figure(figsize=(9, 6))
@@ -244,14 +248,14 @@ def get_offset_probability(mode):
 
 ### Note: sum(probability of each graph seed) / Total 190 Graphs (Each Graph Seed == 1, Graph Family = 10) (22 - 3) * 10 = 190
 ## NOTE: Bar Graph Compare types of offsets: highest, lowest, ceil median, floor median. ##
-def get_offset_comparison(probability_list=[], file_name="offset_types_2_200rggs.jpg"):
+def get_offset_comparison(probability_list=[], file_name=""):
     
 
     plt.figure(figsize=(9, 6))
     plt.xlabel('Offset Types')
     plt.ylabel('Probability')
     plt.title('Highest vs Lowest vs Ceil median vs Floor median Offset node(s) always a part of the Metric Dimension?\n Note: 200 Random Graphs from sizes of Nodes of 3 to 22.')
-    plt.ylim(0, 590)  # Set y-axis limits to 0 and 200 # IMPORTANT CHANGE THIS TO CHANGE GRAPH SCALE!!! :O
+    plt.ylim(0, 210)  # Set y-axis limits to 0 and 200 # IMPORTANT CHANGE THIS TO CHANGE GRAPH SCALE!!! :O
     label_list = ['Highest', 'Lowest', 'Ceil median', 'Floor median']
     plt.xticks(range(len(label_list)),  label_list)  # Set x-axis labels to seed names
 
@@ -264,7 +268,7 @@ def get_offset_comparison(probability_list=[], file_name="offset_types_2_200rggs
     save_dir = "/Users/evanalba/random-geometric-graphs/images/offset/"
     plt.savefig(f"{save_dir}/{file_name}")
 
-get_offset_comparison(probability_list=[480.33759737740166, 560.6923500010033, 527.8054703290321, 529.6745534141033])
+get_offset_comparison(probability_list=[157.24546287256362, 189.3325593550223, 174.32054627032767, 174.0943557941372],file_name="offset_types_4_200rggs.jpg")
 
 # negatives, not isolated vertices pick rate?
 
