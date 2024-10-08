@@ -1,0 +1,15 @@
+Fam (Best to worst):
+- Floor median 
+- Ceil median
+- Lowest
+- Highest
+Ran:
+- Lowest
+- Floor Median
+- Ceil Median
+- Highest
+
+Seems to be:
+- Floor Median
+- Ceil Median or Lowest
+- Highest
