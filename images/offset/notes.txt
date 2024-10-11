@@ -1,15 +1,18 @@
-Fam (Best to worst):
+Family set (Best to worst):
 - Floor median 
 - Ceil median
 - Lowest
 - Highest
-Ran:
+Random sets:
 - Lowest
-- Floor Median
-- Ceil Median
+- Floor Median or Ceil Median
 - Highest
 
-Seems to be:
+Seems to be (Fam + Ran):
 - Floor Median
 - Ceil Median or Lowest
 - Highest
+
+Ideas:
+- Get data set with seeds that have no isolated vertices.
+- Kind of doubting k - 1 isolated.
