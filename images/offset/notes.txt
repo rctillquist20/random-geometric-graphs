@@ -16,3 +16,80 @@ Seems to be (Fam + Ran):
 Ideas:
 - Get data set with seeds that have no isolated vertices.
 - Kind of doubting k - 1 isolated.
+
+- Sharing top with same offset common value
+
+FIRST TEST:
+Calculate success of offset nodes of Five-number summary:
+
+1. the sample minimum (smallest observation)
+2. the lower quartile or first quartile
+3. the median (the middle value)
+4. the upper quartile or third quartile
+5. the sample maximum (largest observation)
+
+- Note:
+
+import statistics
+
+time_diff = [0.45,0.483333,0.5,0.516667,0.5333333]
+statistics.quantiles(time_diff, method='inclusive')
+
+Inclusive - Including the last number.
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
+
+[3.25, 5.5, 7.75]
+
+
+Exclusive - Excluding the last number.
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
+
+[2.75, 5.5, 8.25]
+
+In other words:
+Python: Setting the method to “inclusive” is used for describing population
+data or for samples that are known to include the most extreme values from the
+population.
+
+Inclusive: Refers to ranges that include the endpoints. For example, in the range 1 to 5 inclusive, both 1 and 5 are part of the set (i.e., {1, 2, 3, 4, 5}).
+Exclusive: Refers to ranges that do not include the endpoints. For example, in the range 1 to 5 exclusive, the set would be {2, 3, 4} (1 and 5 are not included).
+
+SECOND TEST:
+- Percentiles (Ceil and Floor) compared with total original_total_offsets.
+* 0th Percentile (P0): This is the minimum value in the dataset.
+* 100th Percentile (P100): This is the maximum value in the dataset.
+1 - 100%
+
+AMAZING SOURCE:
+https://www.scribbr.com/statistics/quartiles-quantiles/ 
+
+EXTRA:
+https://www.scribbr.com/frequently-asked-questions/two-methods-for-calculating-interquartile-range/#:~:text=The%20two%20most%20common%20methods,set%20in%20identifying%20the%20quartiles. 
+
+Quantiles are the parts of Distribution cut up into pieces on where we find 
+the median.
+
+Wikipedia: IMPORTANT NOTES LEARNING
+Common quantiles have special names, such as quartiles (four groups) (BOX and WHISKERS DIAGRAM), 
+deciles (ten groups), and percentiles (100 groups). 
+
+The 25th quantile is also known as the first quartile, or Q1, and is the
+value at which 25% of data points fall below it when the data is arranged in
+increasing order.
+
+- Upper Quartile (Upper median) (Inclusive or EXCLUSIVE, Ceil or FLOOR)
+- Lower Quartile (Lower Median) (Inclusive or EXCLUSIVE, Ceil or FLOOR)
+
+Work with the most commonly used quantiles have special names:
+
+Quartiles (4-quantiles): Three quartiles split the data into four parts.
+Deciles (10-quantiles): Nine deciles split the data into 10 parts.
+Percentiles (100-quantiles): 99 percentiles split the data into 100 parts
+
+so the value in 15% of the data?
+The 15th quantile represents the value below which 15% of the data lies. 
+In other words, if you have a dataset of 100 values, the 15th quantile would 
+be the value below which 15 of those values fall
+
+To calculate the quartile you take the median between 2 values when there is a
+tie for the 25th quartile.

@@ -1,6 +1,6 @@
 # TEST HERE
 
-import decode
+#import decode
 
 # test = decode.get_data(file_name='comeback_2_1_repeat_3_to_23nodes_200graphs.list', output=False)
 # for i in test:
@@ -31,31 +31,68 @@ import decode
 
 # Finds the element with the highest count in a specific matrix row array so 
 # can get the highest offset.
-def get_element_with_highest_count(array):
-    count_dict = {}
-    for element in array:
-        count_dict[element] = count_dict.get(element, 0) + 1
-    max_count = max(count_dict.values())
+# def get_element_with_highest_count(array):
+#     count_dict = {}
+#     for element in array:
+#         count_dict[element] = count_dict.get(element, 0) + 1
+#     max_count = max(count_dict.values())
 
-    return max_count
+#     return max_count
 
-def get_close_to_unique_rows_offset(matrix):
-    offset = {}
+# def get_close_to_unique_rows_offset(matrix):
+#     offset = {}
 
-    for row_index, row in enumerate(matrix):
-        offset.setdefault(get_element_with_highest_count(row), []).append(row_index)
+#     for row_index, row in enumerate(matrix):
+#         offset.setdefault(get_element_with_highest_count(row), []).append(row_index)
 
-    return dict(sorted(offset.items()))
+#     return dict(sorted(offset.items()))
+# # Example usage:
+# matrix = [
+# [0, 1, 2, 1, 2, 3],
+# [1, 0, 1, 1, 1, 2],
+# [2, 1, 0, 2, 2, 1],
+# [1, 1, 2, 0, 2, 3],
+# [2, 1, 2, 2, 0, 3],
+# [3, 2, 1, 3, 3, 0]
+# ]
+
+# # result = count_elements_and_group(matrix)
+# result = get_close_to_unique_rows_offset(matrix)
+# print(result)
+
+import statistics
+
+# time_diff = [i for i in range(1, 11)]
+# # Example source: https://www.scribbr.com/statistics/quartiles-quantiles/
+# # time_diff = [2, 2, 4, 5, 5, 5, 8, 9, 9, 9, 12]
+# print(time_diff,'\nExclusive:\n')
+# # Split:
+# # Quartiles (4-quantiles): Three quartiles (points of data) split the data into four parts.
+# # Cats and whiskers.
+# # Deciles (10-quantiles): Nine deciles split the data into 10 parts.
+
+# print(statistics.quantiles(data=time_diff, n=4, method='exclusive'))
+# print("Inclusive:\n",statistics.quantiles(data=time_diff, n=4, method='inclusive'))
+
+# def count_elements_in_array_of_tuples(array):
+#   count = 0
+#   for tuple in array:
+#     count += len(tuple)
+#   return count
+
 # Example usage:
-matrix = [
-[0, 1, 2, 1, 2, 3],
-[1, 0, 1, 1, 1, 2],
-[2, 1, 0, 2, 2, 1],
-[1, 1, 2, 0, 2, 3],
-[2, 1, 2, 2, 0, 3],
-[3, 2, 1, 3, 3, 0]
-]
+# my_array = [(1, 2, 3), (4, 5), (6, 7, 8, 9)]
+# print(count_elements_in_array_of_tuples(my_array))  # Output: 9
+# print(len([(1, 3), (4, 5, 1)]))
 
-# result = count_elements_and_group(matrix)
-result = get_close_to_unique_rows_offset(matrix)
-print(result)
+def count_integer_in_array_of_tuples(array, target_integer):
+  count = 0
+  for tuple in array:
+    count += tuple.count(target_integer)
+  return count
+
+# Example usage:
+my_array = [(1, 2, 3), (1, 1, 1), (6, 7, 8, 1)]
+target_integer = 1
+occurrences = count_integer_in_array_of_tuples(my_array, target_integer)
+print(occurrences)  # Output: 5

@@ -4,6 +4,8 @@ sys.path.insert(1, '/Users/evanalba/random-geometric-graphs/')
 # from analysis import get_distance_matrix
 import analysis
 import decode
+import statistics
+
 # Question: Will having the lowest / middle / highest (excluding isolated 
 # vertices) offset to unique rows NODES GROUP be 
 # always have 100% pick rate included in metric dimension tuple?
@@ -59,11 +61,20 @@ def get_lowest_and_least_common_count(dictionary):
     lowest = get_lowest_key(dictionary)
     dictionary.get(lowest)
 
+
 def get_median_key(dictionary):
     keys = list(dictionary.keys())
-    import statistics
+   
     median_key = statistics.median(keys)
     return median_key
+
+
+def get_lower_quartile_key(dictionary):
+    pass
+
+
+def get_upper_quartile_key(dictionary):
+    pass
 
 def is_float(value):
   try:
@@ -71,7 +82,19 @@ def is_float(value):
     return float_value != int(float_value)
   except ValueError:
     return False
-  
+
+
+def count_elements_in_array_of_tuples(array):
+  count = 0
+  for tuple in array:
+    count += len(tuple)
+  return count
+
+def count_integer_in_array_of_tuples(array, target_integer):
+  count = 0
+  for tuple in array:
+    count += tuple.count(target_integer)
+  return count
 
 # import multilateration as geo
 # import math
@@ -278,64 +301,72 @@ def get_offset_comparison(probability_list=[], file_name=""):
 # get_offset_comparison(probability_list=[157.24546287256362, 189.3325593550223, 174.32054627032767, 174.0943557941372],file_name="offset_types_4_200rggs.jpg")
 
 ## Are ALL lowest offset nodes within all possible Metric Dimension R sets? ##
-# Note FIX: Different from old function because every time we first saw
+# # Note FIX: Different from old function because every time we first saw
 # a low offset node, we just broke and went to the next r set WITHOUT considering
 # there being maybe 2 or more lowest offset nodes in the same r set...
+#
+# PURPOSE: Calculate success of offset nodes of Five-number summary!!!
 def get_offset_probability(mode, filename, datalist):
     # NOTE: If Random Graphs with RANDOM NODES AND RANDOM RADIUS CODE HERE!!!
  
     all_nodes = decode.get_items_list(file_name=f'{datalist}', nodes=True)
     all_r = decode.get_items_list(file_name=f'{datalist}', radius=True)
     all_seeds = decode.get_items_list(file_name=f'{datalist}', seed=True)
-    original_total_offsets = 0
+    total_rsets_r_count = 0
     total_offset_probability = 0
     for node, radius, seed in zip(all_nodes, all_r, all_seeds):
-        
+        # if (node != 20):
+        #     continue
         # Round due to median being like 5.5
         round = False
         G = nx.random_geometric_graph(n=node, radius=radius, seed=int(seed))
         r_sets = geo.bruteForce(G, numSets=-1)
+
+        ## Note: Offset_dict keys are SORTED!!!
         offset_dict = get_close_to_unique_rows_offset(analysis.get_distance_matrix(G=G, display=False))
             
         ### IMPORTANT: OFFSET SETTINGS TESTING ###   
         # print(offset_dict)
-        desired_offset_key = get_lowest_key(offset_dict) ## CHANGE IF GETTING DIFFERENT OFFSET
+        desired_offset_key = get_highest_key(offset_dict) ## CHANGE IF GETTING DIFFERENT OFFSET
         if (is_float(desired_offset_key) != False) or (desired_offset_key not in offset_dict.keys()):
             round = True
             import math
             desired_offset_key = int(math.ceil(desired_offset_key))
             # Ceil Setting ##
-            # if desired_offset_key not in offset_dict.keys():
-            #     for key in offset_dict.keys():
-            #         if key > desired_offset_key:
-            #             desired_offset_key = key
-            #             break
-            
-            # Floor Setting ##
             if desired_offset_key not in offset_dict.keys():
-                for key in reversed(offset_dict.keys()):
-                    if key < desired_offset_key:
+                for key in offset_dict.keys():
+                    if key > desired_offset_key:
                         desired_offset_key = key
                         break
+            
+            # Floor Setting ##
+            # if desired_offset_key not in offset_dict.keys():
+            #     for key in reversed(offset_dict.keys()):
+            #         if key < desired_offset_key:
+            #             desired_offset_key = key
+            #             break
 
             offset_items = offset_dict[desired_offset_key]
         else:
             offset_items = offset_dict[desired_offset_key]
-
-        original_total_offsets += len(offset_items)
-        
-        for lowest_offset_node in offset_items:
-            for set_ in r_sets:
-                if lowest_offset_node in set_:
-                    total_offset_probability += 1
-                    break
+        # print(node, radius, seed)
+        # print(offset_items)
+        # print(r_sets)
+        total_rsets_r_count += count_elements_in_array_of_tuples(r_sets)
+        # print(total_rsets_r_count)
+        # Count the number of times an offset node appears in the r_sets.
+        for offset_node in offset_items:
+            total_offset_probability += count_integer_in_array_of_tuples(r_sets, offset_node)
+        # print(total_offset_probability)
+        # break
+    # return
 
     # IMPORTANT CHANGE FILE APPEND HERE!
     with open(f'/Users/evanalba/random-geometric-graphs/images/offset/{filename}.txt', 'a') as file:
-        file.write(f'\nOriginal Total Offsets: {original_total_offsets}') # Comment out after 1st use!!!
+        file.write(f'Total R sets r count: {total_rsets_r_count}') # IMPORTANT: Comment out after 1st use of same dataset!!!
         file.write(f'\n{mode}: {str(total_offset_probability)}')
 
-get_offset_probability("Lowest", filename="offset_types_2", datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list")
+get_offset_probability("Highest", filename="offset_types_2", datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list")
 
 
 # def test1(mode):
