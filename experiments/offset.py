@@ -5,6 +5,7 @@ sys.path.insert(1, '/Users/evanalba/random-geometric-graphs/')
 import analysis
 import decode
 import statistics
+import math
 
 # Question: Will having the lowest / middle / highest (excluding isolated 
 # vertices) offset to unique rows NODES GROUP be 
@@ -69,12 +70,44 @@ def get_median_key(dictionary):
     return median_key
 
 
-def get_lower_quartile_key(dictionary):
-    pass
+def get_lower_quartile_key(dictionary, method):
+  if (method == "exclusive") or (method == "inclusive"):
+    values = list(dictionary.keys())
+    if len(values) > 1:
+        lower_quartile = 0
+        return statistics.quantiles(values, n=4, method=f"{method}")[lower_quartile]
+    return values[0]
+
+  print("Error: Quantile method not exclusive or inclusive.")
+  quit()
 
 
-def get_upper_quartile_key(dictionary):
-    pass
+def get_upper_quartile_key(dictionary, method):
+  if (method == "exclusive") or (method == "inclusive"):
+    values = list(dictionary.keys())
+    if len(values) > 1:
+        upper_quartile = 2
+        return statistics.quantiles(values, n=4, method=f"{method}")[upper_quartile]
+    return values[0]
+ 
+  print("Error: Quantile method not exclusive or inclusive.")
+  quit()
+
+
+# def get_upper_quartile_key(dictionary, method):
+#   if (method == "exclusive") or (method == "inclusive"):
+#     values = list(dictionary.keys())
+#     upper_quartile = 3  # Correct the upper quartile index
+
+#     try:
+#       return statistics.quantiles(values, n=4, method=f"{method}")[upper_quartile]
+#     except :
+#       # Handle the case where the index is out of range
+#       print("Error: Quantile index out of range.")
+#       return None
+
+#   print("Error: Quantile method not exclusive or inclusive.")
+#   return None
 
 def is_float(value):
   try:
@@ -300,6 +333,52 @@ def get_offset_comparison(probability_list=[], file_name=""):
 
 # get_offset_comparison(probability_list=[157.24546287256362, 189.3325593550223, 174.32054627032767, 174.0943557941372],file_name="offset_types_4_200rggs.jpg")
 
+
+
+def get_ceil_desired_key(offset_dict, offset_key):
+    ## Ceil Setting ##
+    desired_offset_key = int(math.ceil(offset_key))
+    if desired_offset_key not in offset_dict.keys():
+        for key in offset_dict.keys():
+            if key > desired_offset_key:
+                desired_offset_key = key
+                break
+
+    # NOTE: If we can not find a valid ceil key preferred, we will try
+    # getting the floor key instead. Same goes with Floor preferred
+    # first method.
+    try:
+        offset_items = offset_dict[desired_offset_key]
+    except KeyError:
+        if desired_offset_key not in offset_dict.keys():
+            for key in reversed(offset_dict.keys()):
+                if key < desired_offset_key:
+                    desired_offset_key = key
+                    return offset_dict[desired_offset_key]
+    else:
+        return offset_items
+    
+
+def get_floor_desired_key(offset_dict, offset_key):
+    ## Floor Setting ##
+    desired_offset_key = int(math.floor(offset_key))
+    if desired_offset_key not in offset_dict.keys():
+        for key in reversed(offset_dict.keys()):
+            if key < desired_offset_key:
+                desired_offset_key = key
+                break
+    
+    try:
+        offset_items = offset_dict[desired_offset_key]
+    except KeyError:
+        if desired_offset_key not in offset_dict.keys():
+            for key in offset_dict.keys():
+                if key > desired_offset_key:
+                    desired_offset_key = key
+                    return offset_dict[desired_offset_key]
+    else:
+        return offset_items
+
 ## Are ALL lowest offset nodes within all possible Metric Dimension R sets? ##
 # # Note FIX: Different from old function because every time we first saw
 # a low offset node, we just broke and went to the next r set WITHOUT considering
@@ -308,7 +387,6 @@ def get_offset_comparison(probability_list=[], file_name=""):
 # PURPOSE: Calculate success of offset nodes of Five-number summary!!!
 def get_offset_probability(mode, filename, datalist):
     # NOTE: If Random Graphs with RANDOM NODES AND RANDOM RADIUS CODE HERE!!!
- 
     all_nodes = decode.get_items_list(file_name=f'{datalist}', nodes=True)
     all_r = decode.get_items_list(file_name=f'{datalist}', radius=True)
     all_seeds = decode.get_items_list(file_name=f'{datalist}', seed=True)
@@ -324,29 +402,22 @@ def get_offset_probability(mode, filename, datalist):
 
         ## Note: Offset_dict keys are SORTED!!!
         offset_dict = get_close_to_unique_rows_offset(analysis.get_distance_matrix(G=G, display=False))
-            
+        
         ### IMPORTANT: OFFSET SETTINGS TESTING ###   
         # print(offset_dict)
-        desired_offset_key = get_highest_key(offset_dict) ## CHANGE IF GETTING DIFFERENT OFFSET
+        # desired_offset_key = get_upper_quartile_key(offset_dict, method="exclusive") ## CHANGE IF GETTING DIFFERENT OFFSET
+        desired_offset_key = get_highest_key(offset_dict)
         if (is_float(desired_offset_key) != False) or (desired_offset_key not in offset_dict.keys()):
             round = True
-            import math
-            desired_offset_key = int(math.ceil(desired_offset_key))
-            # Ceil Setting ##
-            if desired_offset_key not in offset_dict.keys():
-                for key in offset_dict.keys():
-                    if key > desired_offset_key:
-                        desired_offset_key = key
-                        break
+            # print(desired_offset_key)
             
-            # Floor Setting ##
-            # if desired_offset_key not in offset_dict.keys():
-            #     for key in reversed(offset_dict.keys()):
-            #         if key < desired_offset_key:
-            #             desired_offset_key = key
-            #             break
-
-            offset_items = offset_dict[desired_offset_key]
+            ##### IMPORTANT #####
+            ### Ceil Setting ###
+            # offset_items = get_ceil_desired_key(offset_dict = offset_dict, offset_key = desired_offset_key)
+            
+            ### Floor Setting ###
+            # offset_items = get_floor_desired_key(offset_dict = offset_dict, offset_key = desired_offset_key)
+        
         else:
             offset_items = offset_dict[desired_offset_key]
         # print(node, radius, seed)
@@ -367,7 +438,8 @@ def get_offset_probability(mode, filename, datalist):
         file.write(f'\n{mode}: {str(total_offset_probability)}')
 
 get_offset_probability("Highest", filename="offset_types_2", datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list")
-
+get_offset_probability("Highest", filename="offset_types_3", datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list")
+get_offset_probability("Highest", filename="offset_types_4", datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list")
 
 # def test1(mode):
 #     all_nodes = decode.get_items_list(file_name='comeback_4_1_repeat_3_to_23nodes_200graphs.list', nodes=True)

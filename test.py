@@ -85,14 +85,41 @@ import statistics
 # print(count_elements_in_array_of_tuples(my_array))  # Output: 9
 # print(len([(1, 3), (4, 5, 1)]))
 
-def count_integer_in_array_of_tuples(array, target_integer):
-  count = 0
-  for tuple in array:
-    count += tuple.count(target_integer)
-  return count
+# def count_integer_in_array_of_tuples(array, target_integer):
+#   count = 0
+#   for tuple in array:
+#     count += tuple.count(target_integer)
+#   return count
 
-# Example usage:
-my_array = [(1, 2, 3), (1, 1, 1), (6, 7, 8, 1)]
-target_integer = 1
-occurrences = count_integer_in_array_of_tuples(my_array, target_integer)
-print(occurrences)  # Output: 5
+# # Example usage:
+# my_array = [(1, 2, 3), (1, 1, 1), (6, 7, 8, 1)]
+# target_integer = 1
+# occurrences = count_integer_in_array_of_tuples(my_array, target_integer)
+# # print(occurrences)  # Output: 5
+
+import statistics
+
+def get_upper_quartile_key(dictionary, method):
+  if (method == "exclusive") or (method == "inclusive"):
+    values = list(dictionary.keys())
+    if len(values) > 1:
+        upper_quartile = 2
+        return statistics.quantiles(values, n=4, method=f"{method}")[upper_quartile]
+    return values[0]
+ 
+  print("Error: Quantile method not exclusive or inclusive.")
+  quit()
+
+
+
+import random
+
+
+# Create a sample dictionary with random values
+sample_dict = {1:[0, 3]}
+print(sample_dict[-1])
+# Get the lower quartile key
+lower_quartile_key = get_upper_quartile_key(sample_dict, method="exclusive")
+
+# Print the result
+print("Lower quartile key:", lower_quartile_key)

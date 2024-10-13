@@ -28,6 +28,18 @@ Calculate success of offset nodes of Five-number summary:
 4. the upper quartile or third quartile
 5. the sample maximum (largest observation)
 
+Ceil Exclusive Upper Quartile
+Ceil Inclusive Upper Quartile
+Floor Exclusive Upper Quartile
+Floor Inclusive Upper Quartile
+
+
+Ceil Exclusive Lower Quartile
+Ceil Inclusive Lower Quartile
+Floor Exclusive Lower Quartile
+Floor Inclusive Lower Quartile
+
+
 - Note:
 
 import statistics
