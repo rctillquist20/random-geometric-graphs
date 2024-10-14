@@ -1,0 +1,13 @@
+Total R sets r count: 737113
+Highest: 122837
+Lowest: 254616
+Ceil median: 158410
+Floor median: 169153
+Ceil Exclusive Upper Quartile: 225529
+Ceil Inclusive Upper Quartile: 209471
+Floor Exclusive Upper Quartile: 182219
+Floor Inclusive Upper Quartile: 154707
+Ceil Exclusive Lower Quartile: 160322
+Ceil Inclusive Lower Quartile: 183346
+Floor Exclusive Lower Quartile: 177511
+Floor Inclusive Lower Quartile: 179527

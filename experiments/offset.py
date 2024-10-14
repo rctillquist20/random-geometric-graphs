@@ -70,18 +70,6 @@ def get_median_key(dictionary):
     return median_key
 
 
-def get_lower_quartile_key(dictionary, method):
-  if (method == "exclusive") or (method == "inclusive"):
-    values = list(dictionary.keys())
-    if len(values) > 1:
-        lower_quartile = 0
-        return statistics.quantiles(values, n=4, method=f"{method}")[lower_quartile]
-    return values[0]
-
-  print("Error: Quantile method not exclusive or inclusive.")
-  quit()
-
-
 def get_upper_quartile_key(dictionary, method):
   if (method == "exclusive") or (method == "inclusive"):
     values = list(dictionary.keys())
@@ -90,6 +78,18 @@ def get_upper_quartile_key(dictionary, method):
         return statistics.quantiles(values, n=4, method=f"{method}")[upper_quartile]
     return values[0]
  
+  print("Error: Quantile method not exclusive or inclusive.")
+  quit()
+
+
+def get_lower_quartile_key(dictionary, method):
+  if (method == "exclusive") or (method == "inclusive"):
+    values = list(dictionary.keys())
+    if len(values) > 1:
+        lower_quartile = 0
+        return statistics.quantiles(values, n=4, method=f"{method}")[lower_quartile]
+    return values[0]
+
   print("Error: Quantile method not exclusive or inclusive.")
   quit()
 
@@ -310,16 +310,21 @@ import numpy as np
 
 
 ### Note: sum(probability of each graph seed) / Total 190 Graphs (Each Graph Seed == 1, Graph Family = 10) (22 - 3) * 10 = 190
-## NOTE: Bar Graph Compare types of offsets: highest, lowest, ceil median, floor median. ##
-def get_offset_comparison(probability_list=[], file_name=""):
+## NOTE: Bar Graph Compare types of offsets: highest, lowest, ceil median, floor median.
+# 12
+def get_offset_comparison(probability_list, file_name, total_r_sets):
     
 
     plt.figure(figsize=(9, 6))
     plt.xlabel('Offset Types')
     plt.ylabel('Probability')
-    plt.title('Highest vs Lowest vs Ceil median vs Floor median Offset node(s) always a part of the Metric Dimension?\n Note: 200 Random Graphs from sizes of Nodes of 3 to 22.')
-    plt.ylim(0, 210)  # Set y-axis limits to 0 and 200 # IMPORTANT CHANGE THIS TO CHANGE GRAPH SCALE!!! :O
-    label_list = ['Highest', 'Lowest', 'Ceil median', 'Floor median']
+    plt.title(f'Frenquency of type of Offset node(s) always a part of the Metric Dimension R sets?\n Note: 200 Random Graphs from sizes of Nodes of 3 to 22.\n Total R sets r count: {total_r_sets}')
+    plt.ylim(0, total_r_sets)  # Set y-axis limits to 0 and 200 # IMPORTANT CHANGE THIS TO CHANGE GRAPH SCALE!!! :O
+    label_list = ['Highest', 'Lowest', 'Ceil median', 'Floor median', 
+                  'Ceil Exclusive Upper Quartile', 'Ceil Inclusive Upper Quartile',
+                  'Floor Exclusive Upper Quartile', 'Floor Inclusive Upper Quartile', 
+                  'Ceil Exclusive Lower Quartile', 'Ceil Inclusive Lower Quartile',
+                  'Floor Exclusive Lower Quartile', 'Floor Inclusive Lower Quartile']
     plt.xticks(range(len(label_list)),  label_list)  # Set x-axis labels to seed names
 
     # Create bars with probability values on top
@@ -331,7 +336,7 @@ def get_offset_comparison(probability_list=[], file_name=""):
     save_dir = "/Users/evanalba/random-geometric-graphs/images/offset/"
     plt.savefig(f"{save_dir}/{file_name}")
 
-# get_offset_comparison(probability_list=[157.24546287256362, 189.3325593550223, 174.32054627032767, 174.0943557941372],file_name="offset_types_4_200rggs.jpg")
+get_offset_comparison(probability_list=[122837, 254616, 158410, 169153], file_name="offset_types_2_200rggs.jpg", total_r_sets=737113)
 
 
 
@@ -405,18 +410,19 @@ def get_offset_probability(mode, filename, datalist):
         
         ### IMPORTANT: OFFSET SETTINGS TESTING ###   
         # print(offset_dict)
-        # desired_offset_key = get_upper_quartile_key(offset_dict, method="exclusive") ## CHANGE IF GETTING DIFFERENT OFFSET
-        desired_offset_key = get_highest_key(offset_dict)
+        #desired_offset_key = get_lower_quartile_key(offset_dict, method="exclusive") ## CHANGE IF GETTING DIFFERENT OFFSET
+        desired_offset_key = get_lower_quartile_key(offset_dict, method="inclusive")
+        #desired_offset_key = get_median_key(offset_dict)
         if (is_float(desired_offset_key) != False) or (desired_offset_key not in offset_dict.keys()):
             round = True
             # print(desired_offset_key)
             
             ##### IMPORTANT #####
             ### Ceil Setting ###
-            # offset_items = get_ceil_desired_key(offset_dict = offset_dict, offset_key = desired_offset_key)
+            #offset_items = get_ceil_desired_key(offset_dict = offset_dict, offset_key = desired_offset_key)
             
             ### Floor Setting ###
-            # offset_items = get_floor_desired_key(offset_dict = offset_dict, offset_key = desired_offset_key)
+            offset_items = get_floor_desired_key(offset_dict = offset_dict, offset_key = desired_offset_key)
         
         else:
             offset_items = offset_dict[desired_offset_key]
@@ -434,12 +440,13 @@ def get_offset_probability(mode, filename, datalist):
 
     # IMPORTANT CHANGE FILE APPEND HERE!
     with open(f'/Users/evanalba/random-geometric-graphs/images/offset/{filename}.txt', 'a') as file:
-        file.write(f'Total R sets r count: {total_rsets_r_count}') # IMPORTANT: Comment out after 1st use of same dataset!!!
+        #file.write(f'Total R sets r count: {total_rsets_r_count}') # IMPORTANT: Comment out after 1st use of same dataset!!!
         file.write(f'\n{mode}: {str(total_offset_probability)}')
 
-get_offset_probability("Highest", filename="offset_types_2", datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list")
-get_offset_probability("Highest", filename="offset_types_3", datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list")
-get_offset_probability("Highest", filename="offset_types_4", datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list")
+# name = "Floor Inclusive Lower Quartile"
+# get_offset_probability(f"{name}", filename="offset_types_2", datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list")
+# get_offset_probability(f"{name}", filename="offset_types_3", datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list")
+# get_offset_probability(f"{name}", filename="offset_types_4", datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list")
 
 # def test1(mode):
 #     all_nodes = decode.get_items_list(file_name='comeback_4_1_repeat_3_to_23nodes_200graphs.list', nodes=True)
