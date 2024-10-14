@@ -315,7 +315,7 @@ import numpy as np
 def get_offset_comparison(probability_list, file_name, total_r_sets):
     
 
-    plt.figure(figsize=(9, 6))
+    plt.figure(figsize=(38, 6))
     plt.xlabel('Offset Types')
     plt.ylabel('Probability')
     plt.title(f'Frenquency of type of Offset node(s) always a part of the Metric Dimension R sets?\n Note: 200 Random Graphs from sizes of Nodes of 3 to 22.\n Total R sets r count: {total_r_sets}')
@@ -328,15 +328,28 @@ def get_offset_comparison(probability_list, file_name, total_r_sets):
     plt.xticks(range(len(label_list)),  label_list)  # Set x-axis labels to seed names
 
     # Create bars with probability values on top
-    bars = plt.bar(range(len(label_list)), probability_list, width=0.5, color=['blue', 'orange', 'green', 'red'])
+    bars = plt.bar(range(len(label_list)), probability_list, width=0.5, color=plt.cm.tab20(range(len(label_list))))
     for bar, value in zip(bars, probability_list):
-        plt.text(bar.get_x() + bar.get_width() / 2, value + 3, f'{value:.2f}', ha='center')
+        plt.text(bar.get_x() + bar.get_width() / 2, value + (total_r_sets / 74), f'{value}', ha='center')
     # plt.show()
 
     save_dir = "/Users/evanalba/random-geometric-graphs/images/offset/"
     plt.savefig(f"{save_dir}/{file_name}")
 
-get_offset_comparison(probability_list=[122837, 254616, 158410, 169153], file_name="offset_types_2_200rggs.jpg", total_r_sets=737113)
+# get_offset_comparison(probability_list=[122837, 254616, 158410, 169153, 225529, 
+#                                         209471, 182219, 154707, 160322, 183346,
+#                                         177511, 179527], 
+#                       file_name="offset_types_2_200rggs.jpg", total_r_sets=737113)
+
+# get_offset_comparison(probability_list=[27141, 82094, 47282, 35203, 71167, 
+#                                         55851, 48999, 50626, 35574, 42820,
+#                                         52182, 49147], 
+#                       file_name="offset_types_3_200rggs.jpg", total_r_sets=212370)
+
+# get_offset_comparison(probability_list=[42869, 115790, 66190, 77435, 80129, 
+#                                         75719, 71380, 67675, 55743, 53602,
+#                                         53749, 54977], 
+#                       file_name="offset_types_4_200rggs.jpg", total_r_sets=384357)
 
 
 
