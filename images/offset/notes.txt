@@ -3,10 +3,13 @@ Family set (Best to worst):
 - Ceil median
 - Lowest
 - Highest
+
 Random sets:
 - Lowest
-- Floor Median or Ceil Median
-- Highest
+- Ceil Exclusive Upper Quartile
+- Ceil Inclusive Upper Quartile (2, 3) or Floor median (4)
+- Ceil Inclusive Lower Quartile (2) or Floor Exclusive Lower Quartile (3) or 
+Ceil Inclusive Upper Quartile (4)
 
 Seems to be (Fam + Ran):
 - Floor Median
@@ -16,8 +19,11 @@ Seems to be (Fam + Ran):
 Ideas:
 - Get data set with seeds that have no isolated vertices.
 - Kind of doubting k - 1 isolated.
-
 - Sharing top with same offset common value
+- Is there at least 1 r set that contains the lowest and Ceil Exclusive Upper Quartile?
+
+- Find the 1st pick best lowset offset node:
+    - test
 
 FIRST TEST:
 Calculate success of offset nodes of Five-number summary:

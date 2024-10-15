@@ -88,7 +88,10 @@ random_integer_list = generate_random_integers(3, 23, num_values=num_values)
 if __name__ == '__main__':
 
     ### IMPORTANT ###
-    dataFile = 'comeback_4_1_repeat_3_to_23nodes_200graphs.list'
+    dataFile = 'comeback_2_1_repeat_3_to_23nodes_200graphs.list'
+    
+    ## NOTE: IF YOU RUN EXPERIMENTS ON THE SAME FILE NAME WHICH HAS ALREADY DATA,
+    ## IT WILL ADD UP. 200 graphs wanted. File had already 200, now file has 400 graphs. :/
     #################
 
     data = readList(dataFile) if glob.glob(dataFile) else []
