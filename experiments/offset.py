@@ -336,10 +336,10 @@ def get_offset_comparison(probability_list, file_name, total_r_sets):
     save_dir = "/Users/evanalba/random-geometric-graphs/images/offset/"
     plt.savefig(f"{save_dir}/{file_name}")
 
-# get_offset_comparison(probability_list=[122837, 254616, 158410, 169153, 225529, 
-#                                         209471, 182219, 154707, 160322, 183346,
-#                                         177511, 179527], 
-#                       file_name="offset_types_2_200rggs.jpg", total_r_sets=737113)
+# get_offset_comparison(probability_list=[48597, 109209, 95997, 89046, 86686, 
+#                                         86687, 115082, 98368, 87834, 91901,
+#                                         118154, 118529], 
+#                       file_name="offset_types_2_200rggs.jpg", total_r_sets=400542)
 
 # get_offset_comparison(probability_list=[27141, 82094, 47282, 35203, 71167, 
 #                                         55851, 48999, 50626, 35574, 42820,
@@ -425,7 +425,7 @@ def get_offset_probability(mode, filename, datalist):
         # print(offset_dict)
         #desired_offset_key = get_lower_quartile_key(offset_dict, method="exclusive") ## CHANGE IF GETTING DIFFERENT OFFSET
         desired_offset_key = get_lower_quartile_key(offset_dict, method="inclusive")
-        #desired_offset_key = get_median_key(offset_dict)
+        #desired_offset_key = get_lowest_key(offset_dict)
         if (is_float(desired_offset_key) != False) or (desired_offset_key not in offset_dict.keys()):
             round = True
             # print(desired_offset_key)

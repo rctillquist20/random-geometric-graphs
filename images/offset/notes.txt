@@ -45,6 +45,8 @@ Ceil Inclusive Lower Quartile
 Floor Exclusive Lower Quartile
 Floor Inclusive Lower Quartile
 
+choose(12, 2) = 66 ways
+Test pairs of statistics 5 Classification summary of True/False Graphs
 
 - Note:
 

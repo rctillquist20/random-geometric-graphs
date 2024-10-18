@@ -138,13 +138,13 @@ def is_r_set(low_items, offset_items, r_sets):
 def test1(datalist, filename):
     true_count = 0
     false_count = 0
-    count = 0
+    # count = 0
 
     all_nodes = decode.get_items_list(file_name=f'{datalist}', nodes=True)
     # Make sure the file has the total of N number of graphs wanted...
-    print(len(all_nodes))
-    print(max(all_nodes))
-    return
+    # print(len(all_nodes))
+    # print(max(all_nodes))
+    # return
     all_r = decode.get_items_list(file_name=f'{datalist}', radius=True)
     all_seeds = decode.get_items_list(file_name=f'{datalist}', seed=True)
 
@@ -182,7 +182,7 @@ def test1(datalist, filename):
     with open(f'/Users/evanalba/random-geometric-graphs/images/offset/tests/test1/{filename}.txt', 'a') as file:
         file.write(f'\nTrue: {true_count}\nFalse: {false_count}')
 
-test1(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2")
+# test1(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2")
 # test1(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3")
 # test1(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4")
 
