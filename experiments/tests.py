@@ -9,6 +9,22 @@ import numpy as np
 import math
 import statistics
 
+def get_close_to_unique_rows_offset(matrix):
+    offset = {}
+
+    for row_index, row in enumerate(matrix):
+        offset.setdefault(get_element_with_highest_count(row), []).append(row_index)
+
+    return dict(sorted(offset.items()))
+
+# Helps us get the highest offset dictionary key.
+def get_highest_key(dictionary):
+    if not dictionary:
+        return None
+
+    max_key = max(dictionary, key=dictionary.get)
+    return max_key
+
 # Helps us get the lowest offset dictionary key.
 def get_lowest_key(dictionary):
     if not dictionary:
@@ -16,6 +32,43 @@ def get_lowest_key(dictionary):
 
     min_key = min(dictionary, key=dictionary.get)
     return min_key
+
+def get_lowest_and_least_common_count(dictionary):
+    lowest = get_lowest_key(dictionary)
+    dictionary.get(lowest)
+
+
+def get_median_key(dictionary):
+    keys = list(dictionary.keys())
+   
+    median_key = statistics.median(keys)
+    return median_key
+
+
+def get_upper_quartile_key(dictionary, method):
+  method = method.lower()
+  if (method == "exclusive") or (method == "inclusive"):
+    values = list(dictionary.keys())
+    if len(values) > 1:
+        upper_quartile = 2
+        return statistics.quantiles(values, n=4, method=f"{method}")[upper_quartile]
+    return values[0]
+ 
+  print("Error: Quantile method not exclusive or inclusive.")
+  quit()
+
+
+def get_lower_quartile_key(dictionary, method):
+  method = method.lower()
+  if (method == "exclusive") or (method == "inclusive"):
+    values = list(dictionary.keys())
+    if len(values) > 1:
+        lower_quartile = 0
+        return statistics.quantiles(values, n=4, method=f"{method}")[lower_quartile]
+    return values[0]
+
+  print("Error: Quantile method not exclusive or inclusive.")
+  quit()
 
 
 def is_float(value):
@@ -132,6 +185,13 @@ def is_r_set(low_items, offset_items, r_sets):
     return False
 
 
+def type_in_r(items, r_sets):
+    for node in items:
+            for tuple in r_sets:
+                if node in tuple:
+                    return True
+    return False
+
 # TEST 1: Is there at least 1 r set that contains the lowest and Ceil Exclusive Upper 
 # Quartile?
 
@@ -155,7 +215,6 @@ def test1(datalist, filename):
         ## Note: Offset_dict keys are SORTED!!!
         offset_dict = get_close_to_unique_rows_offset(analysis.get_distance_matrix(G=G, display=False))
         
-      
         low_offset_key = get_lowest_key(offset_dict)
         low_items = offset_dict[low_offset_key]
         upper_quartile_offset_key = get_upper_quartile_key(offset_dict, method="exclusive")
@@ -185,6 +244,73 @@ def test1(datalist, filename):
 # test1(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2")
 # test1(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3")
 # test1(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4")
+
+
+## Is AT LEAST ONE type offset node within R sets? ##
+#
+# PURPOSE: Calculate success of offset nodes of Five-number summary!!!
+def is_type_in_r(datalist, filename, mode, method, round):
+    true_count = 0
+    false_count = 0
+    # count = 0
+
+    all_nodes = decode.get_items_list(file_name=f'{datalist}', nodes=True)
+    # Make sure the file has the total of N number of graphs wanted...
+    # print(len(all_nodes))
+    # print(max(all_nodes))
+    # return
+    all_r = decode.get_items_list(file_name=f'{datalist}', radius=True)
+    all_seeds = decode.get_items_list(file_name=f'{datalist}', seed=True)
+
+    for node, radius, seed in zip(all_nodes, all_r, all_seeds):
+        G = nx.random_geometric_graph(n=node, radius=radius, seed=int(seed))
+        r_sets = geo.bruteForce(G, numSets=-1)
+
+        ## Note: Offset_dict keys are SORTED!!!
+        offset_dict = get_close_to_unique_rows_offset(analysis.get_distance_matrix(G=G, display=False))
+        
+        if mode == 'Highest':
+            key = get_highest_key(offset_dict)
+        elif mode == 'Lowest':
+            key = get_lowest_key(offset_dict)
+        elif mode == 'Median':
+            key = get_median_key(offset_dict)
+        elif (mode == 'Upper Quartile') and (method == 'Exclusive') or (method == 'Inclusive'):
+            key = get_upper_quartile_key(offset_dict, method=method)
+        elif (mode == 'Lower Quartile') and (method == 'Exclusive') or (method == 'Inclusive'):
+            key = get_lower_quartile_key(offset_dict, method=method)
+        else:
+            print('Error: No valid mode selected.')
+            return
+        if (is_float(key) != False) or (key not in offset_dict.keys()):
+            
+            if round == 'Ceil':
+                ##### IMPORTANT #####
+                ### Ceil Setting ###
+                items = get_ceil_desired_key(offset_dict = offset_dict, offset_key =  key)
+            elif round == 'Floor':    
+                ### Floor Setting ###
+                items = get_floor_desired_key(offset_dict = offset_dict, offset_key = key)
+        
+        else:
+            items = offset_dict[key]
+
+        result = type_in_r(items, r_sets)
+        # count += 1
+        # print(count)
+        if result == True:
+            true_count += 1
+        else:
+            false_count += 1
+
+    with open(f'/Users/evanalba/random-geometric-graphs/images/offset/tests/is_type_in_r/{filename}.txt', 'a') as file:
+        if (round == 'Ceil') or (round == 'Floor') and (method == 'Exclusive') or (method == 'Inclusive'):
+            file.write(f'\n{round} {method} {mode}:\nTrue: {true_count}\nFalse: {false_count}')
+        elif (round == 'Ceil') or (round == 'Floor'):
+            file.write(f'\n{round} {mode}:\nTrue: {true_count}\nFalse: {false_count}')
+        else:
+            file.write(f'\n{mode}:\nTrue: {true_count}\nFalse: {false_count}')
+
 
 
 def offset_pairs(datalist, filename, mode):

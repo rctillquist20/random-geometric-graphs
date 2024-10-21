@@ -71,6 +71,7 @@ def get_median_key(dictionary):
 
 
 def get_upper_quartile_key(dictionary, method):
+  method = method.lower()
   if (method == "exclusive") or (method == "inclusive"):
     values = list(dictionary.keys())
     if len(values) > 1:
@@ -83,6 +84,7 @@ def get_upper_quartile_key(dictionary, method):
 
 
 def get_lower_quartile_key(dictionary, method):
+  method = method.lower()
   if (method == "exclusive") or (method == "inclusive"):
     values = list(dictionary.keys())
     if len(values) > 1:
@@ -397,7 +399,7 @@ def get_floor_desired_key(offset_dict, offset_key):
     else:
         return offset_items
 
-## Are ALL lowest offset nodes within all possible Metric Dimension R sets? ##
+## Are ALL lowest type offset nodes within all possible Metric Dimension R sets? ##
 # # Note FIX: Different from old function because every time we first saw
 # a low offset node, we just broke and went to the next r set WITHOUT considering
 # there being maybe 2 or more lowest offset nodes in the same r set...
@@ -460,6 +462,7 @@ def get_offset_probability(mode, filename, datalist):
 # get_offset_probability(f"{name}", filename="offset_types_2", datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list")
 # get_offset_probability(f"{name}", filename="offset_types_3", datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list")
 # get_offset_probability(f"{name}", filename="offset_types_4", datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list")
+
 
 # def test1(mode):
 #     all_nodes = decode.get_items_list(file_name='comeback_4_1_repeat_3_to_23nodes_200graphs.list', nodes=True)
