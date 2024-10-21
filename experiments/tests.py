@@ -304,13 +304,62 @@ def is_type_in_r(datalist, filename, mode, method, round):
             false_count += 1
 
     with open(f'/Users/evanalba/random-geometric-graphs/images/offset/tests/is_type_in_r/{filename}.txt', 'a') as file:
+        total_graphs = 200  ## IMPORTANT
+        percentage = (true_count/total_graphs) * 100
         if (round == 'Ceil') or (round == 'Floor') and (method == 'Exclusive') or (method == 'Inclusive'):
-            file.write(f'\n{round} {method} {mode}:\nTrue: {true_count}\nFalse: {false_count}')
+            file.write(f'\n{round} {method} {mode}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
         elif (round == 'Ceil') or (round == 'Floor'):
-            file.write(f'\n{round} {mode}:\nTrue: {true_count}\nFalse: {false_count}')
+            file.write(f'\n{round} {mode}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
         else:
-            file.write(f'\n{mode}:\nTrue: {true_count}\nFalse: {false_count}')
+            file.write(f'\n{mode}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
 
+### Dataset 2
+is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Highest')
+is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Lowest')
+is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Median', round='Ceil')
+is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Median', round='Floor')
+
+is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Upper Quartile', round='Ceil', method='Exclusive')
+is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Upper Quartile', round='Ceil', method='Inclusive')
+is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Upper Quartile', round='Floor', method='Exclusive')
+is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Upper Quartile', round='Floor', method='Inclusive')
+
+is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Lower Quartile', round='Ceil', method='Exclusive')
+is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Lower Quartile', round='Ceil', method='Inclusive')
+is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Lower Quartile', round='Floor', method='Exclusive')
+is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Lower Quartile', round='Floor', method='Inclusive')
+
+### Dataset 3
+is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Highest')
+is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Lowest')
+is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Median', round='Ceil')
+is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Median', round='Floor')
+
+is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Upper Quartile', round='Ceil', method='Exclusive')
+is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Upper Quartile', round='Ceil', method='Inclusive')
+is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Upper Quartile', round='Floor', method='Exclusive')
+is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Upper Quartile', round='Floor', method='Inclusive')
+
+is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Lower Quartile', round='Ceil', method='Exclusive')
+is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Lower Quartile', round='Ceil', method='Inclusive')
+is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Lower Quartile', round='Floor', method='Exclusive')
+is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Lower Quartile', round='Floor', method='Inclusive')
+
+### Dataset 4
+is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Highest')
+is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Lowest')
+is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Median', round='Ceil')
+is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Median', round='Floor')
+
+is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Upper Quartile', round='Ceil', method='Exclusive')
+is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Upper Quartile', round='Ceil', method='Inclusive')
+is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Upper Quartile', round='Floor', method='Exclusive')
+is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Upper Quartile', round='Floor', method='Inclusive')
+
+is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Lower Quartile', round='Ceil', method='Exclusive')
+is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Lower Quartile', round='Ceil', method='Inclusive')
+is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Lower Quartile', round='Floor', method='Exclusive')
+is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Lower Quartile', round='Floor', method='Inclusive')
 
 
 def offset_pairs(datalist, filename, mode):
