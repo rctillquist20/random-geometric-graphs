@@ -164,18 +164,6 @@ def get_floor_desired_key(offset_dict, offset_key):
         return offset_items
 
 
-def get_upper_quartile_key(dictionary, method):
-  if (method == "exclusive") or (method == "inclusive"):
-    values = list(dictionary.keys())
-    if len(values) > 1:
-        upper_quartile = 2
-        return statistics.quantiles(values, n=4, method=f"{method}")[upper_quartile]
-    return values[0]
- 
-  print("Error: Quantile method not exclusive or inclusive.")
-  quit()
-
-
 def is_r_set(low_items, offset_items, r_sets):
     for low_offset_node in low_items:
             for upper_quartile_offset_node in offset_items:
@@ -314,10 +302,10 @@ def is_type_in_r(datalist, filename, mode, method='', round=''):
             file.write(f'\n{mode}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
 
 ### Dataset 2
-is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Highest')
-is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Lowest')
-is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Median', round='Ceil')
-is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Median', round='Floor')
+# is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Highest')
+# is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Lowest')
+# is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Median', round='Ceil')
+# is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Median', round='Floor')
 
 is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Upper Quartile', round='Ceil', method='Exclusive')
 is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Upper Quartile', round='Ceil', method='Inclusive')
