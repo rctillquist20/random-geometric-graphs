@@ -249,7 +249,7 @@ def test1(datalist, filename):
 ## Is AT LEAST ONE type offset node within R sets? ##
 #
 # PURPOSE: Calculate success of offset nodes of Five-number summary!!!
-def is_type_in_r(datalist, filename, mode, method, round):
+def is_type_in_r(datalist, filename, mode, method='', round=''):
     true_count = 0
     false_count = 0
     # count = 0
