@@ -1,5 +1,9 @@
 # TEST HERE
 
+pickle = [['q', 'p'], ['j', 'q']]
+if ['q', 'p'] or  ['p', 'q'] in pickle:
+   print('TRUE!!')
+
 #import decode
 
 # test = decode.get_data(file_name='comeback_2_1_repeat_3_to_23nodes_200graphs.list', output=False)
@@ -97,29 +101,29 @@ import statistics
 # occurrences = count_integer_in_array_of_tuples(my_array, target_integer)
 # # print(occurrences)  # Output: 5
 
-import statistics
+# import statistics
 
-def get_upper_quartile_key(dictionary, method):
-  if (method == "exclusive") or (method == "inclusive"):
-    values = list(dictionary.keys())
-    if len(values) > 1:
-        upper_quartile = 2
-        return statistics.quantiles(values, n=4, method=f"{method}")[upper_quartile]
-    return values[0]
+# def get_upper_quartile_key(dictionary, method):
+#   if (method == "exclusive") or (method == "inclusive"):
+#     values = list(dictionary.keys())
+#     if len(values) > 1:
+#         upper_quartile = 2
+#         return statistics.quantiles(values, n=4, method=f"{method}")[upper_quartile]
+#     return values[0]
  
-  print("Error: Quantile method not exclusive or inclusive.")
-  quit()
+#   print("Error: Quantile method not exclusive or inclusive.")
+#   quit()
 
 
 
-import random
+# import random
 
 
-# Create a sample dictionary with random values
-sample_dict = {1:[0, 3]}
-print(sample_dict[-1])
-# Get the lower quartile key
-lower_quartile_key = get_upper_quartile_key(sample_dict, method="exclusive")
+# # Create a sample dictionary with random values
+# sample_dict = {1:[0, 3]}
+# print(sample_dict[-1])
+# # Get the lower quartile key
+# lower_quartile_key = get_upper_quartile_key(sample_dict, method="exclusive")
 
-# Print the result
-print("Lower quartile key:", lower_quartile_key)
+# # Print the result
+# print("Lower quartile key:", lower_quartile_key)
