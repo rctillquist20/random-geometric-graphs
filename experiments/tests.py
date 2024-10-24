@@ -303,12 +303,7 @@ def is_type_in_r(datalist, filename, mode, method='', round=''):
     with open(f'/Users/evanalba/random-geometric-graphs/images/offset/tests/is_type_in_r/{filename}.txt', 'a') as file:
         total_graphs = 200  ## IMPORTANT
         percentage = (true_count/total_graphs) * 100
-        if (round == 'Ceil') or (round == 'Floor') and (method == 'Exclusive') or (method == 'Inclusive'):
-            file.write(f'\n{round} {method} {mode}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
-        elif (round == 'Ceil') or (round == 'Floor'):
-            file.write(f'\n{round} {mode}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
-        else:
-            file.write(f'\n{mode}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
+
 
 ### Dataset 2
 # is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Highest')
@@ -375,8 +370,15 @@ def offset_pairs(datalist, filename, mode, mode2, method='', round='',  method2=
     all_r = decode.get_items_list(file_name=f'{datalist}', radius=True)
     all_seeds = decode.get_items_list(file_name=f'{datalist}', seed=True)
 
+    # for node, radius, seed in zip(all_nodes, all_r, all_seeds):
+    #     print(mode + ' ' + mode2)
+    # return
+
     for node, radius, seed in zip(all_nodes, all_r, all_seeds):
         G = nx.random_geometric_graph(n=node, radius=radius, seed=int(seed))
+        # if mode == 'Highest' and mode2 == 'Ceil Median':
+        #     print("\n\n\n\nSUCCESS!!!\n\n\n\n")
+        #     return
         r_sets = geo.bruteForce(G, numSets=-1)
 
         ## Note: Offset_dict keys are SORTED!!!
@@ -394,7 +396,7 @@ def offset_pairs(datalist, filename, mode, mode2, method='', round='',  method2=
             key = get_lower_quartile_key(offset_dict, method=method)
         else:
             print('Error: No valid mode selected.')
-            return
+            quit()
         if (is_float(key) != False) or (key not in offset_dict.keys()):
             
             if round == 'Ceil':
@@ -443,15 +445,18 @@ def offset_pairs(datalist, filename, mode, mode2, method='', round='',  method2=
         else:
             false_count += 1
 
-    with open(f'/Users/evanalba/random-geometric-graphs/images/offset/tests/is_type_in_r/{filename}.txt', 'a') as file:
+    ### IMPORTANT ###
+    with open(f'/Users/evanalba/random-geometric-graphs/images/offset/tests/offset_pairs/{filename}.txt', 'a') as file:
         total_graphs = 200  ## IMPORTANT
         percentage = (true_count/total_graphs) * 100
-        if (round == 'Ceil') or (round == 'Floor') and (method == 'Exclusive') or (method == 'Inclusive'):
-            file.write(f'\n{round} {method} {mode}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
-        elif (round == 'Ceil') or (round == 'Floor'):
-            file.write(f'\n{round} {mode}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
+
+        if (((round == 'Ceil') or (round == 'Floor')) and ((method == 'Exclusive') or (method == 'Inclusive'))) or (((round2 == 'Ceil') or (round2 == 'Floor')) and ((method2 == 'Exclusive') or (method2 == 'Inclusive'))):
+            file.write(f'\n\n{round} {method} {mode} and {round2} {method2} {mode2}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
+        elif ((round == 'Ceil') or (round == 'Floor')) or ((round2 == 'Ceil') or (round2 == 'Floor')):
+            file.write(f'\n\n{round} {mode} and {round2} {mode2}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
         else:
-            file.write(f'\n{mode}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
+            file.write(f'\n\n{mode} and {mode2}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
+
 
 modes = ['Highest', 'Lowest', 'Median', 'Median', 'Upper Quartile', 
          'Upper Quartile', 'Upper Quartile', 'Upper Quartile', 
@@ -459,7 +464,8 @@ modes = ['Highest', 'Lowest', 'Median', 'Median', 'Upper Quartile',
          'Lower Quartile', 'Lower Quartile']
 rounds = ['Ceil', 'Floor']
 quans = ['Exclusive', 'Inclusive']
-datasets = ['comeback_2_1_repeat_3_to_23nodes_200graphs.list']
+datasets = ['comeback_2_1_repeat_3_to_23nodes_200graphs.list', 'comeback_3_1_repeat_3_to_23nodes_200graphs.list', 
+            'comeback_4_1_repeat_3_to_23nodes_200graphs.list']
 filenames = ['2', '3', '4']
 
 for d, f in zip(datasets, filenames):
@@ -532,7 +538,7 @@ for d, f in zip(datasets, filenames):
                 continue
             else:
                 test.append([m1_final, m2_final])
-                offset_pairs(datalist=d, filename=f, mode=m1_final, mode2=m2_final, method=q_final, round=r_final,  method2=q2_final, round2=r2_final)
+                offset_pairs(datalist=d, filename=f, mode=m, mode2=m2, method=q_final, round=r_final,  method2=q2_final, round2=r2_final)
 
     
     # print(test)
