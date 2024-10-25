@@ -33,8 +33,8 @@ if ['q', 'p'] or  ['p', 'q'] in pickle:
 #                     seen.add(element)
 #     return counts
 
-# Finds the element with the highest count in a specific matrix row array so 
-# can get the highest offset.
+# # Finds the element with the highest count in a specific matrix row array so 
+# # can get the highest offset.
 # def get_element_with_highest_count(array):
 #     count_dict = {}
 #     for element in array:
@@ -64,7 +64,7 @@ if ['q', 'p'] or  ['p', 'q'] in pickle:
 # result = get_close_to_unique_rows_offset(matrix)
 # print(result)
 
-import statistics
+#import statistics
 
 # time_diff = [i for i in range(1, 11)]
 # # Example source: https://www.scribbr.com/statistics/quartiles-quantiles/

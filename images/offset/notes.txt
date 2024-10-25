@@ -63,8 +63,15 @@ Note: lower than 30 is good I think. 10 * 3 datasets = 30
 - Floor Exclusive Lower Quartile (18)
 - Floor Inclusive Lower Quartile (31)
 
-
+WORST:
+- Ceil Exclusive Upper Quartile (90)
+- Ceil Inclusive Lower Quartile (74)
 - Note:
+
+
+Looks like we do better in genral in the lower quartile.
+
+Maybe use lowest score top 2 to help make multiple R sets??
 
 import statistics
 

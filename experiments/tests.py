@@ -803,12 +803,22 @@ def is_type_in_r(datalist, filename, mode, method='', round=''):
     # count = 0
 
     all_nodes = decode.get_items_list(file_name=f'{datalist}', nodes=True)
+    #all_nodes = [22, 16, 22, 4, 10, 3, 23, 19]
+    true_nodes = []
+    false_nodes = []
     # Make sure the file has the total of N number of graphs wanted...
     # print(len(all_nodes))
     # print(max(all_nodes))
     # return
     all_r = decode.get_items_list(file_name=f'{datalist}', radius=True)
+    #all_r = [0.3788914393160148, 0.2965438368229288, 0.5473301911317466, 0.3827661937315095, 0.4082409396504657, 0.46765046084601, 0.8277773719199868, 0.5642252881211095]
+    true_r = []
+    false_r = []
+    
     all_seeds = decode.get_items_list(file_name=f'{datalist}', seed=True)
+    #all_seeds = [190439, 15251, 161785, 924143, 690125, 437975, 808961, 25654]
+    true_seeds = []
+    false_seeds = []
 
     for node, radius, seed in zip(all_nodes, all_r, all_seeds):
         G = nx.random_geometric_graph(n=node, radius=radius, seed=int(seed))
@@ -848,12 +858,36 @@ def is_type_in_r(datalist, filename, mode, method='', round=''):
         # print(count)
         if result == True:
             true_count += 1
+            true_nodes.append(node)
+            true_r.append(radius)
+            true_seeds.append(seed)
         else:
             false_count += 1
+            false_nodes.append(node)
+            false_r.append(radius)
+            false_seeds.append(seed)
 
+    # DIFFERENT TEST COMMENT OUT
+    # with open(f'/Users/evanalba/random-geometric-graphs/images/offset/tests/is_type_in_r/false/{filename}.txt', 'a') as file:
     with open(f'/Users/evanalba/random-geometric-graphs/images/offset/tests/is_type_in_r/{filename}.txt', 'a') as file:
         total_graphs = 200  ## IMPORTANT
+        #total_graphs = (true_count + false_count) # DIFFERENT TEST
         percentage = (true_count/total_graphs) * 100
+
+        if (((round == 'Ceil') or (round == 'Floor')) and ((method == 'Exclusive') or (method == 'Inclusive'))):
+            file.write(f'\n\n{round} {method} {mode}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
+        
+            #file.write(f'\nTrue:\n{true_nodes}{true_r}{true_seeds}\nFalse:\n{false_nodes}{false_r}{false_seeds}')
+        elif ((round == 'Ceil') or (round == 'Floor')):
+            file.write(f'\n\n{round} {mode}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
+            
+            # True/False Data Specifically (A SEPERATE TEST TO SEE SPECIFIC OUTLIERS!!! )
+            # file.write(f'\nTrue:\n{true_nodes}{true_r}{true_seeds}\nFalse:\n{false_nodes}{false_r}{false_seeds}')
+
+        else:
+            file.write(f'\n\n{mode}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
+            
+            #file.write(f'\nTrue:\n{true_nodes}{true_r}{true_seeds}\nFalse:\n{false_nodes}{false_r}{false_seeds}')
 
 
 ### Dataset 2
@@ -903,6 +937,44 @@ def is_type_in_r(datalist, filename, mode, method='', round=''):
 # is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Lower Quartile', round='Ceil', method='Inclusive')
 # is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Lower Quartile', round='Floor', method='Exclusive')
 # is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Lower Quartile', round='Floor', method='Inclusive')
+
+
+# ### Dataset 5
+# datalist5 = "comeback_5_1_repeat_3_to_23nodes_200graphs.list"
+# file5 = "5"
+# is_type_in_r(datalist=datalist5, filename=file5, mode='Highest')
+# is_type_in_r(datalist=datalist5, filename=file5, mode='Lowest')
+# is_type_in_r(datalist=datalist5, filename=file5, mode='Median', round='Ceil')
+# is_type_in_r(datalist=datalist5, filename=file5, mode='Median', round='Floor')
+
+# is_type_in_r(datalist=datalist5, filename=file5, mode='Upper Quartile', round='Ceil', method='Exclusive')
+# is_type_in_r(datalist=datalist5, filename=file5, mode='Upper Quartile', round='Ceil', method='Inclusive')
+# is_type_in_r(datalist=datalist5, filename=file5, mode='Upper Quartile', round='Floor', method='Exclusive')
+# is_type_in_r(datalist=datalist5, filename=file5, mode='Upper Quartile', round='Floor', method='Inclusive')
+
+# is_type_in_r(datalist=datalist5, filename=file5, mode='Lower Quartile', round='Ceil', method='Exclusive')
+# is_type_in_r(datalist=datalist5, filename=file5, mode='Lower Quartile', round='Ceil', method='Inclusive')
+# is_type_in_r(datalist=datalist5, filename=file5, mode='Lower Quartile', round='Floor', method='Exclusive')
+# is_type_in_r(datalist=datalist5, filename=file5, mode='Lower Quartile', round='Floor', method='Inclusive')
+
+
+# # ### Dataset 6
+# datalist6 = "comeback_6_1_repeat_3_to_23nodes_200graphs.list"
+# file6 = "6"
+# is_type_in_r(datalist=datalist6, filename=file6, mode='Highest')
+# is_type_in_r(datalist=datalist6, filename=file6, mode='Lowest')
+# is_type_in_r(datalist=datalist6, filename=file6, mode='Median', round='Ceil')
+# is_type_in_r(datalist=datalist6, filename=file6, mode='Median', round='Floor')
+
+# is_type_in_r(datalist=datalist6, filename=file6, mode='Upper Quartile', round='Ceil', method='Exclusive')
+# is_type_in_r(datalist=datalist6, filename=file6, mode='Upper Quartile', round='Ceil', method='Inclusive')
+# is_type_in_r(datalist=datalist6, filename=file6, mode='Upper Quartile', round='Floor', method='Exclusive')
+# is_type_in_r(datalist=datalist6, filename=file6, mode='Upper Quartile', round='Floor', method='Inclusive')
+
+# is_type_in_r(datalist=datalist6, filename=file6, mode='Lower Quartile', round='Ceil', method='Exclusive')
+# is_type_in_r(datalist=datalist6, filename=file6, mode='Lower Quartile', round='Ceil', method='Inclusive')
+# is_type_in_r(datalist=datalist6, filename=file6, mode='Lower Quartile', round='Floor', method='Exclusive')
+# is_type_in_r(datalist=datalist6, filename=file6, mode='Lower Quartile', round='Floor', method='Inclusive')
 
 
 ## Is AT LEAST TWO type offset pairs within R sets? ##
@@ -1008,6 +1080,7 @@ def offset_pairs(datalist, filename, mode, mode2, method='', round='',  method2=
         else:
             file.write(f'\n\n{mode} and {mode2}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
 
+
 def init_offset_pairs1():
     modes = ['Highest', 'Lowest', 'Median', 'Median', 'Upper Quartile', 
             'Upper Quartile', 'Upper Quartile', 'Upper Quartile', 
@@ -1015,9 +1088,9 @@ def init_offset_pairs1():
             'Lower Quartile', 'Lower Quartile']
     rounds = ['Ceil', 'Floor']
     quans = ['Exclusive', 'Inclusive']
-    datasets = ['comeback_2_1_repeat_3_to_23nodes_200graphs.list', 'comeback_3_1_repeat_3_to_23nodes_200graphs.list', 
-                'comeback_4_1_repeat_3_to_23nodes_200graphs.list']
-    filenames = ['2', '3', '4']
+    datasets = ['comeback_5_1_repeat_3_to_23nodes_200graphs.list',
+                'comeback_6_1_repeat_3_to_23nodes_200graphs.list']
+    filenames = ['5', '6']
 
     for d, f in zip(datasets, filenames):
         test = []
@@ -1099,6 +1172,7 @@ def init_offset_pairs1():
 
                 # offset_pairs(datalist=d, filename=f, mode=m1_final, mode2=m2_final, method='', round='',  method2='', round2='')
 
+init_offset_pairs1()
 
 ## Purpose: Find the False graphs nodes, radiuses, and seeds from offset_pairs.
 def offset_pairs2(datalist, filename, mode, mode2, method='', round='',  method2='', round2=''):

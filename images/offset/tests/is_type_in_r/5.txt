@@ -1,0 +1,61 @@
+
+
+Highest:
+True: 177
+False: 23
+Probability of being True: 88.5%
+
+Lowest:
+True: 192
+False: 8
+Probability of being True: 96.0%
+
+Ceil Median:
+True: 186
+False: 14
+Probability of being True: 93.0%
+
+Floor Median:
+True: 191
+False: 9
+Probability of being True: 95.5%
+
+Ceil Exclusive Upper Quartile:
+True: 174
+False: 26
+Probability of being True: 87.0%
+
+Ceil Inclusive Upper Quartile:
+True: 175
+False: 25
+Probability of being True: 87.5%
+
+Floor Exclusive Upper Quartile:
+True: 177
+False: 23
+Probability of being True: 88.5%
+
+Floor Inclusive Upper Quartile:
+True: 187
+False: 13
+Probability of being True: 93.5%
+
+Ceil Exclusive Lower Quartile:
+True: 197
+False: 3
+Probability of being True: 98.5%
+
+Ceil Inclusive Lower Quartile:
+True: 175
+False: 25
+Probability of being True: 87.5%
+
+Floor Exclusive Lower Quartile:
+True: 196
+False: 4
+Probability of being True: 98.0%
+
+Floor Inclusive Lower Quartile:
+True: 187
+False: 13
+Probability of being True: 93.5%

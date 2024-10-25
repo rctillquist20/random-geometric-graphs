@@ -95,6 +95,7 @@ True: 169
 False: 31
 Probability of being True: 84.5%
 
+NOTE
   Lowest and Floor Exclusive Lower Quartile:
 True: 191
 False: 9
