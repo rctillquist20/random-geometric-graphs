@@ -1,4 +1,16 @@
-Maybe Ceil Exclusive Lower Quartile is best 1st option?
+Maybe Ceil Exclusive Lower Quartile is best 1st option compared to Lowest?
+
+Ceil Exclusive Lower Quartile | Lowest
+2: 98.5% | 97.5%
+3: 96.5% | 98.0%
+4: 98.5% | 97.0%
+5: 98.5% | 96.0%
+6: 98.5% | 95.0%
+
+1. Why is dataset 3 Ceil Exclusive Lower Quartile lower than lowest?
+2. What did graphs did it miss? Did Lowest get the one graph Ceil Exclusive 
+Lower Quartile did not get???
+
 
 What is the worst offset?
 If so, we can "remove" that subset from matrix.
@@ -15,3 +27,5 @@ probability classify these nodes in order to get us a clear metric dimension.
 
 Maybe there is a connection or why lowest or Ceil/Floor Exclusive Lower 
 Quartile get chosen?
+
+[0, 3] have the same number of element types but they never mix to form R in the OG photo...???

@@ -868,26 +868,26 @@ def is_type_in_r(datalist, filename, mode, method='', round=''):
             false_seeds.append(seed)
 
     # DIFFERENT TEST COMMENT OUT
-    # with open(f'/Users/evanalba/random-geometric-graphs/images/offset/tests/is_type_in_r/false/{filename}.txt', 'a') as file:
-    with open(f'/Users/evanalba/random-geometric-graphs/images/offset/tests/is_type_in_r/{filename}.txt', 'a') as file:
-        total_graphs = 200  ## IMPORTANT
-        #total_graphs = (true_count + false_count) # DIFFERENT TEST
+    with open(f'/Users/evanalba/random-geometric-graphs/images/offset/tests/is_type_in_r/false/{filename}.txt', 'a') as file:
+    #with open(f'/Users/evanalba/random-geometric-graphs/images/offset/tests/is_type_in_r/{filename}.txt', 'a') as file:
+        #total_graphs = 200  ## IMPORTANT
+        total_graphs = (true_count + false_count) # DIFFERENT TEST
         percentage = (true_count/total_graphs) * 100
 
         if (((round == 'Ceil') or (round == 'Floor')) and ((method == 'Exclusive') or (method == 'Inclusive'))):
             file.write(f'\n\n{round} {method} {mode}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
         
-            #file.write(f'\nTrue:\n{true_nodes}{true_r}{true_seeds}\nFalse:\n{false_nodes}{false_r}{false_seeds}')
+            file.write(f'\nTrue:\n{true_nodes}{true_r}{true_seeds}\nFalse:\n{false_nodes}{false_r}{false_seeds}')
         elif ((round == 'Ceil') or (round == 'Floor')):
             file.write(f'\n\n{round} {mode}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
             
             # True/False Data Specifically (A SEPERATE TEST TO SEE SPECIFIC OUTLIERS!!! )
-            # file.write(f'\nTrue:\n{true_nodes}{true_r}{true_seeds}\nFalse:\n{false_nodes}{false_r}{false_seeds}')
+            file.write(f'\nTrue:\n{true_nodes}{true_r}{true_seeds}\nFalse:\n{false_nodes}{false_r}{false_seeds}')
 
         else:
             file.write(f'\n\n{mode}:\nTrue: {true_count}\nFalse: {false_count}\nProbability of being True: {percentage}%')
             
-            #file.write(f'\nTrue:\n{true_nodes}{true_r}{true_seeds}\nFalse:\n{false_nodes}{false_r}{false_seeds}')
+            file.write(f'\nTrue:\n{true_nodes}{true_r}{true_seeds}\nFalse:\n{false_nodes}{false_r}{false_seeds}')
 
 
 ### Dataset 2
@@ -901,7 +901,7 @@ def is_type_in_r(datalist, filename, mode, method='', round=''):
 # is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Upper Quartile', round='Floor', method='Exclusive')
 # is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Upper Quartile', round='Floor', method='Inclusive')
 
-# is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Lower Quartile', round='Ceil', method='Exclusive')
+is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Lower Quartile', round='Ceil', method='Exclusive')
 # is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Lower Quartile', round='Ceil', method='Inclusive')
 # is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Lower Quartile', round='Floor', method='Exclusive')
 # is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Lower Quartile', round='Floor', method='Inclusive')

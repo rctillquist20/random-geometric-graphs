@@ -51,14 +51,14 @@ Test pairs of statistics 5 Classification summary of True/False Graphs
 is_type_in_r 3 datasets combined (FALSE COUNT):
 Note: lower than 30 is good I think. 10 * 3 datasets = 30
 - Highest (75)
-- Lowest (15)
+- Lowest (15) <--
 - Ceil Median (38)
 - Floor Median (23)
 - Ceil Exclusive Upper Quartile (90)
 - Ceil Inclusive Upper Quartile (74)
 - Floor Exclusive Upper Quartile (63)
 - Floor Inclusive Upper Quartile (31)
-- Ceil Exclusive Lower Quartile (13)
+- Ceil Exclusive Lower Quartile (13) <--
 - Ceil Inclusive Lower Quartile (74)
 - Floor Exclusive Lower Quartile (18)
 - Floor Inclusive Lower Quartile (31)

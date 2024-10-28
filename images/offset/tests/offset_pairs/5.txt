@@ -1,0 +1,266 @@
+
+
+Highest and Lowest:
+True: 170
+False: 30
+Probability of being True: 85.0%
+
+ Highest and Ceil Median:
+True: 173
+False: 27
+Probability of being True: 86.5%
+
+ Highest and Floor Median:
+True: 173
+False: 27
+Probability of being True: 86.5%
+
+  Highest and Ceil Exclusive Upper Quartile:
+True: 165
+False: 35
+Probability of being True: 82.5%
+
+  Highest and Ceil Inclusive Upper Quartile:
+True: 168
+False: 32
+Probability of being True: 84.0%
+
+  Highest and Floor Exclusive Upper Quartile:
+True: 171
+False: 29
+Probability of being True: 85.5%
+
+  Highest and Floor Inclusive Upper Quartile:
+True: 174
+False: 26
+Probability of being True: 87.0%
+
+  Highest and Ceil Exclusive Lower Quartile:
+True: 174
+False: 26
+Probability of being True: 87.0%
+
+  Highest and Ceil Inclusive Lower Quartile:
+True: 168
+False: 32
+Probability of being True: 84.0%
+
+  Highest and Floor Exclusive Lower Quartile:
+True: 175
+False: 25
+Probability of being True: 87.5%
+
+  Highest and Floor Inclusive Lower Quartile:
+True: 174
+False: 26
+Probability of being True: 87.0%
+
+ Lowest and Ceil Median:
+True: 181
+False: 19
+Probability of being True: 90.5%
+
+ Lowest and Floor Median:
+True: 186
+False: 14
+Probability of being True: 93.0%
+
+  Lowest and Ceil Exclusive Upper Quartile:
+True: 171
+False: 29
+Probability of being True: 85.5%
+
+  Lowest and Ceil Inclusive Upper Quartile:
+True: 172
+False: 28
+Probability of being True: 86.0%
+
+  Lowest and Floor Exclusive Upper Quartile:
+True: 174
+False: 26
+Probability of being True: 87.0%
+
+  Lowest and Floor Inclusive Upper Quartile:
+True: 181
+False: 19
+Probability of being True: 90.5%
+
+  Lowest and Ceil Exclusive Lower Quartile:
+True: 189
+False: 11
+Probability of being True: 94.5%
+
+  Lowest and Ceil Inclusive Lower Quartile:
+True: 172
+False: 28
+Probability of being True: 86.0%
+
+  Lowest and Floor Exclusive Lower Quartile:
+True: 186
+False: 14
+Probability of being True: 93.0%
+
+  Lowest and Floor Inclusive Lower Quartile:
+True: 181
+False: 19
+Probability of being True: 90.5%
+
+Ceil  Median and Ceil Exclusive Upper Quartile:
+True: 170
+False: 30
+Probability of being True: 85.0%
+
+Ceil  Median and Ceil Inclusive Upper Quartile:
+True: 169
+False: 31
+Probability of being True: 84.5%
+
+Ceil  Median and Floor Exclusive Upper Quartile:
+True: 173
+False: 27
+Probability of being True: 86.5%
+
+Ceil  Median and Floor Inclusive Upper Quartile:
+True: 181
+False: 19
+Probability of being True: 90.5%
+
+Ceil  Median and Ceil Exclusive Lower Quartile:
+True: 183
+False: 17
+Probability of being True: 91.5%
+
+Ceil  Median and Ceil Inclusive Lower Quartile:
+True: 169
+False: 31
+Probability of being True: 84.5%
+
+Ceil  Median and Floor Exclusive Lower Quartile:
+True: 182
+False: 18
+Probability of being True: 91.0%
+
+Ceil  Median and Floor Inclusive Lower Quartile:
+True: 181
+False: 19
+Probability of being True: 90.5%
+
+Floor  Median and Ceil Exclusive Upper Quartile:
+True: 169
+False: 31
+Probability of being True: 84.5%
+
+Floor  Median and Ceil Inclusive Upper Quartile:
+True: 170
+False: 30
+Probability of being True: 85.0%
+
+Floor  Median and Floor Exclusive Upper Quartile:
+True: 174
+False: 26
+Probability of being True: 87.0%
+
+Floor  Median and Floor Inclusive Upper Quartile:
+True: 183
+False: 17
+Probability of being True: 91.5%
+
+Floor  Median and Ceil Exclusive Lower Quartile:
+True: 189
+False: 11
+Probability of being True: 94.5%
+
+Floor  Median and Ceil Inclusive Lower Quartile:
+True: 170
+False: 30
+Probability of being True: 85.0%
+
+Floor  Median and Floor Exclusive Lower Quartile:
+True: 188
+False: 12
+Probability of being True: 94.0%
+
+Floor  Median and Floor Inclusive Lower Quartile:
+True: 183
+False: 17
+Probability of being True: 91.5%
+
+Ceil Exclusive Upper Quartile and Ceil Exclusive Lower Quartile:
+True: 171
+False: 29
+Probability of being True: 85.5%
+
+Ceil Exclusive Upper Quartile and Ceil Inclusive Lower Quartile:
+True: 167
+False: 33
+Probability of being True: 83.5%
+
+Ceil Exclusive Upper Quartile and Floor Exclusive Lower Quartile:
+True: 170
+False: 30
+Probability of being True: 85.0%
+
+Ceil Exclusive Upper Quartile and Floor Inclusive Lower Quartile:
+True: 166
+False: 34
+Probability of being True: 83.0%
+
+Ceil Inclusive Upper Quartile and Ceil Exclusive Lower Quartile:
+True: 173
+False: 27
+Probability of being True: 86.5%
+
+Ceil Inclusive Upper Quartile and Ceil Inclusive Lower Quartile:
+True: 175
+False: 25
+Probability of being True: 87.5%
+
+Ceil Inclusive Upper Quartile and Floor Exclusive Lower Quartile:
+True: 174
+False: 26
+Probability of being True: 87.0%
+
+Ceil Inclusive Upper Quartile and Floor Inclusive Lower Quartile:
+True: 170
+False: 30
+Probability of being True: 85.0%
+
+Floor Exclusive Upper Quartile and Ceil Exclusive Lower Quartile:
+True: 175
+False: 25
+Probability of being True: 87.5%
+
+Floor Exclusive Upper Quartile and Ceil Inclusive Lower Quartile:
+True: 172
+False: 28
+Probability of being True: 86.0%
+
+Floor Exclusive Upper Quartile and Floor Exclusive Lower Quartile:
+True: 176
+False: 24
+Probability of being True: 88.0%
+
+Floor Exclusive Upper Quartile and Floor Inclusive Lower Quartile:
+True: 175
+False: 25
+Probability of being True: 87.5%
+
+Floor Inclusive Upper Quartile and Ceil Exclusive Lower Quartile:
+True: 183
+False: 17
+Probability of being True: 91.5%
+
+Floor Inclusive Upper Quartile and Ceil Inclusive Lower Quartile:
+True: 170
+False: 30
+Probability of being True: 85.0%
+
+Floor Inclusive Upper Quartile and Floor Exclusive Lower Quartile:
+True: 183
+False: 17
+Probability of being True: 91.5%
+
+Floor Inclusive Upper Quartile and Floor Inclusive Lower Quartile:
+True: 187
+False: 13
+Probability of being True: 93.5%

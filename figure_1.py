@@ -33,7 +33,7 @@ for row in distance_matrix:
 # TODO: Fix because for some reason possible R not showing.
 # ONLY [0, 2] shows when I do repeat = 100 for Brute Force???
 
-nodes = 6
+# nodes = 6
 # radius = 0.2
 # seed_list = [852397, 763785, 726260, 657341, 628768, 614008, 439468, 437162, 289604, 267652]
 

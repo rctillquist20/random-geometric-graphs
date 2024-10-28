@@ -1,8 +1,8 @@
 # TEST HERE
 
-pickle = [['q', 'p'], ['j', 'q']]
-if ['q', 'p'] or  ['p', 'q'] in pickle:
-   print('TRUE!!')
+# pickle = [['q', 'p'], ['j', 'q']]
+# if ['q', 'p'] or  ['p', 'q'] in pickle:
+#    print('TRUE!!')
 
 #import decode
 
@@ -33,38 +33,68 @@ if ['q', 'p'] or  ['p', 'q'] in pickle:
 #                     seen.add(element)
 #     return counts
 
-# # Finds the element with the highest count in a specific matrix row array so 
-# # can get the highest offset.
-# def get_element_with_highest_count(array):
-#     count_dict = {}
-#     for element in array:
-#         count_dict[element] = count_dict.get(element, 0) + 1
-#     max_count = max(count_dict.values())
+# Finds the element with the highest count in a specific matrix row array so 
+# can get the highest offset.
+def get_element_with_highest_count(array):
+    count_dict = {}
+    for element in array:
+        count_dict[element] = count_dict.get(element, 0) + 1
+    max_count = max(count_dict.values())
 
-#     return max_count
+    return max_count
 
-# def get_close_to_unique_rows_offset(matrix):
-#     offset = {}
+def get_close_to_unique_rows_offset(matrix):
+    offset = {}
 
-#     for row_index, row in enumerate(matrix):
-#         offset.setdefault(get_element_with_highest_count(row), []).append(row_index)
+    for row_index, row in enumerate(matrix):
+        offset.setdefault(get_element_with_highest_count(row), []).append(row_index)
 
-#     return dict(sorted(offset.items()))
-# # Example usage:
-# matrix = [
-# [0, 1, 2, 1, 2, 3],
-# [1, 0, 1, 1, 1, 2],
-# [2, 1, 0, 2, 2, 1],
-# [1, 1, 2, 0, 2, 3],
-# [2, 1, 2, 2, 0, 3],
-# [3, 2, 1, 3, 3, 0]
-# ]
+    return dict(sorted(offset.items()))
 
-# # result = count_elements_and_group(matrix)
-# result = get_close_to_unique_rows_offset(matrix)
+
+# Helps us get the lowest offset dictionary key.
+def get_lowest_key(dictionary):
+    if not dictionary:
+        return None
+
+    min_key = min(dictionary, key=dictionary.get)
+    return min_key
+
+
+def get_lower_quartile_key(dictionary, method):
+  method = method.lower()
+  if (method == "exclusive") or (method == "inclusive"):
+    values = list(dictionary.keys())
+    if len(values) > 1:
+        lower_quartile = 0
+        return statistics.quantiles(values, n=4, method=f"{method}")[lower_quartile]
+    return values[0]
+
+  print("Error: Quantile method not exclusive or inclusive.")
+  quit()
+
+import statistics
+# Example usage:
+matrix = [
+[0, 1, 2, 1, 2, 3],
+[1, 0, 1, 1, 1, 2],
+[2, 1, 0, 2, 2, 1],
+[1, 1, 2, 0, 2, 3],
+[2, 1, 2, 2, 0, 3],
+[3, 2, 1, 3, 3, 0]
+]
+
+# result = count_elements_and_group(matrix)
+offset_dict = get_close_to_unique_rows_offset(matrix)
 # print(result)
+key = get_lowest_key(offset_dict)
+print(f'Lowest:\n{key}')
+print(f'{offset_dict[key]}')
 
-#import statistics
+key2 = get_lower_quartile_key(offset_dict, method='Exclusive')
+print(f'Ceil Exclusive Lower Quartile:\n{key2}')
+print(f'{offset_dict[key2]}')
+
 
 # time_diff = [i for i in range(1, 11)]
 # # Example source: https://www.scribbr.com/statistics/quartiles-quantiles/
