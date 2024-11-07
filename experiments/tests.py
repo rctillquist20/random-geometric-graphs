@@ -901,14 +901,14 @@ def is_type_in_r(datalist, filename, mode, method='', round=''):
 # is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Upper Quartile', round='Floor', method='Exclusive')
 # is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Upper Quartile', round='Floor', method='Inclusive')
 
-is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Lower Quartile', round='Ceil', method='Exclusive')
+# is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Lower Quartile', round='Ceil', method='Exclusive')
 # is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Lower Quartile', round='Ceil', method='Inclusive')
 # is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Lower Quartile', round='Floor', method='Exclusive')
 # is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename="2", mode='Lower Quartile', round='Floor', method='Inclusive')
 
 # ### Dataset 3
 # is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Highest')
-# is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Lowest')
+#is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Lowest')
 # is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Median', round='Ceil')
 # is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Median', round='Floor')
 
@@ -943,7 +943,7 @@ is_type_in_r(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filenam
 # datalist5 = "comeback_5_1_repeat_3_to_23nodes_200graphs.list"
 # file5 = "5"
 # is_type_in_r(datalist=datalist5, filename=file5, mode='Highest')
-# is_type_in_r(datalist=datalist5, filename=file5, mode='Lowest')
+#is_type_in_r(datalist=datalist5, filename=file5, mode='Lowest')
 # is_type_in_r(datalist=datalist5, filename=file5, mode='Median', round='Ceil')
 # is_type_in_r(datalist=datalist5, filename=file5, mode='Median', round='Floor')
 
@@ -1172,7 +1172,7 @@ def init_offset_pairs1():
 
                 # offset_pairs(datalist=d, filename=f, mode=m1_final, mode2=m2_final, method='', round='',  method2='', round2='')
 
-init_offset_pairs1()
+#init_offset_pairs1()
 
 ## Purpose: Find the False graphs nodes, radiuses, and seeds from offset_pairs.
 def offset_pairs2(datalist, filename, mode, mode2, method='', round='',  method2='', round2=''):

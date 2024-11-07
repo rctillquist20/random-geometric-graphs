@@ -7,6 +7,15 @@ Ceil Exclusive Lower Quartile | Lowest
 5: 98.5% | 96.0%
 6: 98.5% | 95.0%
 
+
+Ceil Exclusive Lower Quartile + Lowest
+2: 96.0%
+3: 95.0%
+4: 96.0%
+5: 94.5%
+6: 93.5%
+
+
 1. Why is dataset 3 Ceil Exclusive Lower Quartile lower than lowest?
 2. What did graphs did it miss? Did Lowest get the one graph Ceil Exclusive 
 Lower Quartile did not get???
@@ -29,3 +38,7 @@ Maybe there is a connection or why lowest or Ceil/Floor Exclusive Lower
 Quartile get chosen?
 
 [0, 3] have the same number of element types but they never mix to form R in the OG photo...???
+
+NEXT PLAN:
+- Check if all Ceil Exclusive Lower Quartile missed are covered by Lowest Offset.
+- TODO: Calculate which one offset can calculate that missing node graph from the previous pair. Triple threat algorithm.
