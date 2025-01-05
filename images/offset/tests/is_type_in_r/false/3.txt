@@ -1,5 +1,10 @@
 NOT SOLVED 14 0.2637007862283646
 
+Highest: (MAYBE?)
+Ceil Median: (CHECK)
+Floor Exclusive Upper Quartile: (CHECK)
+Floor Inclusive Upper Quartile: (CHECK)
+
 Ceil Exclusive Lower Quartile:
 True: 193
 False: 7

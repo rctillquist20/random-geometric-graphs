@@ -228,21 +228,22 @@ def write_distance_matrix(filename, matrix):
 # write_distance_matrix(filename='not'+str(seed),matrix=dm)
 
 ## DRAW GRAPH TESTING ##
-# nodes = 14
-# radius = 0.2637007862283646
-# seed = 206860
+# nodes = 12
+# radius = 0.3846715724910903
+# seed = 171783
 
-nodes = 22
-radius = 0.3788914393160148
-seed = 190439
-G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
+# # TODO MAYBE?
+# # nodes = 22
+# # radius = 0.3788914393160148
+# # seed = 190439
+# G = nx.random_geometric_graph(n=nodes, radius=radius, seed=seed)
 
-file_name = 'comeback_4_1_repeat_3_to_23nodes_200graphs.list'
+# file_name = 'comeback_5_1_repeat_3_to_23nodes_200graphs.list'
 
-draw_graph(G,
-           static_pos=decode.get_data(
-               nodes=nodes, radius=radius, seed=seed, output=False, file_name = file_name)[5],
-           r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed, output=False, file_name = file_name)[3], seed=seed, show_resolving=True)
+# draw_graph(G,
+#            static_pos=decode.get_data(
+#                nodes=nodes, radius=radius, seed=seed, output=False, file_name = file_name)[5],
+#            r_set=decode.get_data(nodes=nodes, radius=radius, seed=seed, output=False, file_name = file_name)[3], seed=seed, show_resolving=True)
 
 # draw_graph(G,static_pos=decode.get_data(
 #                nodes=nodes, radius=radius, seed=seed, output=False, file_name = 'comeback_3_1_repeat_3_to_23nodes_200graphs.list')[5], r_set=[0, 2, 6])

@@ -35,9 +35,13 @@
 
 # Finds the element with the highest count in a specific matrix row array so 
 # can get the highest offset.
+### IMPORTANT -> Offset 1: All Unique rows.
+
 def get_element_with_highest_count(array):
     count_dict = {}
+    print(array)
     for element in array:
+        # print(element)
         count_dict[element] = count_dict.get(element, 0) + 1
     max_count = max(count_dict.values())
 
@@ -76,24 +80,33 @@ def get_lower_quartile_key(dictionary, method):
 import statistics
 # Example usage:
 matrix = [
-[0, 1, 2, 1, 2, 3],
-[1, 0, 1, 1, 1, 2],
+[0, 0, 0, 0, 0, 0], # Row 0
+[1, 0, 1, 1, 1, 2], 
 [2, 1, 0, 2, 2, 1],
-[1, 1, 2, 0, 2, 3],
-[2, 1, 2, 2, 0, 3],
-[3, 2, 1, 3, 3, 0]
+[0, 1, 2, 3, 4, 5],
+[4, 1, 2, 2, 0, 3],
+[1, 1, 1, 1, 1, 1]  # Row 5
 ]
+# All we care about is rows really.
 
 # result = count_elements_and_group(matrix)
-offset_dict = get_close_to_unique_rows_offset(matrix)
-# print(result)
-key = get_lowest_key(offset_dict)
-print(f'Lowest:\n{key}')
-print(f'{offset_dict[key]}')
+print(matrix)
+print()
+print()
 
-key2 = get_lower_quartile_key(offset_dict, method='Exclusive')
-print(f'Ceil Exclusive Lower Quartile:\n{key2}')
-print(f'{offset_dict[key2]}')
+offset_dict = get_close_to_unique_rows_offset(matrix)
+print(offset_dict)
+
+
+
+# # print(result)
+# key = get_lowest_key(offset_dict)
+# print(f'Lowest:\n{key}')
+# print(f'{offset_dict[key]}')
+
+# key2 = get_lower_quartile_key(offset_dict, method='Exclusive')
+# print(f'Ceil Exclusive Lower Quartile:\n{key2}')
+# print(f'{offset_dict[key2]}')
 
 
 # time_diff = [i for i in range(1, 11)]

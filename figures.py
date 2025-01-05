@@ -10,10 +10,10 @@ import numpy as np
 import multilateration as geo
 import networkx as nx
 import os
-# import geohat
+import geohat
 import sys
 sys.path.append('/Users/evanalba/random-geometric-graphs/shelf')
-import degnite
+# import degnite
 
 nodes = 34
 radius = 0.2
@@ -73,7 +73,7 @@ for seed in seed_list:
         # metric_time.append(execution_time)
 
 ### STATE YOUR METHOD ###
-method = 'ICH vs Random vs GeoHAT'
+method = 'ICH vs Random'
 
 ### ICH METRIC DIMENSION ###
 

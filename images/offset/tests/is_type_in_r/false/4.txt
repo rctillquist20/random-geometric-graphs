@@ -1,5 +1,11 @@
 NOT SOLVED 22 0.3788914393160148
 
+Highest: (CHECK)
+Probability of being True: 87.5%
+
+Floor Inclusive Upper Quartile: (CHECK)
+Probability of being True: 96.0%
+
 Ceil Exclusive Lower Quartile:
 True: 197
 False: 3

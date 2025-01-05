@@ -208,7 +208,7 @@ def get_r_based_on_least_occurences(distance_matrix, least_common):
     return False
 
 
-def geohat(distance_matrix, option=[1]):
+def geohat(distance_matrix, option=[1, 2 , 3]):
     if 1 in option:
         # Size 1 Metric Dimension
         print('Option 1 START!\n')
