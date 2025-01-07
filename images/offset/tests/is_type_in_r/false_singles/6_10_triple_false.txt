@@ -1,0 +1,80 @@
+Highest:
+True: 1
+False: 0
+Probability of being True: 100.0%
+True:
+[10][0.5675631965368171][689241]
+False:
+[][][]
+
+Ceil Median:
+True: 1
+False: 0
+Probability of being True: 100.0%
+True:
+[10][0.5675631965368171][689241]
+False:
+[][][]
+
+Floor Median:
+True: 1
+False: 0
+Probability of being True: 100.0%
+True:
+[10][0.5675631965368171][689241]
+False:
+[][][]
+
+Ceil Exclusive Upper Quartile:
+True: 1
+False: 0
+Probability of being True: 100.0%
+True:
+[10][0.5675631965368171][689241]
+False:
+[][][]
+
+Ceil Inclusive Upper Quartile:
+True: 1
+False: 0
+Probability of being True: 100.0%
+True:
+[10][0.5675631965368171][689241]
+False:
+[][][]
+
+Floor Exclusive Upper Quartile:
+True: 1
+False: 0
+Probability of being True: 100.0%
+True:
+[10][0.5675631965368171][689241]
+False:
+[][][]
+
+Floor Inclusive Upper Quartile:
+True: 1
+False: 0
+Probability of being True: 100.0%
+True:
+[10][0.5675631965368171][689241]
+False:
+[][][]
+
+Ceil Inclusive Lower Quartile:
+True: 1
+False: 0
+Probability of being True: 100.0%
+True:
+[10][0.5675631965368171][689241]
+False:
+[][][]
+
+Floor Inclusive Lower Quartile:
+True: 1
+False: 0
+Probability of being True: 100.0%
+True:
+[10][0.5675631965368171][689241]
+False:
+[][][]

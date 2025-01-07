@@ -12,3 +12,8 @@ Given a graph G, a subset of vertices R is called a resolving set when, for all 
 `comeback_2_1_repeat_3_to_23nodes_200graphs` - RGGs from 3-23 nodes with random radiuses **set 1**.\
 `comeback_3_1_repeat_3_to_23nodes_200graphs` - RGGs from 3-23 nodes with random radiuses **set 2**.\
 `comeback_4_1_repeat_3_to_23nodes_200graphs` - RGGs from 3-23 nodes with random radiuses **set 3**.
+`comeback_5_1_repeat_3_to_23nodes_200graphs` - RGGs from 3-23 nodes with random radiuses **set 4**.\
+`comeback_6_1_repeat_3_to_23nodes_200graphs` - RGGs from 3-23 nodes with random radiuses **set 5**.
+Note: In total of `comeback_#_1_repeat_3_to_23nodes_200graphs` there are 1000 RGGs.
+
+

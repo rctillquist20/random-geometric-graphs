@@ -8,12 +8,19 @@ Ceil Exclusive Lower Quartile | Lowest
 6: 98.5% | 95.0%
 
 
-Ceil Exclusive Lower Quartile + Lowest
+Ceil Exclusive Lower Quartile AND Lowest
 2: 96.0%
 3: 95.0%
 4: 96.0%
 5: 94.5%
 6: 93.5%
+
+Ceil Exclusive Lower Quartile OR Lowest
+2: 
+3: 
+4: 
+5: 
+6: 
 
 
 1. Why is dataset 3 Ceil Exclusive Lower Quartile lower than lowest?
@@ -27,7 +34,7 @@ If so, we can "remove" that subset from matrix.
 "Favorness" level % by the number of popular common matrix elements it has
 to make up that specific column.
 
-I feel radius is a distraction because we can play the nodes anywhere.
+I feel radius is a distraction because we can place the nodes anywhere.
 The only thing radius gives us is a connection in which affects the column rows
 elements. We have to be ready for anything, with or without radius at hand.
 

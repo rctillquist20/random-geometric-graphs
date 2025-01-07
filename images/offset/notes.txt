@@ -48,28 +48,23 @@ Floor Inclusive Lower Quartile
 choose(12, 2) = 66 ways
 Test pairs of statistics 5 Classification summary of True/False Graphs
 
-is_type_in_r 3 datasets combined (FALSE COUNT):
-Note: lower than 30 is good I think. 10 * 3 datasets = 30
-- Highest (75)
-- Lowest (15) <--
-- Ceil Median (38)
-- Floor Median (23)
-- Ceil Exclusive Upper Quartile (90)
-- Ceil Inclusive Upper Quartile (74)
-- Floor Exclusive Upper Quartile (63)
-- Floor Inclusive Upper Quartile (31)
-- Ceil Exclusive Lower Quartile (13) <--
-- Ceil Inclusive Lower Quartile (74)
-- Floor Exclusive Lower Quartile (18)
-- Floor Inclusive Lower Quartile (31)
-
-WORST:
-- Ceil Exclusive Upper Quartile (90)
-- Ceil Inclusive Lower Quartile (74)
-- Note:
+is_type_in_r 5 datasets combined (FALSE COUNT):
+Note: lower than better is good I think.
+- Highest (118)
+- Lowest (33) <--
+- Ceil Median (64)
+- Floor Median (39)
+- Ceil Exclusive Upper Quartile (143)
+- Ceil Inclusive Upper Quartile (120)
+- Floor Exclusive Upper Quartile (108)
+- Floor Inclusive Upper Quartile (54)
+- Ceil Exclusive Lower Quartile (19) <-- 
+- Ceil Inclusive Lower Quartile (120)
+- Floor Exclusive Lower Quartile (27) <--
+- Floor Inclusive Lower Quartile (54)
 
 
-Looks like we do better in genral in the lower quartile.
+Looks like we do better in general in the lower quartile.
 
 Maybe use lowest score top 2 to help make multiple R sets??
 

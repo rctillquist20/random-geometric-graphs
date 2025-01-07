@@ -12,7 +12,7 @@ import networkx as nx
 import os
 import geohat
 import sys
-sys.path.append('/Users/evanalba/random-geometric-graphs/shelf')
+# sys.path.append('/Users/evanalba/random-geometric-graphs/shelf')
 # import degnite
 
 nodes = 34
