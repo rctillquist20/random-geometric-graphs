@@ -803,7 +803,7 @@ def is_type_in_r(datalist, filename, mode, method='', round=''):
     # count = 0
 
     #all_nodes = decode.get_items_list(file_name=f'{datalist}', nodes=True)
-    all_nodes = [12]
+    all_nodes = [10]
     true_nodes = []
     false_nodes = []
     # Make sure the file has the total of N number of graphs wanted...
@@ -811,12 +811,12 @@ def is_type_in_r(datalist, filename, mode, method='', round=''):
     # print(max(all_nodes))
     # return
     #all_r = decode.get_items_list(file_name=f'{datalist}', radius=True)
-    all_r = [0.3846715724910903]
+    all_r = [0.5675631965368171]
     true_r = []
     false_r = []
     
     # all_seeds = decode.get_items_list(file_name=f'{datalist}', seed=True)
-    all_seeds = [171783]
+    all_seeds = [689241]
     true_seeds = []
     false_seeds = []
 
@@ -922,21 +922,22 @@ def is_type_in_r(datalist, filename, mode, method='', round=''):
 # is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Lower Quartile', round='Floor', method='Exclusive')
 # is_type_in_r(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename="3", mode='Lower Quartile', round='Floor', method='Inclusive')
 
-### Dataset 4
-# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Highest')
+# ### Dataset 4
+# file4 = "4_12_triple_false"
+# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename=file4, mode='Highest')
 # # is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Lowest')
-# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Median', round='Ceil')
-# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Median', round='Floor')
+# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename=file4, mode='Median', round='Ceil')
+# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename=file4, mode='Median', round='Floor')
 
-# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Upper Quartile', round='Ceil', method='Exclusive')
-# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Upper Quartile', round='Ceil', method='Inclusive')
-# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Upper Quartile', round='Floor', method='Exclusive')
-# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Upper Quartile', round='Floor', method='Inclusive')
+# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename=file4, mode='Upper Quartile', round='Ceil', method='Exclusive')
+# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename=file4, mode='Upper Quartile', round='Ceil', method='Inclusive')
+# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename=file4, mode='Upper Quartile', round='Floor', method='Exclusive')
+# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename=file4, mode='Upper Quartile', round='Floor', method='Inclusive')
 
 # # is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Lower Quartile', round='Ceil', method='Exclusive')
-# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Lower Quartile', round='Ceil', method='Inclusive')
-# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Lower Quartile', round='Floor', method='Exclusive')
-# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename="4", mode='Lower Quartile', round='Floor', method='Inclusive')
+# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename=file4, mode='Lower Quartile', round='Ceil', method='Inclusive')
+# # is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename=file4, mode='Lower Quartile', round='Floor', method='Exclusive')
+# is_type_in_r(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename=file4, mode='Lower Quartile', round='Floor', method='Inclusive')
 
 
 ### Dataset 5
@@ -954,13 +955,13 @@ def is_type_in_r(datalist, filename, mode, method='', round=''):
 
 # # is_type_in_r(datalist=datalist5, filename=file5, mode='Lower Quartile', round='Ceil', method='Exclusive')
 # is_type_in_r(datalist=datalist5, filename=file5, mode='Lower Quartile', round='Ceil', method='Inclusive')
-# is_type_in_r(datalist=datalist5, filename=file5, mode='Lower Quartile', round='Floor', method='Exclusive')
+# # is_type_in_r(datalist=datalist5, filename=file5, mode='Lower Quartile', round='Floor', method='Exclusive')
 # is_type_in_r(datalist=datalist5, filename=file5, mode='Lower Quartile', round='Floor', method='Inclusive')
 
 
 # # ### Dataset 6
 # datalist6 = "comeback_6_1_repeat_3_to_23nodes_200graphs.list"
-# file6 = "6"
+# file6 = "6_10_triple_false"
 # is_type_in_r(datalist=datalist6, filename=file6, mode='Highest')
 # # is_type_in_r(datalist=datalist6, filename=file6, mode='Lowest')
 # is_type_in_r(datalist=datalist6, filename=file6, mode='Median', round='Ceil')
@@ -973,7 +974,7 @@ def is_type_in_r(datalist, filename, mode, method='', round=''):
 
 # # is_type_in_r(datalist=datalist6, filename=file6, mode='Lower Quartile', round='Ceil', method='Exclusive')
 # is_type_in_r(datalist=datalist6, filename=file6, mode='Lower Quartile', round='Ceil', method='Inclusive')
-# is_type_in_r(datalist=datalist6, filename=file6, mode='Lower Quartile', round='Floor', method='Exclusive')
+# # is_type_in_r(datalist=datalist6, filename=file6, mode='Lower Quartile', round='Floor', method='Exclusive')
 # is_type_in_r(datalist=datalist6, filename=file6, mode='Lower Quartile', round='Floor', method='Inclusive')
 
 
@@ -1363,10 +1364,10 @@ def offset_triples(datalist, filename, mode, mode2, mode3, method='', round='', 
             
             file.write(f'\nTrue:\n{true_nodes}{true_r}{true_seeds}\nFalse:\n{false_nodes}{false_r}{false_seeds}')
 
-offset_triples(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename='false_triple', mode='Lower Quartile', mode2='Lower Quartile', mode3='Lowest', method='Exclusive', round='Ceil',  method2='Exclusive', round2='Floor')
-offset_triples(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename='false_triple', mode='Lower Quartile', mode2='Lower Quartile', mode3='Lowest', method='Exclusive', round='Ceil',  method2='Exclusive', round2='Floor')
-offset_triples(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename='false_triple', mode='Lower Quartile', mode2='Lower Quartile', mode3='Lowest', method='Exclusive', round='Ceil',  method2='Exclusive', round2='Floor')
+# offset_triples(datalist="comeback_2_1_repeat_3_to_23nodes_200graphs.list", filename='false_triple', mode='Lower Quartile', mode2='Lower Quartile', mode3='Lowest', method='Exclusive', round='Ceil',  method2='Exclusive', round2='Floor')
+# offset_triples(datalist="comeback_3_1_repeat_3_to_23nodes_200graphs.list", filename='false_triple', mode='Lower Quartile', mode2='Lower Quartile', mode3='Lowest', method='Exclusive', round='Ceil',  method2='Exclusive', round2='Floor')
+# offset_triples(datalist="comeback_4_1_repeat_3_to_23nodes_200graphs.list", filename='false_triple', mode='Lower Quartile', mode2='Lower Quartile', mode3='Lowest', method='Exclusive', round='Ceil',  method2='Exclusive', round2='Floor')
 
-offset_triples(datalist="comeback_5_1_repeat_3_to_23nodes_200graphs.list", filename='false_triple', mode='Lower Quartile', mode2='Lower Quartile', mode3='Lowest', method='Exclusive', round='Ceil',  method2='Exclusive', round2='Floor')
-offset_triples(datalist="comeback_6_1_repeat_3_to_23nodes_200graphs.list", filename='false_triple', mode='Lower Quartile', mode2='Lower Quartile', mode3='Lowest', method='Exclusive', round='Ceil',  method2='Exclusive', round2='Floor')
+# offset_triples(datalist="comeback_5_1_repeat_3_to_23nodes_200graphs.list", filename='false_triple', mode='Lower Quartile', mode2='Lower Quartile', mode3='Lowest', method='Exclusive', round='Ceil',  method2='Exclusive', round2='Floor')
+# offset_triples(datalist="comeback_6_1_repeat_3_to_23nodes_200graphs.list", filename='false_triple', mode='Lower Quartile', mode2='Lower Quartile', mode3='Lowest', method='Exclusive', round='Ceil',  method2='Exclusive', round2='Floor')
 
