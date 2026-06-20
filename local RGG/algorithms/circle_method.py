@@ -1,7 +1,11 @@
 import networkx as nx
 import igraph as ig
 import numpy as np
+import random
 import math
+import bisect
+import heapq
+from shapely.geometry import Point, Polygon, box
 
 from functions.resolving_functions import (
     euclidean_distance,
@@ -133,7 +137,7 @@ class UnitCircle:
     def getCenters(self):
       return self.centers
   
-  def get_metric_dimension_of_graph_with_pruning_igraph_circle(G, r, k_nearest=1, max_iters=1000):
+def get_metric_dimension_of_graph_with_pruning_igraph_circle(G, r, k_nearest=1, max_iters=1000):
     g = ig.Graph.from_networkx(G)
     nodes_set = set(range(g.vcount()))
     dist_matrix = g.distances()

@@ -1,7 +1,11 @@
 import networkx as nx
 import igraph as ig
 import numpy as np
+import random
 import math
+import bisect
+import heapq
+from shapely.geometry import Point, Polygon, box
 
 from functions.resolving_functions import (
     euclidean_distance,
@@ -11,6 +15,7 @@ from functions.resolving_functions import (
 from functions.zobrist_functions import (
     prune_resolving_set_zobrist_fast
 )
+from functions.structs import generate_rgg_with_grid
 
 class UnitSquareNew:
     """
@@ -90,22 +95,6 @@ class UnitSquareNew:
                 return
 
             step += 1
-
-def generate_rgg_with_grid(G, m, n):
-    grid = {(r, c): [] for r in range(m) for c in range(n)}
-    pos = {}
-
-    for node in range(G.vcount()):
-        coord = G.vs[node]["pos"]
-        x, y = coord[0], coord[1]
-
-        pos[node] = (x, y)
-
-        col = min(int(x * n), n - 1)
-        row = min(int(y * m), m - 1)
-        grid[(row, col)].append(node)
-
-    return grid
 
 def cell_center(i, j, m, n):
     """
