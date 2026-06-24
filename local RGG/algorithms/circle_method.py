@@ -15,77 +15,10 @@ from functions.resolving_functions import (
 from functions.zobrist_functions import (
     prune_resolving_set_zobrist_fast
 )
-
-class UnitSquare:
-  def __init__(self):
-    self.vertical_cuts_x = [0.0,1.0]
-    self.horizontal_cuts_y = [0.0,1.0]
-    self.divisions = {}
-    self.priority_queue = []
-    self.add_new_division(0,0)
-
-  def add_new_division(self,i,j):
-    x0, x1 = self.vertical_cuts_x[i], self.vertical_cuts_x[i+1]
-    y0, y1 = self.horizontal_cuts_y[j], self.horizontal_cuts_y[j+1]
-    area = (x1 - x0) * (y1 - y0)
-    self.divisions[(i,j)] = (area,(x0,x1,y0,y1))
-    heapq.heappush(self.priority_queue,(-area,i,j))
-
-  def pop_largest_division(self):
-    while self.priority_queue:
-      area,i,j = heapq.heappop(self.priority_queue)
-      if (i,j) in self.divisions and -area == self.divisions[(i,j)][0]:
-        return i,j
-    return None
-
-  def get_cut_direction(self,x0,x1,y0,y1):
-    width = x1 - x0
-    height = y1 - y0
-    return 'vertical' if width>height else 'horizontal'
-
-  def add(self):
-    popped_division = self.pop_largest_division()
-    if popped_division is None:
-      return
-    i,j = popped_division
-    (x0,x1,y0,y1) = self.divisions[(i,j)][1]
-    del self.divisions[(i,j)]
-    direction = self.get_cut_direction(x0,x1,y0,y1)
-    if direction=='vertical':
-      cut_x = (x0+x1)/2
-      bisect.insort(self.vertical_cuts_x,cut_x)
-      new_x = self.vertical_cuts_x.index(cut_x)
-      for temp_x in range(new_x-1,len(self.vertical_cuts_x)-1):
-        for temp_y in range(len(self.horizontal_cuts_y)-1):
-          if (temp_x,temp_y) in self.divisions:
-              del self.divisions[(temp_x,temp_y)]
-          self.add_new_division(temp_x,temp_y)
-      return cut_x,False
-    else:
-      cut_y = (y0+y1)/2
-      bisect.insort(self.horizontal_cuts_y,cut_y)
-      new_y = self.horizontal_cuts_y.index(cut_y)
-      for temp_y in range(new_y-1,len(self.horizontal_cuts_y)-1):
-        for temp_x in range(len(self.vertical_cuts_x)-1):
-          if (temp_x,temp_y) in self.divisions:
-              del self.divisions[(temp_x,temp_y)]
-          self.add_new_division(temp_x,temp_y)
-      return cut_y, True
-
-
-  def get_all_areas(self):
-    areas = []
-    for area_and_coordinates in self.divisions.values():
-      area, (x0, x1, y0, y1) = area_and_coordinates
-      areas.append(area)
-    return areas
-
-  def get_probability(self):
-    result = 0
-    areas = self.get_all_areas()
-    for area in areas:
-      result = result + (area**2)
-    return 1-result
+from functions.structs import (
+    UnitSquare,
+    UnitCircle
+)
 
 
 class UnitCircle:
