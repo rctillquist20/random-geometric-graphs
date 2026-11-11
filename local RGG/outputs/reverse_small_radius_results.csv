@@ -1,0 +1,451 @@
+Nodes,Radius,Density (%),Components,Repeat,Method,Set Size,Runtime (s),Valid
+500,0.05,0.7158,47,1,Circle collision,129,1.374109,Yes
+500,0.05,0.7158,47,1,Grid collision,127,2.082966,Yes
+500,0.05,0.7158,47,1,Reverse elimination (one order),125,0.088507,Yes
+500,0.05,0.7158,47,1,Reverse elimination (best of 3 orders),125,0.232231,Yes
+500,0.05,0.7158,47,1,"Reverse (existing pruner, same order)",125,2.054531,Yes
+500,0.05,0.7158,47,1,Zoomed Square collision,127,1.338257,Yes
+500,0.05,0.7551,33,2,Circle collision,125,1.529899,Yes
+500,0.05,0.7551,33,2,Grid collision,127,2.236687,Yes
+500,0.05,0.7551,33,2,Reverse elimination (one order),127,0.084051,Yes
+500,0.05,0.7551,33,2,Reverse elimination (best of 3 orders),127,0.267734,Yes
+500,0.05,0.7551,33,2,"Reverse (existing pruner, same order)",127,2.574946,Yes
+500,0.05,0.7551,33,2,Zoomed Square collision,125,1.732631,Yes
+500,0.05,0.7222,31,3,Circle collision,115,1.284203,Yes
+500,0.05,0.7222,31,3,Grid collision,116,2.196487,Yes
+500,0.05,0.7222,31,3,Reverse elimination (one order),115,0.089999,Yes
+500,0.05,0.7222,31,3,Reverse elimination (best of 3 orders),115,0.236951,Yes
+500,0.05,0.7222,31,3,"Reverse (existing pruner, same order)",115,1.861823,Yes
+500,0.05,0.7222,31,3,Zoomed Square collision,117,1.323854,Yes
+500,0.05,0.7856,41,4,Circle collision,129,1.499972,Yes
+500,0.05,0.7856,41,4,Grid collision,128,2.038548,Yes
+500,0.05,0.7856,41,4,Reverse elimination (one order),129,0.086983,Yes
+500,0.05,0.7856,41,4,Reverse elimination (best of 3 orders),128,0.251807,Yes
+500,0.05,0.7856,41,4,"Reverse (existing pruner, same order)",129,2.476551,Yes
+500,0.05,0.7856,41,4,Zoomed Square collision,130,1.982056,Yes
+500,0.05,0.7695,34,5,Circle collision,123,1.170231,Yes
+500,0.05,0.7695,34,5,Grid collision,123,1.706329,Yes
+500,0.05,0.7695,34,5,Reverse elimination (one order),123,0.080902,Yes
+500,0.05,0.7695,34,5,Reverse elimination (best of 3 orders),123,0.23343,Yes
+500,0.05,0.7695,34,5,"Reverse (existing pruner, same order)",123,1.657947,Yes
+500,0.05,0.7695,34,5,Zoomed Square collision,124,1.25849,Yes
+500,0.075,1.6834,2,1,Circle collision,65,0.985007,Yes
+500,0.075,1.6834,2,1,Grid collision,63,0.806674,Yes
+500,0.075,1.6834,2,1,Reverse elimination (one order),66,0.076064,Yes
+500,0.075,1.6834,2,1,Reverse elimination (best of 3 orders),64,0.203335,Yes
+500,0.075,1.6834,2,1,"Reverse (existing pruner, same order)",66,1.065427,Yes
+500,0.075,1.6834,2,1,Zoomed Square collision,66,0.948554,Yes
+500,0.075,1.6481,3,2,Circle collision,70,1.687859,Yes
+500,0.075,1.6481,3,2,Grid collision,72,1.030516,Yes
+500,0.075,1.6481,3,2,Reverse elimination (one order),76,0.076534,Yes
+500,0.075,1.6481,3,2,Reverse elimination (best of 3 orders),72,0.207114,Yes
+500,0.075,1.6481,3,2,"Reverse (existing pruner, same order)",76,1.947178,Yes
+500,0.075,1.6481,3,2,Zoomed Square collision,71,1.597442,Yes
+500,0.075,1.6529,3,3,Circle collision,59,0.950343,Yes
+500,0.075,1.6529,3,3,Grid collision,59,0.73356,Yes
+500,0.075,1.6529,3,3,Reverse elimination (one order),57,0.074663,Yes
+500,0.075,1.6529,3,3,Reverse elimination (best of 3 orders),57,0.204396,Yes
+500,0.075,1.6529,3,3,"Reverse (existing pruner, same order)",57,1.065505,Yes
+500,0.075,1.6529,3,3,Zoomed Square collision,60,0.909986,Yes
+500,0.075,1.7323,3,4,Circle collision,76,1.182406,Yes
+500,0.075,1.7323,3,4,Grid collision,76,1.025424,Yes
+500,0.075,1.7323,3,4,Reverse elimination (one order),79,0.074665,Yes
+500,0.075,1.7323,3,4,Reverse elimination (best of 3 orders),78,0.201563,Yes
+500,0.075,1.7323,3,4,"Reverse (existing pruner, same order)",79,1.201579,Yes
+500,0.075,1.7323,3,4,Zoomed Square collision,80,1.072112,Yes
+500,0.075,1.6697,1,5,Circle collision,79,0.943958,Yes
+500,0.075,1.6697,1,5,Grid collision,81,0.95062,Yes
+500,0.075,1.6697,1,5,Reverse elimination (one order),82,0.072599,Yes
+500,0.075,1.6697,1,5,Reverse elimination (best of 3 orders),80,0.198554,Yes
+500,0.075,1.6697,1,5,"Reverse (existing pruner, same order)",82,1.137063,Yes
+500,0.075,1.6697,1,5,Zoomed Square collision,78,0.954087,Yes
+500,0.1,2.9379,1,1,Circle collision,58,0.825625,Yes
+500,0.1,2.9379,1,1,Grid collision,59,0.577513,Yes
+500,0.1,2.9379,1,1,Reverse elimination (one order),60,0.081301,Yes
+500,0.1,2.9379,1,1,Reverse elimination (best of 3 orders),60,0.205775,Yes
+500,0.1,2.9379,1,1,"Reverse (existing pruner, same order)",60,0.947028,Yes
+500,0.1,2.9379,1,1,Zoomed Square collision,60,0.658751,Yes
+500,0.1,2.8721,1,2,Circle collision,64,1.079406,Yes
+500,0.1,2.8721,1,2,Grid collision,62,0.551643,Yes
+500,0.1,2.8721,1,2,Reverse elimination (one order),60,0.080512,Yes
+500,0.1,2.8721,1,2,Reverse elimination (best of 3 orders),59,0.208525,Yes
+500,0.1,2.8721,1,2,"Reverse (existing pruner, same order)",60,1.179733,Yes
+500,0.1,2.8721,1,2,Zoomed Square collision,61,0.91625,Yes
+500,0.1,2.8521,1,3,Circle collision,51,0.669245,Yes
+500,0.1,2.8521,1,3,Grid collision,52,0.532966,Yes
+500,0.1,2.8521,1,3,Reverse elimination (one order),52,0.081939,Yes
+500,0.1,2.8521,1,3,Reverse elimination (best of 3 orders),52,0.204682,Yes
+500,0.1,2.8521,1,3,"Reverse (existing pruner, same order)",52,0.861452,Yes
+500,0.1,2.8521,1,3,Zoomed Square collision,50,0.635183,Yes
+500,0.1,3.0228,1,4,Circle collision,60,1.155159,Yes
+500,0.1,3.0228,1,4,Grid collision,57,0.585566,Yes
+500,0.1,3.0228,1,4,Reverse elimination (one order),59,0.076008,Yes
+500,0.1,3.0228,1,4,Reverse elimination (best of 3 orders),58,0.197559,Yes
+500,0.1,3.0228,1,4,"Reverse (existing pruner, same order)",59,0.919269,Yes
+500,0.1,3.0228,1,4,Zoomed Square collision,59,0.835288,Yes
+500,0.1,2.8954,1,5,Circle collision,58,0.756489,Yes
+500,0.1,2.8954,1,5,Grid collision,61,0.542126,Yes
+500,0.1,2.8954,1,5,Reverse elimination (one order),63,0.075063,Yes
+500,0.1,2.8954,1,5,Reverse elimination (best of 3 orders),60,0.202356,Yes
+500,0.1,2.8954,1,5,"Reverse (existing pruner, same order)",63,0.801323,Yes
+500,0.1,2.8954,1,5,Zoomed Square collision,60,0.814598,Yes
+500,0.125,4.4329,1,1,Circle collision,49,0.843369,Yes
+500,0.125,4.4329,1,1,Grid collision,51,0.692559,Yes
+500,0.125,4.4329,1,1,Reverse elimination (one order),52,0.075981,Yes
+500,0.125,4.4329,1,1,Reverse elimination (best of 3 orders),48,0.208871,Yes
+500,0.125,4.4329,1,1,"Reverse (existing pruner, same order)",52,0.693139,Yes
+500,0.125,4.4329,1,1,Zoomed Square collision,49,0.647289,Yes
+500,0.125,4.42,1,2,Circle collision,50,0.804415,Yes
+500,0.125,4.42,1,2,Grid collision,49,0.513692,Yes
+500,0.125,4.42,1,2,Reverse elimination (one order),50,0.086456,Yes
+500,0.125,4.42,1,2,Reverse elimination (best of 3 orders),48,0.250231,Yes
+500,0.125,4.42,1,2,"Reverse (existing pruner, same order)",50,0.912717,Yes
+500,0.125,4.42,1,2,Zoomed Square collision,51,0.701206,Yes
+500,0.125,4.3535,1,3,Circle collision,50,0.724143,Yes
+500,0.125,4.3535,1,3,Grid collision,51,0.437334,Yes
+500,0.125,4.3535,1,3,Reverse elimination (one order),52,0.073457,Yes
+500,0.125,4.3535,1,3,Reverse elimination (best of 3 orders),48,0.200149,Yes
+500,0.125,4.3535,1,3,"Reverse (existing pruner, same order)",52,0.900593,Yes
+500,0.125,4.3535,1,3,Zoomed Square collision,50,0.588059,Yes
+500,0.125,4.5964,1,4,Circle collision,47,0.700749,Yes
+500,0.125,4.5964,1,4,Grid collision,53,0.435085,Yes
+500,0.125,4.5964,1,4,Reverse elimination (one order),50,0.079475,Yes
+500,0.125,4.5964,1,4,Reverse elimination (best of 3 orders),49,0.215627,Yes
+500,0.125,4.5964,1,4,"Reverse (existing pruner, same order)",50,0.54489,Yes
+500,0.125,4.5964,1,4,Zoomed Square collision,51,0.565944,Yes
+500,0.125,4.42,1,5,Circle collision,51,0.673096,Yes
+500,0.125,4.42,1,5,Grid collision,50,0.434216,Yes
+500,0.125,4.42,1,5,Reverse elimination (one order),52,0.075185,Yes
+500,0.125,4.42,1,5,Reverse elimination (best of 3 orders),49,0.196845,Yes
+500,0.125,4.42,1,5,"Reverse (existing pruner, same order)",52,0.692953,Yes
+500,0.125,4.42,1,5,Zoomed Square collision,56,0.593974,Yes
+500,0.15,6.194,1,1,Circle collision,55,0.623363,Yes
+500,0.15,6.194,1,1,Grid collision,50,0.578474,Yes
+500,0.15,6.194,1,1,Reverse elimination (one order),52,0.077905,Yes
+500,0.15,6.194,1,1,Reverse elimination (best of 3 orders),52,0.204902,Yes
+500,0.15,6.194,1,1,"Reverse (existing pruner, same order)",52,0.697266,Yes
+500,0.15,6.194,1,1,Zoomed Square collision,56,0.672761,Yes
+500,0.15,6.3022,1,2,Circle collision,50,0.919032,Yes
+500,0.15,6.3022,1,2,Grid collision,43,0.554089,Yes
+500,0.15,6.3022,1,2,Reverse elimination (one order),49,0.098788,Yes
+500,0.15,6.3022,1,2,Reverse elimination (best of 3 orders),47,0.226354,Yes
+500,0.15,6.3022,1,2,"Reverse (existing pruner, same order)",49,0.851658,Yes
+500,0.15,6.3022,1,2,Zoomed Square collision,49,0.749927,Yes
+500,0.15,6.1066,1,3,Circle collision,48,0.537801,Yes
+500,0.15,6.1066,1,3,Grid collision,43,0.464976,Yes
+500,0.15,6.1066,1,3,Reverse elimination (one order),46,0.082568,Yes
+500,0.15,6.1066,1,3,Reverse elimination (best of 3 orders),40,0.200261,Yes
+500,0.15,6.1066,1,3,"Reverse (existing pruner, same order)",46,0.5768,Yes
+500,0.15,6.1066,1,3,Zoomed Square collision,49,0.522322,Yes
+500,0.15,6.4353,1,4,Circle collision,55,0.871747,Yes
+500,0.15,6.4353,1,4,Grid collision,53,0.610026,Yes
+500,0.15,6.4353,1,4,Reverse elimination (one order),56,0.078649,Yes
+500,0.15,6.4353,1,4,Reverse elimination (best of 3 orders),56,0.196991,Yes
+500,0.15,6.4353,1,4,"Reverse (existing pruner, same order)",56,0.860039,Yes
+500,0.15,6.4353,1,4,Zoomed Square collision,53,0.767509,Yes
+500,0.15,6.121,1,5,Circle collision,60,0.794234,Yes
+500,0.15,6.121,1,5,Grid collision,67,0.564923,Yes
+500,0.15,6.121,1,5,Reverse elimination (one order),66,0.080132,Yes
+500,0.15,6.121,1,5,Reverse elimination (best of 3 orders),63,0.204702,Yes
+500,0.15,6.121,1,5,"Reverse (existing pruner, same order)",66,0.8796,Yes
+500,0.15,6.121,1,5,Zoomed Square collision,64,0.73143,Yes
+500,0.175,8.1603,1,1,Circle collision,44,0.554137,Yes
+500,0.175,8.1603,1,1,Grid collision,48,0.721547,Yes
+500,0.175,8.1603,1,1,Reverse elimination (one order),48,0.097776,Yes
+500,0.175,8.1603,1,1,Reverse elimination (best of 3 orders),46,0.231182,Yes
+500,0.175,8.1603,1,1,"Reverse (existing pruner, same order)",48,0.640523,Yes
+500,0.175,8.1603,1,1,Zoomed Square collision,47,0.524185,Yes
+500,0.175,8.396,1,2,Circle collision,53,0.845122,Yes
+500,0.175,8.396,1,2,Grid collision,47,0.511962,Yes
+500,0.175,8.396,1,2,Reverse elimination (one order),49,0.088307,Yes
+500,0.175,8.396,1,2,Reverse elimination (best of 3 orders),49,0.211633,Yes
+500,0.175,8.396,1,2,"Reverse (existing pruner, same order)",49,1.004739,Yes
+500,0.175,8.396,1,2,Zoomed Square collision,53,0.749139,Yes
+500,0.175,8.1467,1,3,Circle collision,47,0.634927,Yes
+500,0.175,8.1467,1,3,Grid collision,42,0.554659,Yes
+500,0.175,8.1467,1,3,Reverse elimination (one order),46,0.088022,Yes
+500,0.175,8.1467,1,3,Reverse elimination (best of 3 orders),44,0.22417,Yes
+500,0.175,8.1467,1,3,"Reverse (existing pruner, same order)",46,0.611625,Yes
+500,0.175,8.1467,1,3,Zoomed Square collision,41,0.515475,Yes
+500,0.175,8.5218,1,4,Circle collision,54,0.643348,Yes
+500,0.175,8.5218,1,4,Grid collision,51,0.524387,Yes
+500,0.175,8.5218,1,4,Reverse elimination (one order),52,0.083779,Yes
+500,0.175,8.5218,1,4,Reverse elimination (best of 3 orders),51,0.203393,Yes
+500,0.175,8.5218,1,4,"Reverse (existing pruner, same order)",52,0.700598,Yes
+500,0.175,8.5218,1,4,Zoomed Square collision,53,0.58666,Yes
+500,0.175,8.081,1,5,Circle collision,50,0.55057,Yes
+500,0.175,8.081,1,5,Grid collision,48,0.56983,Yes
+500,0.175,8.081,1,5,Reverse elimination (one order),51,0.078252,Yes
+500,0.175,8.081,1,5,Reverse elimination (best of 3 orders),50,0.194603,Yes
+500,0.175,8.081,1,5,"Reverse (existing pruner, same order)",51,0.581973,Yes
+500,0.175,8.081,1,5,Zoomed Square collision,46,0.557737,Yes
+500,0.2,10.3206,1,1,Circle collision,57,0.765275,Yes
+500,0.2,10.3206,1,1,Grid collision,49,0.744024,Yes
+500,0.2,10.3206,1,1,Reverse elimination (one order),51,0.085221,Yes
+500,0.2,10.3206,1,1,Reverse elimination (best of 3 orders),49,0.203949,Yes
+500,0.2,10.3206,1,1,"Reverse (existing pruner, same order)",51,0.802227,Yes
+500,0.2,10.3206,1,1,Zoomed Square collision,54,0.556211,Yes
+500,0.2,10.707,1,2,Circle collision,53,0.85202,Yes
+500,0.2,10.707,1,2,Grid collision,46,0.775749,Yes
+500,0.2,10.707,1,2,Reverse elimination (one order),52,0.116847,Yes
+500,0.2,10.707,1,2,Reverse elimination (best of 3 orders),50,0.253461,Yes
+500,0.2,10.707,1,2,"Reverse (existing pruner, same order)",52,0.5916,Yes
+500,0.2,10.707,1,2,Zoomed Square collision,51,0.721869,Yes
+500,0.2,10.3976,1,3,Circle collision,53,0.757541,Yes
+500,0.2,10.3976,1,3,Grid collision,54,0.632623,Yes
+500,0.2,10.3976,1,3,Reverse elimination (one order),54,0.094376,Yes
+500,0.2,10.3976,1,3,Reverse elimination (best of 3 orders),54,0.237972,Yes
+500,0.2,10.3976,1,3,"Reverse (existing pruner, same order)",54,0.657138,Yes
+500,0.2,10.3976,1,3,Zoomed Square collision,57,0.655859,Yes
+500,0.2,10.78,1,4,Circle collision,58,0.677194,Yes
+500,0.2,10.78,1,4,Grid collision,58,0.609671,Yes
+500,0.2,10.78,1,4,Reverse elimination (one order),56,0.083109,Yes
+500,0.2,10.78,1,4,Reverse elimination (best of 3 orders),56,0.200212,Yes
+500,0.2,10.78,1,4,"Reverse (existing pruner, same order)",56,0.696442,Yes
+500,0.2,10.78,1,4,Zoomed Square collision,55,0.597346,Yes
+500,0.2,10.2533,1,5,Circle collision,53,0.833358,Yes
+500,0.2,10.2533,1,5,Grid collision,49,0.890874,Yes
+500,0.2,10.2533,1,5,Reverse elimination (one order),51,0.100701,Yes
+500,0.2,10.2533,1,5,Reverse elimination (best of 3 orders),48,0.240851,Yes
+500,0.2,10.2533,1,5,"Reverse (existing pruner, same order)",51,0.647833,Yes
+500,0.2,10.2533,1,5,Zoomed Square collision,51,0.593635,Yes
+500,0.225,12.6413,1,1,Circle collision,49,0.580907,Yes
+500,0.225,12.6413,1,1,Grid collision,49,0.590469,Yes
+500,0.225,12.6413,1,1,Reverse elimination (one order),48,0.102963,Yes
+500,0.225,12.6413,1,1,Reverse elimination (best of 3 orders),48,0.268823,Yes
+500,0.225,12.6413,1,1,"Reverse (existing pruner, same order)",48,0.516388,Yes
+500,0.225,12.6413,1,1,Zoomed Square collision,52,0.854377,Yes
+500,0.225,13.188,1,2,Circle collision,53,0.858316,Yes
+500,0.225,13.188,1,2,Grid collision,51,0.668673,Yes
+500,0.225,13.188,1,2,Reverse elimination (one order),52,0.097447,Yes
+500,0.225,13.188,1,2,Reverse elimination (best of 3 orders),52,0.234506,Yes
+500,0.225,13.188,1,2,"Reverse (existing pruner, same order)",52,0.669068,Yes
+500,0.225,13.188,1,2,Zoomed Square collision,51,0.744069,Yes
+500,0.225,12.8657,1,3,Circle collision,47,0.643305,Yes
+500,0.225,12.8657,1,3,Grid collision,49,0.621787,Yes
+500,0.225,12.8657,1,3,Reverse elimination (one order),52,0.112495,Yes
+500,0.225,12.8657,1,3,Reverse elimination (best of 3 orders),47,0.244802,Yes
+500,0.225,12.8657,1,3,"Reverse (existing pruner, same order)",52,0.580266,Yes
+500,0.225,12.8657,1,3,Zoomed Square collision,52,0.592835,Yes
+500,0.225,13.1703,1,4,Circle collision,56,0.800077,Yes
+500,0.225,13.1703,1,4,Grid collision,57,0.725913,Yes
+500,0.225,13.1703,1,4,Reverse elimination (one order),58,0.089473,Yes
+500,0.225,13.1703,1,4,Reverse elimination (best of 3 orders),53,0.210594,Yes
+500,0.225,13.1703,1,4,"Reverse (existing pruner, same order)",58,0.736018,Yes
+500,0.225,13.1703,1,4,Zoomed Square collision,57,0.728733,Yes
+500,0.225,12.6477,1,5,Circle collision,57,0.72807,Yes
+500,0.225,12.6477,1,5,Grid collision,52,0.680229,Yes
+500,0.225,12.6477,1,5,Reverse elimination (one order),56,0.112265,Yes
+500,0.225,12.6477,1,5,Reverse elimination (best of 3 orders),48,0.26492,Yes
+500,0.225,12.6477,1,5,"Reverse (existing pruner, same order)",56,0.958309,Yes
+500,0.225,12.6477,1,5,Zoomed Square collision,58,0.77555,Yes
+500,0.25,15.2481,1,1,Circle collision,52,0.541153,Yes
+500,0.25,15.2481,1,1,Grid collision,51,0.790703,Yes
+500,0.25,15.2481,1,1,Reverse elimination (one order),48,0.10982,Yes
+500,0.25,15.2481,1,1,Reverse elimination (best of 3 orders),48,0.229863,Yes
+500,0.25,15.2481,1,1,"Reverse (existing pruner, same order)",48,0.591641,Yes
+500,0.25,15.2481,1,1,Zoomed Square collision,59,0.632709,Yes
+500,0.25,15.8501,1,2,Circle collision,53,0.823887,Yes
+500,0.25,15.8501,1,2,Grid collision,45,0.931501,Yes
+500,0.25,15.8501,1,2,Reverse elimination (one order),49,0.114049,Yes
+500,0.25,15.8501,1,2,Reverse elimination (best of 3 orders),49,0.274714,Yes
+500,0.25,15.8501,1,2,"Reverse (existing pruner, same order)",49,0.573967,Yes
+500,0.25,15.8501,1,2,Zoomed Square collision,49,0.918171,Yes
+500,0.25,15.5182,1,3,Circle collision,55,0.528921,Yes
+500,0.25,15.5182,1,3,Grid collision,50,0.822989,Yes
+500,0.25,15.5182,1,3,Reverse elimination (one order),51,0.099589,Yes
+500,0.25,15.5182,1,3,Reverse elimination (best of 3 orders),51,0.234482,Yes
+500,0.25,15.5182,1,3,"Reverse (existing pruner, same order)",51,0.543445,Yes
+500,0.25,15.5182,1,3,Zoomed Square collision,46,0.597395,Yes
+500,0.25,15.8036,1,4,Circle collision,56,0.67516,Yes
+500,0.25,15.8036,1,4,Grid collision,54,0.894312,Yes
+500,0.25,15.8036,1,4,Reverse elimination (one order),53,0.098877,Yes
+500,0.25,15.8036,1,4,Reverse elimination (best of 3 orders),53,0.227275,Yes
+500,0.25,15.8036,1,4,"Reverse (existing pruner, same order)",53,0.562733,Yes
+500,0.25,15.8036,1,4,Zoomed Square collision,57,0.742144,Yes
+500,0.25,15.22,1,5,Circle collision,57,0.884681,Yes
+500,0.25,15.22,1,5,Grid collision,55,1.076609,Yes
+500,0.25,15.22,1,5,Reverse elimination (one order),57,0.115276,Yes
+500,0.25,15.22,1,5,Reverse elimination (best of 3 orders),53,0.250744,Yes
+500,0.25,15.22,1,5,"Reverse (existing pruner, same order)",57,0.522215,Yes
+500,0.25,15.22,1,5,Zoomed Square collision,51,0.873692,Yes
+500,0.275,17.9535,1,1,Circle collision,57,0.788897,Yes
+500,0.275,17.9535,1,1,Grid collision,54,0.999834,Yes
+500,0.275,17.9535,1,1,Reverse elimination (one order),59,0.093384,Yes
+500,0.275,17.9535,1,1,Reverse elimination (best of 3 orders),55,0.224338,Yes
+500,0.275,17.9535,1,1,"Reverse (existing pruner, same order)",59,0.689434,Yes
+500,0.275,17.9535,1,1,Zoomed Square collision,57,0.759086,Yes
+500,0.275,18.7295,1,2,Circle collision,64,1.166917,Yes
+500,0.275,18.7295,1,2,Grid collision,59,1.230741,Yes
+500,0.275,18.7295,1,2,Reverse elimination (one order),56,0.125934,Yes
+500,0.275,18.7295,1,2,Reverse elimination (best of 3 orders),56,0.274631,Yes
+500,0.275,18.7295,1,2,"Reverse (existing pruner, same order)",56,0.727994,Yes
+500,0.275,18.7295,1,2,Zoomed Square collision,56,1.140196,Yes
+500,0.275,18.3495,1,3,Circle collision,52,0.773848,Yes
+500,0.275,18.3495,1,3,Grid collision,53,0.888942,Yes
+500,0.275,18.3495,1,3,Reverse elimination (one order),54,0.101863,Yes
+500,0.275,18.3495,1,3,Reverse elimination (best of 3 orders),52,0.220132,Yes
+500,0.275,18.3495,1,3,"Reverse (existing pruner, same order)",54,0.486575,Yes
+500,0.275,18.3495,1,3,Zoomed Square collision,55,0.817217,Yes
+500,0.275,18.5587,1,4,Circle collision,60,0.931063,Yes
+500,0.275,18.5587,1,4,Grid collision,61,0.848929,Yes
+500,0.275,18.5587,1,4,Reverse elimination (one order),59,0.094013,Yes
+500,0.275,18.5587,1,4,Reverse elimination (best of 3 orders),59,0.215726,Yes
+500,0.275,18.5587,1,4,"Reverse (existing pruner, same order)",59,0.64081,Yes
+500,0.275,18.5587,1,4,Zoomed Square collision,55,0.839544,Yes
+500,0.275,18.0385,1,5,Circle collision,60,0.699032,Yes
+500,0.275,18.0385,1,5,Grid collision,62,1.143619,Yes
+500,0.275,18.0385,1,5,Reverse elimination (one order),60,0.120345,Yes
+500,0.275,18.0385,1,5,Reverse elimination (best of 3 orders),58,0.239464,Yes
+500,0.275,18.0385,1,5,"Reverse (existing pruner, same order)",60,0.672959,Yes
+500,0.275,18.0385,1,5,Zoomed Square collision,63,0.937062,Yes
+500,0.3,20.7543,1,1,Circle collision,60,0.803402,Yes
+500,0.3,20.7543,1,1,Grid collision,57,0.929894,Yes
+500,0.3,20.7543,1,1,Reverse elimination (one order),62,0.124001,Yes
+500,0.3,20.7543,1,1,Reverse elimination (best of 3 orders),60,0.249434,Yes
+500,0.3,20.7543,1,1,"Reverse (existing pruner, same order)",62,0.59009,Yes
+500,0.3,20.7543,1,1,Zoomed Square collision,57,0.920922,Yes
+500,0.3,21.8164,1,2,Circle collision,57,1.069397,Yes
+500,0.3,21.8164,1,2,Grid collision,63,1.206865,Yes
+500,0.3,21.8164,1,2,Reverse elimination (one order),60,0.127275,Yes
+500,0.3,21.8164,1,2,Reverse elimination (best of 3 orders),55,0.285855,Yes
+500,0.3,21.8164,1,2,"Reverse (existing pruner, same order)",60,0.721134,Yes
+500,0.3,21.8164,1,2,Zoomed Square collision,58,1.075644,Yes
+500,0.3,21.3379,1,3,Circle collision,58,0.847402,Yes
+500,0.3,21.3379,1,3,Grid collision,55,1.058706,Yes
+500,0.3,21.3379,1,3,Reverse elimination (one order),60,0.114886,Yes
+500,0.3,21.3379,1,3,Reverse elimination (best of 3 orders),60,0.286702,Yes
+500,0.3,21.3379,1,3,"Reverse (existing pruner, same order)",60,0.748491,Yes
+500,0.3,21.3379,1,3,Zoomed Square collision,60,0.828768,Yes
+500,0.3,21.4733,1,4,Circle collision,64,0.870471,Yes
+500,0.3,21.4733,1,4,Grid collision,63,0.941602,Yes
+500,0.3,21.4733,1,4,Reverse elimination (one order),58,0.098127,Yes
+500,0.3,21.4733,1,4,Reverse elimination (best of 3 orders),58,0.217723,Yes
+500,0.3,21.4733,1,4,"Reverse (existing pruner, same order)",58,0.64122,Yes
+500,0.3,21.4733,1,4,Zoomed Square collision,60,0.932219,Yes
+500,0.3,20.8745,1,5,Circle collision,53,0.839171,Yes
+500,0.3,20.8745,1,5,Grid collision,58,1.020572,Yes
+500,0.3,20.8745,1,5,Reverse elimination (one order),55,0.118067,Yes
+500,0.3,20.8745,1,5,Reverse elimination (best of 3 orders),55,0.247999,Yes
+500,0.3,20.8745,1,5,"Reverse (existing pruner, same order)",55,0.591557,Yes
+500,0.3,20.8745,1,5,Zoomed Square collision,53,0.983067,Yes
+500,0.325,23.6553,1,1,Circle collision,58,0.752527,Yes
+500,0.325,23.6553,1,1,Grid collision,62,0.972245,Yes
+500,0.325,23.6553,1,1,Reverse elimination (one order),56,0.112365,Yes
+500,0.325,23.6553,1,1,Reverse elimination (best of 3 orders),56,0.237194,Yes
+500,0.325,23.6553,1,1,"Reverse (existing pruner, same order)",56,0.615008,Yes
+500,0.325,23.6553,1,1,Zoomed Square collision,54,0.94778,Yes
+500,0.325,25.0445,1,2,Circle collision,64,0.936279,Yes
+500,0.325,25.0445,1,2,Grid collision,59,1.370623,Yes
+500,0.325,25.0445,1,2,Reverse elimination (one order),57,0.143015,Yes
+500,0.325,25.0445,1,2,Reverse elimination (best of 3 orders),57,0.312826,Yes
+500,0.325,25.0445,1,2,"Reverse (existing pruner, same order)",57,0.650965,Yes
+500,0.325,25.0445,1,2,Zoomed Square collision,61,1.238387,Yes
+500,0.325,24.3639,1,3,Circle collision,59,0.888209,Yes
+500,0.325,24.3639,1,3,Grid collision,55,1.102751,Yes
+500,0.325,24.3639,1,3,Reverse elimination (one order),61,0.121496,Yes
+500,0.325,24.3639,1,3,Reverse elimination (best of 3 orders),57,0.266388,Yes
+500,0.325,24.3639,1,3,"Reverse (existing pruner, same order)",61,0.826722,Yes
+500,0.325,24.3639,1,3,Zoomed Square collision,55,0.964563,Yes
+500,0.325,24.4874,1,4,Circle collision,71,1.063746,Yes
+500,0.325,24.4874,1,4,Grid collision,66,1.140195,Yes
+500,0.325,24.4874,1,4,Reverse elimination (one order),65,0.107451,Yes
+500,0.325,24.4874,1,4,Reverse elimination (best of 3 orders),65,0.273676,Yes
+500,0.325,24.4874,1,4,"Reverse (existing pruner, same order)",65,0.673119,Yes
+500,0.325,24.4874,1,4,Zoomed Square collision,66,1.070854,Yes
+500,0.325,23.9776,1,5,Circle collision,64,0.925812,Yes
+500,0.325,23.9776,1,5,Grid collision,63,1.045849,Yes
+500,0.325,23.9776,1,5,Reverse elimination (one order),59,0.109984,Yes
+500,0.325,23.9776,1,5,Reverse elimination (best of 3 orders),59,0.239353,Yes
+500,0.325,23.9776,1,5,"Reverse (existing pruner, same order)",59,0.671934,Yes
+500,0.325,23.9776,1,5,Zoomed Square collision,57,1.09065,Yes
+500,0.35,26.7735,1,1,Circle collision,65,0.93319,Yes
+500,0.35,26.7735,1,1,Grid collision,64,1.08503,Yes
+500,0.35,26.7735,1,1,Reverse elimination (one order),65,0.120174,Yes
+500,0.35,26.7735,1,1,Reverse elimination (best of 3 orders),62,0.236465,Yes
+500,0.35,26.7735,1,1,"Reverse (existing pruner, same order)",65,0.802779,Yes
+500,0.35,26.7735,1,1,Zoomed Square collision,62,1.338057,Yes
+500,0.35,28.3086,1,2,Circle collision,71,1.151892,Yes
+500,0.35,28.3086,1,2,Grid collision,66,1.321591,Yes
+500,0.35,28.3086,1,2,Reverse elimination (one order),70,0.133441,Yes
+500,0.35,28.3086,1,2,Reverse elimination (best of 3 orders),65,0.295208,Yes
+500,0.35,28.3086,1,2,"Reverse (existing pruner, same order)",70,0.915573,Yes
+500,0.35,28.3086,1,2,Zoomed Square collision,69,1.437747,Yes
+500,0.35,27.6168,1,3,Circle collision,63,0.898054,Yes
+500,0.35,27.6168,1,3,Grid collision,63,1.279816,Yes
+500,0.35,27.6168,1,3,Reverse elimination (one order),63,0.12552,Yes
+500,0.35,27.6168,1,3,Reverse elimination (best of 3 orders),63,0.313894,Yes
+500,0.35,27.6168,1,3,"Reverse (existing pruner, same order)",63,0.613514,Yes
+500,0.35,27.6168,1,3,Zoomed Square collision,63,1.235332,Yes
+500,0.35,27.6281,1,4,Circle collision,72,0.993479,Yes
+500,0.35,27.6281,1,4,Grid collision,72,1.184744,Yes
+500,0.35,27.6281,1,4,Reverse elimination (one order),77,0.104218,Yes
+500,0.35,27.6281,1,4,Reverse elimination (best of 3 orders),71,0.22363,Yes
+500,0.35,27.6281,1,4,"Reverse (existing pruner, same order)",77,0.650817,Yes
+500,0.35,27.6281,1,4,Zoomed Square collision,69,1.252207,Yes
+500,0.35,27.2337,1,5,Circle collision,62,0.988822,Yes
+500,0.35,27.2337,1,5,Grid collision,57,1.062165,Yes
+500,0.35,27.2337,1,5,Reverse elimination (one order),63,0.134494,Yes
+500,0.35,27.2337,1,5,Reverse elimination (best of 3 orders),61,0.254903,Yes
+500,0.35,27.2337,1,5,"Reverse (existing pruner, same order)",63,0.646587,Yes
+500,0.35,27.2337,1,5,Zoomed Square collision,67,1.180238,Yes
+500,0.375,29.8381,1,1,Circle collision,68,0.957049,Yes
+500,0.375,29.8381,1,1,Grid collision,63,1.109065,Yes
+500,0.375,29.8381,1,1,Reverse elimination (one order),66,0.11817,Yes
+500,0.375,29.8381,1,1,Reverse elimination (best of 3 orders),66,0.254963,Yes
+500,0.375,29.8381,1,1,"Reverse (existing pruner, same order)",66,0.528783,Yes
+500,0.375,29.8381,1,1,Zoomed Square collision,71,1.508408,Yes
+500,0.375,31.6192,1,2,Circle collision,63,0.976237,Yes
+500,0.375,31.6192,1,2,Grid collision,66,1.277546,Yes
+500,0.375,31.6192,1,2,Reverse elimination (one order),67,0.131869,Yes
+500,0.375,31.6192,1,2,Reverse elimination (best of 3 orders),66,0.264484,Yes
+500,0.375,31.6192,1,2,"Reverse (existing pruner, same order)",67,0.6792,Yes
+500,0.375,31.6192,1,2,Zoomed Square collision,66,1.521314,Yes
+500,0.375,30.8994,1,3,Circle collision,68,0.789416,Yes
+500,0.375,30.8994,1,3,Grid collision,59,1.373751,Yes
+500,0.375,30.8994,1,3,Reverse elimination (one order),66,0.122744,Yes
+500,0.375,30.8994,1,3,Reverse elimination (best of 3 orders),61,0.249783,Yes
+500,0.375,30.8994,1,3,"Reverse (existing pruner, same order)",66,0.574805,Yes
+500,0.375,30.8994,1,3,Zoomed Square collision,68,1.232013,Yes
+500,0.375,30.7495,1,4,Circle collision,77,1.096806,Yes
+500,0.375,30.7495,1,4,Grid collision,79,1.288395,Yes
+500,0.375,30.7495,1,4,Reverse elimination (one order),71,0.114562,Yes
+500,0.375,30.7495,1,4,Reverse elimination (best of 3 orders),67,0.234385,Yes
+500,0.375,30.7495,1,4,"Reverse (existing pruner, same order)",71,0.695512,Yes
+500,0.375,30.7495,1,4,Zoomed Square collision,72,1.301773,Yes
+500,0.375,30.4834,1,5,Circle collision,65,0.838559,Yes
+500,0.375,30.4834,1,5,Grid collision,69,1.315962,Yes
+500,0.375,30.4834,1,5,Reverse elimination (one order),68,0.115713,Yes
+500,0.375,30.4834,1,5,Reverse elimination (best of 3 orders),66,0.245872,Yes
+500,0.375,30.4834,1,5,"Reverse (existing pruner, same order)",68,0.545997,Yes
+500,0.375,30.4834,1,5,Zoomed Square collision,69,1.2186,Yes
+500,0.4,33.0878,1,1,Circle collision,68,1.082361,Yes
+500,0.4,33.0878,1,1,Grid collision,65,1.421494,Yes
+500,0.4,33.0878,1,1,Reverse elimination (one order),70,0.143546,Yes
+500,0.4,33.0878,1,1,Reverse elimination (best of 3 orders),69,0.279754,Yes
+500,0.4,33.0878,1,1,"Reverse (existing pruner, same order)",70,0.611045,Yes
+500,0.4,33.0878,1,1,Zoomed Square collision,67,1.288798,Yes
+500,0.4,35.0437,1,2,Circle collision,75,1.326112,Yes
+500,0.4,35.0437,1,2,Grid collision,64,1.481671,Yes
+500,0.4,35.0437,1,2,Reverse elimination (one order),77,0.136594,Yes
+500,0.4,35.0437,1,2,Reverse elimination (best of 3 orders),72,0.259228,Yes
+500,0.4,35.0437,1,2,"Reverse (existing pruner, same order)",77,0.79411,Yes
+500,0.4,35.0437,1,2,Zoomed Square collision,73,1.909533,Yes
+500,0.4,34.2749,1,3,Circle collision,69,1.026789,Yes
+500,0.4,34.2749,1,3,Grid collision,70,1.295132,Yes
+500,0.4,34.2749,1,3,Reverse elimination (one order),74,0.125919,Yes
+500,0.4,34.2749,1,3,Reverse elimination (best of 3 orders),69,0.255913,Yes
+500,0.4,34.2749,1,3,"Reverse (existing pruner, same order)",74,0.511759,Yes
+500,0.4,34.2749,1,3,Zoomed Square collision,66,1.749809,Yes
+500,0.4,34.016,1,4,Circle collision,73,1.158558,Yes
+500,0.4,34.016,1,4,Grid collision,69,1.393391,Yes
+500,0.4,34.016,1,4,Reverse elimination (one order),71,0.124202,Yes
+500,0.4,34.016,1,4,Reverse elimination (best of 3 orders),71,0.243168,Yes
+500,0.4,34.016,1,4,"Reverse (existing pruner, same order)",71,0.669383,Yes
+500,0.4,34.016,1,4,Zoomed Square collision,72,1.55102,Yes
+500,0.4,33.8269,1,5,Circle collision,73,1.168157,Yes
+500,0.4,33.8269,1,5,Grid collision,70,1.315548,Yes
+500,0.4,33.8269,1,5,Reverse elimination (one order),73,0.133316,Yes
+500,0.4,33.8269,1,5,Reverse elimination (best of 3 orders),73,0.251881,Yes
+500,0.4,33.8269,1,5,"Reverse (existing pruner, same order)",73,0.599521,Yes
+500,0.4,33.8269,1,5,Zoomed Square collision,74,1.737269,Yes
